@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useContext } from "react";
 import {
   View,
   Text,
@@ -8,11 +10,18 @@ import {
   SafeAreaView,
 } from "react-native";
 import { Colors, Spacing, Size } from "../assets/main";
+import { Context as AuthContext } from "../context/AuthContext";
 
 import { AuthForm } from "../components/AuthForm";
 import { Footer } from "../components/Footer";
 
 export const LoginScreen = () => {
+  const { state, signin, getToken } = useContext(AuthContext);
+
+  useEffect(() => {
+    getToken();
+  }, []);
+
   return (
     <SafeAreaView>
       <ImageBackground
@@ -26,7 +35,7 @@ export const LoginScreen = () => {
           <Text style={styles.upTitle}>Bienvenue sur</Text>
           <Text style={styles.header}>Remontad'App</Text>
           <Text style={styles.subTitle}>Connectez vous pour continuer</Text>
-          <AuthForm />
+          <AuthForm submit={signin} />
           <Footer
             header="Pas encore de compte ?"
             path="Register"

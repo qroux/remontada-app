@@ -1,12 +1,39 @@
-import React from "react";
-import { View, StyleSheet, TextInput } from "react-native";
-import { Colors, Size } from "../assets/main";
+import React, { useContext, useState } from "react";
+import { View, Text, StyleSheet, TextInput } from "react-native";
+import { Colors, Size, Spacing } from "../assets/main";
+import { Button } from "react-native-elements";
+import { Context as AuthContext } from "../context/AuthContext";
 
-export const AuthForm = () => {
+export const AuthForm = ({ submit }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { state } = useContext(AuthContext);
+
   return (
     <View>
-      <TextInput style={styles.input} placeholder="email" />
-      <TextInput style={styles.input} placeholder="password" />
+      <Text style={styles.error}>{state.errorMsg}</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="email"
+        value={email}
+        onChangeText={setEmail}
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="password"
+        value={password}
+        onChangeText={setPassword}
+        autoCapitalize="none"
+        autoCorrect={false}
+        secureTextEntry={true}
+      />
+      <Button
+        title="Submit"
+        buttonStyle={{ marginTop: Spacing.small, height: 50 }}
+        onPress={() => submit({ email, password })}
+      />
     </View>
   );
 };
@@ -20,5 +47,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.secondaryLight,
     borderRadius: Size.radius,
+  },
+  error: {
+    fontWeight: "bold",
+    color: "red",
   },
 });
