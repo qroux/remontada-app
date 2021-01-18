@@ -1,3 +1,5 @@
-import { Colors } from "./_color.js";
+import { Colors } from "./_color";
+import { Spacing } from "./_spacing";
+import { Size } from "./_size";
 
-export { Colors };
+export { Colors, Spacing, Size };
