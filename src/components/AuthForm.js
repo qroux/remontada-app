@@ -4,14 +4,16 @@ import { Colors, Size, Spacing } from "../assets/main";
 import { Button } from "react-native-elements";
 import { Context as AuthContext } from "../context/AuthContext";
 
-export const AuthForm = ({ submit }) => {
+export const AuthForm = ({ submit, btnTitle }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { state } = useContext(AuthContext);
 
   return (
     <View>
-      <Text style={styles.error}>{state.errorMsg}</Text>
+      {state.errorMsg ? (
+        <Text style={styles.error}>{state.errorMsg}</Text>
+      ) : null}
       <TextInput
         style={styles.input}
         placeholder="email"
@@ -22,7 +24,7 @@ export const AuthForm = ({ submit }) => {
       />
       <TextInput
         style={styles.input}
-        placeholder="password"
+        placeholder="mot de passe"
         value={password}
         onChangeText={setPassword}
         autoCapitalize="none"
@@ -30,7 +32,7 @@ export const AuthForm = ({ submit }) => {
         secureTextEntry={true}
       />
       <Button
-        title="Submit"
+        title={btnTitle}
         buttonStyle={{ marginTop: Spacing.small, height: 50 }}
         onPress={() => submit({ email, password })}
       />

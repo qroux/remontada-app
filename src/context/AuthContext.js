@@ -47,6 +47,29 @@ const signin = (dispatch) => async ({ email, password }) => {
   }
 };
 
+const signup = (dispatch) => async ({ email, password }) => {
+  try {
+    const response = await strapiApi.post("/auth/local/register", {
+      username: email,
+      email,
+      password,
+    });
+
+    const token = response.data.jwt;
+    await AsyncStorage.setItem("remontada_token", token);
+
+    dispatch({
+      type: "SIGNUP",
+      payload: { email, token },
+    });
+  } catch (err) {
+    dispatch({
+      type: "ADD_ERROR",
+      payload: err.message,
+    });
+  }
+};
+
 const signout = (dispatch) => async () => {
   dispatch({ type: "SIGNOUT" });
   await AsyncStorage.removeItem("remontada_token");
@@ -62,8 +85,12 @@ const getToken = (dispatch) => async () => {
   dispatch({ type: "LOADED" });
 };
 
+const clearError = (dispatch) => async () => {
+  dispatch({ type: "CLEAR_ERROR" });
+};
+
 export const { Context, Provider } = createDataContext(
   AuthReducer,
-  { signin, getToken, signout },
+  { getToken, clearError, signin, signup, signout },
   { token: null, errorMsg: null }
 );

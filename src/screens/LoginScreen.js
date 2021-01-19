@@ -8,6 +8,7 @@ import {
   ImageBackground,
   Dimensions,
   SafeAreaView,
+  StatusBar,
 } from "react-native";
 import { Colors, Spacing, Size } from "../assets/main";
 import { Context as AuthContext } from "../context/AuthContext";
@@ -27,19 +28,20 @@ export const LoginScreen = () => {
       <ImageBackground
         source={{
           uri:
-            "https://images.unsplash.com/photo-1504016798967-59a258e9386d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1867&q=80",
+            "https://images.unsplash.com/photo-1509928015542-fcc9b3bcd048?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80",
         }}
         style={styles.background}
       >
         <View style={styles.container}>
           <Text style={styles.upTitle}>Bienvenue sur</Text>
-          <Text style={styles.header}>Remontad'App</Text>
+          <Text style={styles.header}>Remontad' App</Text>
           <Text style={styles.subTitle}>Connectez vous pour continuer</Text>
-          <AuthForm submit={signin} />
+          <AuthForm submit={signin} btnTitle="Connexion" />
           <Footer
             header="Pas encore de compte ?"
             path="Register"
             label="Inscription"
+            reset={true}
           />
         </View>
       </ImageBackground>
@@ -53,10 +55,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   background: {
-    height: Dimensions.get("window").height,
+    height: Dimensions.get("window").height - StatusBar.currentHeight,
     width: Dimensions.get("window").width,
-    // resizeMode: "cover",
-    // justifyContent: "center",
+    marginTop: StatusBar.currentHeight,
   },
   header: {
     fontSize: Size.large,
