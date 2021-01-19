@@ -75,6 +75,18 @@ const signout = (dispatch) => async () => {
   await AsyncStorage.removeItem("remontada_token");
 };
 
+const resetPassword = (dispatch) => async ({ email }) => {
+  try {
+    const response = await strapiApi.post("auth/forgot-password", { email });
+    console.log("dans reset", response);
+  } catch (err) {
+    dispatch({
+      type: "ADD_ERROR",
+      payload: err.message,
+    });
+  }
+};
+
 //UTILS
 const getToken = (dispatch) => async () => {
   const token = await AsyncStorage.getItem("remontada_token");

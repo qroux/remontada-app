@@ -7,6 +7,7 @@ import { Context as AuthContext } from "./src/context/AuthContext";
 
 import { LoginScreen } from "./src/screens/LoginScreen";
 import { RegisterScreen } from "./src/screens/RegisterScreen";
+import { ResetScreen } from "./src/screens/ResetScreen";
 import { MainScreen } from "./src/screens/MainScreen";
 import { AccountScreen } from "./src/screens/AccountScreen";
 
@@ -24,6 +25,11 @@ const AuthStackScreen = () => {
       <AuthStack.Screen
         name="Register"
         component={RegisterScreen}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="Reset"
+        component={ResetScreen}
         options={{ headerShown: false }}
       />
     </AuthStack.Navigator>

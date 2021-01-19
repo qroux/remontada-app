@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Colors, Size, Spacing } from "../assets/main";
 import { Context as AuthContext } from "../context/AuthContext";
 
-export const Footer = ({ header, path, label, reset }) => {
+export const Footer = ({ path, label, reset }) => {
   const navigation = useNavigation();
   const { clearError } = useContext(AuthContext);
 
@@ -22,10 +22,10 @@ export const Footer = ({ header, path, label, reset }) => {
         <TouchableOpacity
           onPress={() => {
             clearError();
-            navigation.navigate(path);
+            navigation.navigate("Reset");
           }}
         >
-          <Text style={styles.label}>Mot de passe oublié ?</Text>
+          <Text style={styles.label}>Mot de passe oublié</Text>
         </TouchableOpacity>
       ) : null}
     </View>
@@ -44,6 +44,5 @@ const styles = StyleSheet.create({
     fontSize: Size.regular,
     fontWeight: "bold",
     color: Colors.textLight,
-    marginVertical: Spacing.small,
   },
 });
