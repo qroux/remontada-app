@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TextInput } from "react-native";
 import { Colors, Size, Spacing } from "../assets/main";
 import { Button } from "react-native-elements";
 import { Context as AuthContext } from "../context/AuthContext";
+import strapiApi from "../api/strapiApi";
 
 export const ResetForm = () => {
   const [email, setEmail] = useState("");
@@ -24,7 +25,10 @@ export const ResetForm = () => {
       <Button
         title="Renouveller mot de passe"
         buttonStyle={{ marginTop: Spacing.small, height: 50 }}
-        onPress={() => submit({ email, password })}
+        onPress={() => {
+            const response = await strapiApi.post("auth/forgot-password", { email });
+            console.log("OK =", response)
+        }}
       />
     </View>
   );
