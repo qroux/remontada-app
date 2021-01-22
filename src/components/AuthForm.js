@@ -35,6 +35,7 @@ export const AuthForm = ({ submit, btnTitle }) => {
         title={btnTitle}
         buttonStyle={{ marginTop: Spacing.small, height: 50 }}
         onPress={() => submit({ email, password })}
+        loading={state.isLoading}
       />
     </View>
   );

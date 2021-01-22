@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import {
   View,
   Text,
@@ -12,16 +11,14 @@ import {
 import { Colors, Spacing, Size } from "../assets/main";
 import { Context as AuthContext } from "../context/AuthContext";
 
+import { AuthForm } from "../components/AuthForm";
 import { Footer } from "../components/Footer";
-import { TextInput } from "react-native-gesture-handler";
 import { Button } from "react-native-elements";
-// import { ResetForm } from "../components/ResetForm";
+import { useNavigation } from "@react-navigation/native";
 
-export const ResetScreen = () => {
-  const [email, setEmail] = useState("");
-  const { state, askResetPassword } = useContext(AuthContext);
-  const regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-
+export const AccountConfirmationScreen = ({ route }) => {
+  const navigation = useNavigation();
+  const { state, signup } = useContext(AuthContext);
   return (
     <SafeAreaView>
       <ImageBackground
@@ -32,32 +29,23 @@ export const ResetScreen = () => {
         style={styles.background}
       >
         <View style={styles.container}>
-          <Text style={styles.upTitle}>Mot de passe oublié ?</Text>
-
+          <Text style={styles.upTitle}>Compte crée</Text>
+          <Text style={styles.header}>Remontad' App</Text>
           <View style={styles.instructionsContainer}>
             <Text style={styles.instructions}>
-              Entrez l'adresse mail liée à votre compte.
+              Votre compte a été créé. Activez le grâce au lien envoyé par mail
+              à l'adresse
             </Text>
-            <Text>
-              Si l'adresse existe, un message sera envoyé pour renouveller votre
-              mot de passe.
-            </Text>
-            <TextInput
-              style={styles.addressContainer}
-              autoCapitalize="none"
-              autoCorrect={false}
-              value={email}
-              onChangeText={setEmail}
-            />
-            <Button
-              title="Envoyer Demande"
-              onPress={() => askResetPassword({ email })}
-              disabled={!regex.test(email)}
-              loading={state.isLoading}
-            />
+            <View style={styles.addressContainer}>
+              <Text style={styles.address}>{route.params.email}</Text>
+            </View>
           </View>
-          {/* <ResetForm /> */}
-          <Footer path="Login" label="Connexion" />
+
+          <Footer
+            header="Vous possédez déjà un compte ?"
+            path="Login"
+            label="Retour à l'accueil"
+          />
         </View>
       </ImageBackground>
     </SafeAreaView>
@@ -79,13 +67,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#F2404F",
     marginTop: -15,
+
     textShadowColor: "black",
-  },
-  subTitle: {
-    fontSize: Size.regular,
-    color: "white",
-    marginTop: Spacing.large,
-    marginBottom: Spacing.small,
   },
   upTitle: {
     color: Colors.textLight,
@@ -96,6 +79,7 @@ const styles = StyleSheet.create({
   instructions: {
     fontSize: Size.small,
     color: Colors.textDark,
+    fontWeight: "bold",
   },
   instructionsContainer: {
     marginTop: Spacing.large,
@@ -111,7 +95,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: Size.radius,
-    paddingHorizontal: Spacing.regular,
   },
   address: {},
 });

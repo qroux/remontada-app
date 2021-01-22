@@ -6,7 +6,8 @@ import { Context as AuthContext } from "../context/AuthContext";
 import strapiApi from "../api/strapiApi";
 
 export const ResetForm = () => {
-  const [email, setEmail] = useState("");
+  const [code, setCode] = useState("");
+  const [password, setPassword] = useState("");
   const { state, resetPassword } = useContext(AuthContext);
 
   return (
@@ -16,19 +17,25 @@ export const ResetForm = () => {
       ) : null}
       <TextInput
         style={styles.input}
-        placeholder="email"
-        value={email}
-        onChangeText={setEmail}
+        placeholder="code reçu par email"
+        value={code}
+        onChangeText={setCode}
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="nouveau mot de passe"
+        value={password}
+        onChangeText={setPassword}
         autoCapitalize="none"
         autoCorrect={false}
       />
       <Button
         title="Renouveller mot de passe"
         buttonStyle={{ marginTop: Spacing.small, height: 50 }}
-        onPress={() => {
-            const response = await strapiApi.post("auth/forgot-password", { email });
-            console.log("OK =", response)
-        }}
+        onPress={() => resetPassword({ code, password })}
+        loading={state.isLoading}
       />
     </View>
   );

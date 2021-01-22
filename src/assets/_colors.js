@@ -7,7 +7,7 @@ export const Colors = {
   secondaryLight: "#f4f4f5",
   bg: "",
   bgLight: "white",
-  bgDark: "",
+  bgDark: "#e0e0e0",
   textLight: "white",
-  textDark: "Black",
+  textDark: "#10161D",
 };

@@ -13,8 +13,11 @@ import { Context as AuthContext } from "../context/AuthContext";
 
 import { AuthForm } from "../components/AuthForm";
 import { Footer } from "../components/Footer";
+import { Button } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 
 export const RegisterScreen = () => {
+  const navigation = useNavigation();
   const { state, signup } = useContext(AuthContext);
   return (
     <SafeAreaView>
