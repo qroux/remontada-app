@@ -11,8 +11,8 @@ import {
 import { Colors, Spacing, Size } from "../assets/main";
 import { Context as AuthContext } from "../context/AuthContext";
 
-import { AuthForm } from "../components/AuthForm";
-import { Footer } from "../components/Footer";
+import { AuthForm } from "../components/authComponents/AuthForm";
+import { Footer } from "../components/authComponents/Footer";
 import { Button } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 

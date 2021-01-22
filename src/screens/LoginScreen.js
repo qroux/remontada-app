@@ -13,8 +13,8 @@ import {
 import { Colors, Spacing, Size } from "../assets/main";
 import { Context as AuthContext } from "../context/AuthContext";
 
-import { AuthForm } from "../components/AuthForm";
-import { Footer } from "../components/Footer";
+import { AuthForm } from "../components/authComponents/AuthForm";
+import { Footer } from "../components/authComponents/Footer";
 
 export const LoginScreen = () => {
   const { state, signin, getToken } = useContext(AuthContext);

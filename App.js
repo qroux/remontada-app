@@ -11,7 +11,7 @@ import { RegisterScreen } from "./src/screens/RegisterScreen";
 import { ResetScreen } from "./src/screens/ResetScreen";
 import { AccountConfirmationScreen } from "./src/screens/AccountConfirmationScreen";
 import { PasswordConfirmationScreen } from "./src/screens/PasswordConfirmationScreen";
-import { MainScreen } from "./src/screens/MainScreen";
+import { PronosticScreen } from "./src/screens/PronosticScreen";
 import { AccountScreen } from "./src/screens/AccountScreen";
 
 const AuthStack = createStackNavigator();
@@ -51,8 +51,13 @@ const AuthStackScreen = () => {
 
 const MainStackScreen = () => {
   return (
-    <MainStack.Navigator>
-      <MainStack.Screen name="Main" component={MainScreen} />
+    <MainStack.Navigator
+      tabBarOptions={{
+        showIcon: true,
+        tabStyle: { justifyContent: "center" },
+      }}
+    >
+      <MainStack.Screen name="Pronostic" component={PronosticScreen} />
       <MainStack.Screen name="Account" component={AccountScreen} />
     </MainStack.Navigator>
   );

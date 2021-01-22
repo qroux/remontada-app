@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { Colors, Size, Spacing } from "../assets/main";
-import { Context as AuthContext } from "../context/AuthContext";
+import { Colors, Size, Spacing } from "../../assets/main";
+import { Context as AuthContext } from "../../context/AuthContext";
 
 export const Footer = ({ path, label, reset }) => {
   const navigation = useNavigation();

@@ -12,7 +12,7 @@ import {
 import { Colors, Spacing, Size } from "../assets/main";
 import { Context as AuthContext } from "../context/AuthContext";
 
-import { Footer } from "../components/Footer";
+import { Footer } from "../components/authComponents/Footer";
 import { TextInput } from "react-native-gesture-handler";
 import { Button } from "react-native-elements";
 // import { ResetForm } from "../components/ResetForm";

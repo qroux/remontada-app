@@ -10,4 +10,6 @@ export const Colors = {
   bgDark: "#e0e0e0",
   textLight: "white",
   textDark: "#10161D",
+  boxShadow: "rgb(227, 233, 243) 0px 2px 4px 0px",
+  border: "#dedede",
 };
