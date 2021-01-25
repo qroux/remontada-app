@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "#00034f",
+    backgroundColor: Colors.headerColor,
     padding: Spacing.regular,
     borderRadius: Size.radius,
   },

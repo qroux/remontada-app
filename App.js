@@ -13,6 +13,7 @@ import { AccountConfirmationScreen } from "./src/screens/AccountConfirmationScre
 import { PasswordConfirmationScreen } from "./src/screens/PasswordConfirmationScreen";
 import { PronosticScreen } from "./src/screens/PronosticScreen";
 import { BankrollScreen } from "./src/screens/BankrollScreen";
+import { BankrollCreateScreen } from "./src/screens/BankrollCreateScreen";
 import { AccountScreen } from "./src/screens/AccountScreen";
 
 const AuthStack = createStackNavigator();
@@ -60,6 +61,10 @@ const MainStackScreen = () => {
     >
       <MainStack.Screen name="Pronostic" component={PronosticScreen} />
       <MainStack.Screen name="Bankroll" component={BankrollScreen} />
+      <MainStack.Screen
+        name="BankrollCreate"
+        component={BankrollCreateScreen}
+      />
       <MainStack.Screen name="Account" component={AccountScreen} />
     </MainStack.Navigator>
   );

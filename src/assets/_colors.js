@@ -12,4 +12,5 @@ export const Colors = {
   textDark: "#10161D",
   boxShadow: "rgb(227, 233, 243) 0px 2px 4px 0px",
   border: "#dedede",
+  headerColor: "#00034f",
 };
