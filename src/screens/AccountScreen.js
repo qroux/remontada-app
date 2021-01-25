@@ -8,23 +8,18 @@ import {
   SafeAreaView,
 } from "react-native";
 import { Button } from "react-native-elements";
+import { Common } from "../assets/common";
 import { Colors, Spacing, Size } from "../assets/main";
 import { Context as AuthContext } from "../context/AuthContext";
 
 export const AccountScreen = () => {
   const { state, signout } = useContext(AuthContext);
   return (
-    <View style={styles.container}>
-      <Text>Account Screen</Text>
-      <Button title="disconnect" onPress={signout} />
-    </View>
+    <SafeAreaView style={Common.fullPage}>
+      <View style={Common.container}>
+        <Text style={Common.title}>Account Screen</Text>
+        <Button title="disconnect" onPress={signout} />
+      </View>
+    </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: "center",
-    alignItems: "center",
-    flex: 1,
-  },
-});

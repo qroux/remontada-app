@@ -23,18 +23,11 @@ export const PronosticScreen = () => {
   return (
     <SafeAreaView style={Common.fullPage}>
       <View style={Common.container}>
-        <Text style={styles.title}>Value Bets à l'affiche</Text>
+        <Text style={Common.title}>À l'affiche</Text>
         <MatchList />
       </View>
     </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
-  title: {
-    fontSize: Size.medium,
-    fontWeight: "bold",
-    marginTop: Spacing.medium,
-    marginBottom: Spacing.medium,
-  },
-});
+const styles = StyleSheet.create({});

@@ -12,6 +12,7 @@ import { ResetScreen } from "./src/screens/ResetScreen";
 import { AccountConfirmationScreen } from "./src/screens/AccountConfirmationScreen";
 import { PasswordConfirmationScreen } from "./src/screens/PasswordConfirmationScreen";
 import { PronosticScreen } from "./src/screens/PronosticScreen";
+import { BankrollScreen } from "./src/screens/BankrollScreen";
 import { AccountScreen } from "./src/screens/AccountScreen";
 
 const AuthStack = createStackNavigator();
@@ -58,6 +59,7 @@ const MainStackScreen = () => {
       }}
     >
       <MainStack.Screen name="Pronostic" component={PronosticScreen} />
+      <MainStack.Screen name="Bankroll" component={BankrollScreen} />
       <MainStack.Screen name="Account" component={AccountScreen} />
     </MainStack.Navigator>
   );

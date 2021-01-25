@@ -2,12 +2,13 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Button } from "react-native-elements";
 import { Size, Spacing, Colors } from "../../assets/main";
+import { Common } from "../../assets/common";
 
 import { BetItem } from "./BetItem";
 
 export const ShowMatch = () => {
   return (
-    <View style={styles.container}>
+    <View style={[Common.compContainer, Common.border]}>
       <View style={styles.headerContainer}>
         <Text style={styles.league}>Ligue 1</Text>
         <Text style={styles.date}>21/01/21</Text>
@@ -31,10 +32,6 @@ export const ShowMatch = () => {
         </View>
       </View>
 
-      {/* <View style={styles.dateContainer}>
-        <Text style={styles.date}>21/01/21</Text>
-      </View> */}
-
       <View style={styles.betContainer}>
         <BetItem type="Bookmaker" value="Winamax" />
         <BetItem type="Cote" value="1.55" />
@@ -48,15 +45,6 @@ export const ShowMatch = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    paddingBottom: Spacing.regular,
-    backgroundColor: "white",
-    marginBottom: Spacing.medium,
-    borderColor: Colors.border,
-    borderRadius: Size.radius,
-    borderWidth: 1,
-  },
   headerContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
