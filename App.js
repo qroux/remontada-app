@@ -17,7 +17,10 @@ import { BankrollCreateScreen } from "./src/screens/BankrollCreateScreen";
 import { AccountScreen } from "./src/screens/AccountScreen";
 
 const AuthStack = createStackNavigator();
-const MainStack = createBottomTabNavigator();
+// const MainStack = createBottomTabNavigator();
+// const DetailStack = createStackNavigator();
+const MainStack = createStackNavigator();
+const TabsStack = createBottomTabNavigator();
 
 const AuthStackScreen = () => {
   return (
@@ -51,22 +54,33 @@ const AuthStackScreen = () => {
   );
 };
 
-const MainStackScreen = () => {
+const TabsStackScreen = () => {
   return (
-    <MainStack.Navigator
+    <TabsStack.Navigator
       tabBarOptions={{
         showIcon: true,
         tabStyle: { justifyContent: "center" },
       }}
     >
-      <MainStack.Screen name="Pronostic" component={PronosticScreen} />
-      <MainStack.Screen name="Bankroll" component={BankrollScreen} />
+      <TabsStack.Screen name="Pronostic" component={PronosticScreen} />
+      <TabsStack.Screen name="Bankroll" component={BankrollScreen} />
+      <TabsStack.Screen name="Account" component={AccountScreen} />
+    </TabsStack.Navigator>
+  );
+};
+
+const MainStackScreen = () => {
+  return (
+    <MainStack.Navigator>
+      <MainStack.Screen
+        name="Tabs"
+        component={TabsStackScreen}
+        options={{ headerShown: false }}
+      />
       <MainStack.Screen
         name="BankrollCreate"
         component={BankrollCreateScreen}
-        options
       />
-      <MainStack.Screen name="Account" component={AccountScreen} />
     </MainStack.Navigator>
   );
 };
