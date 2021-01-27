@@ -80,6 +80,7 @@ const MainStackScreen = () => {
       <MainStack.Screen
         name="BankrollCreate"
         component={BankrollCreateScreen}
+        options={{ title: "Nouvelle Bankroll" }}
       />
     </MainStack.Navigator>
   );
