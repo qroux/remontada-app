@@ -13,7 +13,6 @@ import { AccountConfirmationScreen } from "./src/screens/AccountConfirmationScre
 import { PasswordConfirmationScreen } from "./src/screens/PasswordConfirmationScreen";
 import { PronosticScreen } from "./src/screens/PronosticScreen";
 import { BankrollScreen } from "./src/screens/BankrollScreen";
-import { BankrollCreateScreen } from "./src/screens/BankrollCreateScreen";
 import { AccountScreen } from "./src/screens/AccountScreen";
 
 const AuthStack = createStackNavigator();
@@ -76,11 +75,6 @@ const MainStackScreen = () => {
         name="Tabs"
         component={TabsStackScreen}
         options={{ headerShown: false }}
-      />
-      <MainStack.Screen
-        name="BankrollCreate"
-        component={BankrollCreateScreen}
-        options={{ title: "Nouvelle Bankroll" }}
       />
     </MainStack.Navigator>
   );
