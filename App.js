@@ -4,6 +4,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Provider as AuthProvider } from "./src/context/AuthContext";
 import { Context as AuthContext } from "./src/context/AuthContext";
+import { Provider as BankrollProvider } from "./src/context/BankrollContext";
+import { Context as BankrollContext } from "./src/context/BankrollContext";
 import { navigationRef } from "./RootNavigation";
 
 import { LoginScreen } from "./src/screens/LoginScreen";
@@ -92,7 +94,9 @@ const App = () => {
 export default function ProviderWrapper() {
   return (
     <AuthProvider>
-      <App />
+      <BankrollProvider>
+        <App />
+      </BankrollProvider>
     </AuthProvider>
   );
 }
