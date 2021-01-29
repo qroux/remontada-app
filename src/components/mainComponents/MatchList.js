@@ -1,19 +1,28 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { View, Text, StyleSheet, FlatList, ScrollView } from "react-native";
+import { Context as BankrollContext } from "../../context/BankrollContext";
 
 import { ShowMatch } from "./ShowMatch";
 
 export const MatchList = () => {
+  const { state, getBets } = useContext(BankrollContext);
+
+  // console.log(state.bets);
+
+  useEffect(() => {
+    getBets();
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <ScrollView>
-        <ShowMatch />
-        <ShowMatch />
-        <ShowMatch />
-        <ShowMatch />
-        <ShowMatch />
-        <ShowMatch />
-      </ScrollView>
+    <View>
+      <FlatList
+        data={state.bets}
+        keyExtractor={(bet) => bet.id.toString()}
+        renderItem={({ item }) => {
+          // console.log("ITEM = ", item);
+          return <ShowMatch bet={item} match={item.match} />;
+        }}
+      />
     </View>
   );
 };
