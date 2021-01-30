@@ -35,6 +35,10 @@ export const ShowMatch = ({ bet, match }) => {
         </View>
       </View>
 
+      <View style={styles.betTypeContainer}>
+        <Text style={styles.betType}>{bet.type}</Text>
+      </View>
+
       <View style={styles.betContainer}>
         <BetItem type="Bookmaker" value="Winamax" />
         <BetItem type="Cote" value={bet.odds} />
@@ -57,14 +61,14 @@ const styles = StyleSheet.create({
   },
   league: {
     fontSize: Size.small,
-    fontWeight: "bold",
+    // fontWeight: "bold",
     textAlign: "center",
     color: Colors.textLight,
   },
   date: {
     color: Colors.textLight,
     fontSize: Size.small,
-    fontWeight: "bold",
+    // fontWeight: "bold",
   },
   teams: {
     flexDirection: "row",
@@ -83,6 +87,19 @@ const styles = StyleSheet.create({
   teamName: {
     marginTop: Spacing.small,
     fontWeight: "bold",
+  },
+  betTypeContainer: {
+    alignItems: "center",
+    backgroundColor: Colors.primary,
+
+    // borderColor: Colors.headerColor,
+    // borderWidth: 3,
+  },
+  betType: {
+    color: Colors.textLight,
+    fontWeight: "bold",
+    textTransform: "capitalize",
+    paddingVertical: Spacing.regular,
   },
 
   betContainer: {

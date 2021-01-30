@@ -14,7 +14,7 @@ export const MatchList = () => {
   }, []);
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <FlatList
         data={state.bets}
         keyExtractor={(bet) => bet.id.toString()}
