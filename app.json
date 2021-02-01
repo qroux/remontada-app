@@ -2,6 +2,7 @@
   "expo": {
     "name": "remontada-app",
     "slug": "remontada-app",
+    "description": "Favoriser des gains à long terme de vos paris sportifs par l'analyse des cotes les plus intéressantes et des outils de gestion de Bankroll",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,9 +14,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
