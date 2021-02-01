@@ -6,6 +6,7 @@ import {
   ImageBackground,
   Dimensions,
   SafeAreaView,
+  Image,
   FlatList,
 } from "react-native";
 import strapiApi from "../api/strapiApi";
@@ -35,10 +36,19 @@ export const AccountScreen = () => {
           data={teams}
           keyExtractor={(team) => team.name}
           renderItem={({ item }) => {
-            return <Text>{item.name}</Text>;
+            return (
+              <Image style={styles.logo} source={{ uri: item.logo.url }} />
+            );
           }}
         />
       </View>
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  logo: {
+    height: 100,
+    width: 100,
+  },
+});
