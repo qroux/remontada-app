@@ -1,5 +1,7 @@
 # Remontada App
 
+[Lien vers ExpoStore pour télécharger l'application](https://expo.io/@qoux/projects/remontada-app)
+
 <h3>MVC d'application mobile de gestion de Bankroll et d'amélioration des gains à long terme.</h3>
 
 
@@ -12,7 +14,10 @@
 - Expo-Cli
 
 
-<h3>Backend https://github.com/qroux/strapi-api</h3>
+<h3>Backend</h3> 
+
+[Backend Repo](https://github.com/qroux/strapi-api)
+
  
 
 - Strapi
