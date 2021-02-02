@@ -47,7 +47,7 @@ export const ShowMatch = ({ bet, match }) => {
           <BetItem type="Bookmaker" value={bet.bookmaker} />
           <BetItem type="Cote" value={bet.odds} />
           <BetItem type="Mise" value="VOID" />
-          <BetItem type="Status" value="VOID" />
+          <BetItem type="Status" value={bet.status} />
         </View>
       </View>
 
