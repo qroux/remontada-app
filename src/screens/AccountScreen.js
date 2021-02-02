@@ -15,7 +15,6 @@ import { Button } from "react-native-elements";
 import { Common } from "../assets/common";
 import { Colors, Spacing, Size } from "../assets/main";
 import { Context as AuthContext } from "../context/AuthContext";
-import { fetchSvg } from "../hooks/cloudinary";
 
 export const AccountScreen = () => {
   const [teams, setTeams] = useState([]);
