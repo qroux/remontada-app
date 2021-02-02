@@ -95,7 +95,7 @@ const TabsStackScreen = () => {
           tabBarIcon: ({ focused, color }) => (
             <AccountIcon focused={focused} color={color} />
           ),
-          tabBarLabel: ({ color }) => <Text style={{ color }}>Account</Text>,
+          tabBarLabel: ({ color }) => <Text style={{ color }}>Compte</Text>,
         }}
       />
     </TabsStack.Navigator>
