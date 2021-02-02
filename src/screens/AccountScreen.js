@@ -38,19 +38,6 @@ export const AccountScreen = () => {
       <View style={Common.container}>
         <Text style={Common.title}>Account Screen</Text>
         <Button title="disconnect" onPress={signout} />
-        <FlatList
-          data={teams}
-          keyExtractor={(team) => team.name}
-          renderItem={({ item }) => {
-            return (
-              <SvgUri
-                source={{ uri: item.logo.url }}
-                width="100"
-                height="100"
-              />
-            );
-          }}
-        />
       </View>
     </SafeAreaView>
   );
