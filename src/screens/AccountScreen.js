@@ -9,11 +9,13 @@ import {
   Image,
   FlatList,
 } from "react-native";
+import SvgUri from "expo-svg-uri";
 import strapiApi from "../api/strapiApi";
 import { Button } from "react-native-elements";
 import { Common } from "../assets/common";
 import { Colors, Spacing, Size } from "../assets/main";
 import { Context as AuthContext } from "../context/AuthContext";
+import { fetchSvg } from "../hooks/cloudinary";
 
 export const AccountScreen = () => {
   const [teams, setTeams] = useState([]);
@@ -27,6 +29,11 @@ export const AccountScreen = () => {
 
     fetchTeams();
   }, []);
+
+  const renderLogos = async () => {
+    return;
+  };
+
   return (
     <SafeAreaView style={Common.fullPage}>
       <View style={Common.container}>
@@ -37,7 +44,11 @@ export const AccountScreen = () => {
           keyExtractor={(team) => team.name}
           renderItem={({ item }) => {
             return (
-              <Image style={styles.logo} source={{ uri: item.logo.url }} />
+              <SvgUri
+                source={{ uri: item.logo.url }}
+                width="100"
+                height="100"
+              />
             );
           }}
         />
