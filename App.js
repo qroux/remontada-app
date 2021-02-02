@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -17,9 +18,13 @@ import { PronosticScreen } from "./src/screens/PronosticScreen";
 import { BankrollScreen } from "./src/screens/BankrollScreen";
 import { AccountScreen } from "./src/screens/AccountScreen";
 
+import {
+  AccountIcon,
+  BankrollIcon,
+  PronoIcon,
+} from "./src/components/mainComponents/TabsComponent";
+
 const AuthStack = createStackNavigator();
-// const MainStack = createBottomTabNavigator();
-// const DetailStack = createStackNavigator();
 const MainStack = createStackNavigator();
 const TabsStack = createBottomTabNavigator();
 
@@ -63,9 +68,36 @@ const TabsStackScreen = () => {
         tabStyle: { justifyContent: "center" },
       }}
     >
-      <TabsStack.Screen name="Pronostic" component={PronosticScreen} />
-      <TabsStack.Screen name="Bankroll" component={BankrollScreen} />
-      <TabsStack.Screen name="Account" component={AccountScreen} />
+      <TabsStack.Screen
+        name="Pronostic"
+        component={PronosticScreen}
+        options={{
+          tabBarIcon: ({ focused, color }) => (
+            <PronoIcon focused={focused} color={color} />
+          ),
+          tabBarLabel: ({ color }) => <Text style={{ color }}>Pronostics</Text>,
+        }}
+      />
+      <TabsStack.Screen
+        name="Bankroll"
+        component={BankrollScreen}
+        options={{
+          tabBarIcon: ({ focused, color }) => (
+            <BankrollIcon focused={focused} color={color} />
+          ),
+          tabBarLabel: ({ color }) => <Text style={{ color }}>Bankroll</Text>,
+        }}
+      />
+      <TabsStack.Screen
+        name="Account"
+        component={AccountScreen}
+        options={{
+          tabBarIcon: ({ focused, color }) => (
+            <AccountIcon focused={focused} color={color} />
+          ),
+          tabBarLabel: ({ color }) => <Text style={{ color }}>Account</Text>,
+        }}
+      />
     </TabsStack.Navigator>
   );
 };
