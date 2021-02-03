@@ -1,16 +1,26 @@
 import React, { useContext, useEffect } from "react";
-import { View, Text, StyleSheet, FlatList, ScrollView } from "react-native";
+import { Platform } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  ScrollView,
+  ActivityIndicator,
+  PlatformColor,
+} from "react-native";
 import { Context as BankrollContext } from "../../context/BankrollContext";
 
 import { ShowMatch } from "./ShowMatch";
 
 export const MatchList = () => {
   const { state, getBets } = useContext(BankrollContext);
+
   useEffect(() => {
     getBets();
   }, []);
 
-  return (
+  return state.bets ? (
     <View style={{ flex: 1, width: "100%" }}>
       <FlatList
         data={state.bets}
@@ -21,6 +31,11 @@ export const MatchList = () => {
         showsVerticalScrollIndicator={false}
       />
     </View>
+  ) : (
+    <ActivityIndicator
+      size="large"
+      color={PlatformColor("@android:color/white")}
+    />
   );
 };
 

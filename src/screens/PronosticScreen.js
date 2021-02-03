@@ -12,13 +12,6 @@ import { Common } from "../assets/common";
 
 import { MatchList } from "../components/mainComponents/MatchList";
 
-// PRONOSTICS -> Affiches des Value Bet en Cours
-// STRUCTURE : 1 composant par affiche => ScrollView
-
-// INFOS : ligue + noms équipes + logos + date + heure
-// TYPE DE PARI : + bookmaker + cote + en cours
-// CTA : Ajouter à sa bankroll
-
 export const PronosticScreen = () => {
   return (
     <SafeAreaView style={Common.fullPage}>
