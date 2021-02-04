@@ -34,7 +34,7 @@ const signin = (dispatch) => async ({ email, password }) => {
   dispatch({ type: "LOADING" });
   try {
     const response = await strapiApi.post("/auth/local", {
-      identifier: email,
+      identifier: email.trim(),
       password,
     });
 
@@ -58,8 +58,8 @@ const signup = (dispatch) => async ({ email, password }) => {
   dispatch({ type: "LOADING" });
   try {
     const response = await strapiApi.post("/auth/local/register", {
-      username: email,
-      email,
+      username: email.trim(),
+      email: email.trim(),
       password,
     });
 
@@ -81,7 +81,9 @@ const signout = (dispatch) => async () => {
 const askResetPassword = (dispatch) => async ({ email }) => {
   dispatch({ type: "LOADING" });
   try {
-    const response = await strapiApi.post("auth/forgot-password", { email });
+    const response = await strapiApi.post("auth/forgot-password", {
+      email: email.trim(),
+    });
   } catch (err) {
     // console.log(err.response.data.data[0].messages[0].message);
   }
