@@ -19,24 +19,24 @@ import { Context as AuthContext } from "../context/AuthContext";
 export const AccountScreen = () => {
   const { state, signout } = useContext(AuthContext);
 
-  const animation = useRef(null);
+  // const animation = useRef(null);
 
-  useEffect(() => {
-    animation.current.play();
-  }, []);
+  // useEffect(() => {
+  //   animation.current.play();
+  // }, []);
 
-  const resetAnimation = () => {
-    console.log("pressed");
-    animation.current.reset();
-    animation.current.play();
-  };
+  // const resetAnimation = () => {
+  //   console.log("pressed");
+  //   animation.current.reset();
+  //   animation.current.play();
+  // };
 
   return (
     <SafeAreaView style={Common.fullPage}>
       <View style={Common.container}>
         <Text style={Common.title}>Compte utilisateur</Text>
 
-        <LottieView
+        {/* <LottieView
           ref={animation}
           style={{
             width: 100,
@@ -44,8 +44,11 @@ export const AccountScreen = () => {
           }}
           source={require("../../assets/emoji.json")}
           loop={true}
+        /> */}
+        <Image
+          source={require("../../assets/bye.gif")}
+          style={{ height: 100, width: 100 }}
         />
-
         <Button title="Déconnexion" onPress={signout} />
       </View>
     </SafeAreaView>
