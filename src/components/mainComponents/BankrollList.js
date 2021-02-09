@@ -12,7 +12,6 @@ export const BankrollList = ({ bankrolls }) => {
       data={bankrolls}
       keyExtractor={(bankroll) => bankroll.name}
       renderItem={({ item }) => {
-        // console.log("ITEM =", item);
         return <Bankroll item={item} />;
       }}
     />

@@ -28,7 +28,7 @@ export const Bankroll = ({ item }) => {
   };
 
   return (
-    <View style={[Common.compContainer, Common.border]}>
+    <View style={[Common.compContainer, Common.border, styles.width]}>
       <View style={styles.header}>
         <Text style={styles.title}>
           {item.name}{" "}
@@ -71,6 +71,9 @@ export const Bankroll = ({ item }) => {
 };
 
 const styles = StyleSheet.create({
+  width: {
+    width: "100%",
+  },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
