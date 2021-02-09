@@ -1,7 +1,11 @@
 import React, { useContext } from "react";
 import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+  TransitionPresets,
+} from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Provider as AuthProvider } from "./src/context/AuthContext";
 import { Context as AuthContext } from "./src/context/AuthContext";
@@ -23,38 +27,55 @@ import {
   BankrollIcon,
   PronoIcon,
 } from "./src/components/mainComponents/TabsComponent";
+import { Easing } from "react-native-reanimated";
 
 const AuthStack = createStackNavigator();
 const MainStack = createStackNavigator();
 const TabsStack = createBottomTabNavigator();
+const config = {
+  animation: "spring",
+  config: {
+    stiffness: 1000,
+    damping: 500,
+    mass: 3,
+    overshootClamping: true,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
+  },
+};
+
+const closeConfig = {
+  animation: "timing",
+  config: {
+    duration: 250,
+    easing: Easing.linear,
+  },
+};
 
 const AuthStackScreen = () => {
   return (
-    <AuthStack.Navigator>
-      <AuthStack.Screen
-        name="Login"
-        component={LoginScreen}
-        options={{ headerShown: false }}
-      />
-      <AuthStack.Screen
-        name="Register"
-        component={RegisterScreen}
-        options={{ headerShown: false }}
-      />
-      <AuthStack.Screen
-        name="Reset"
-        component={ResetScreen}
-        options={{ headerShown: false }}
-      />
+    <AuthStack.Navigator
+      screenOptions={{
+        headerShown: false,
+        gestureEnabled: true,
+        gestureDirection: "horizontal",
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        // transitionSpec: {
+        //   open: config,
+        //   close: closeConfig,
+        // },
+      }}
+    >
+      <AuthStack.Screen name="Login" component={LoginScreen} />
+      <AuthStack.Screen name="Register" component={RegisterScreen} />
+      <AuthStack.Screen name="Reset" component={ResetScreen} />
       <AuthStack.Screen
         name="AccountConfirmation"
         component={AccountConfirmationScreen}
-        options={{ headerShown: false }}
       />
       <AuthStack.Screen
         name="PasswordConfirmation"
         component={PasswordConfirmationScreen}
-        options={{ headerShown: false }}
       />
     </AuthStack.Navigator>
   );
@@ -108,7 +129,9 @@ const MainStackScreen = () => {
       <MainStack.Screen
         name="Tabs"
         component={TabsStackScreen}
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+        }}
       />
     </MainStack.Navigator>
   );

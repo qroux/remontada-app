@@ -4,12 +4,17 @@ import { Common } from "../../assets/common";
 import { Size, Colors } from "../../assets/main";
 
 export const BankrollCard = ({ title, icon, value, unit }) => (
-  <View style={[Common.border, styles.container]}>
+  <View style={[styles.container]}>
     <View style={styles.title}>
       {icon}
-      <Text>{title}</Text>
+      <Text style={styles.title}>{title}</Text>
     </View>
-    <Text style={[styles.content, { color: value > 0 ? "green" : "red" }]}>
+    <Text
+      style={[
+        styles.content,
+        { color: value >= 0 ? Colors.success : Colors.fail },
+      ]}
+    >
       {value} {unit}
     </Text>
   </View>
@@ -18,19 +23,16 @@ export const BankrollCard = ({ title, icon, value, unit }) => (
 const styles = StyleSheet.create({
   container: {
     width: 160,
-    paddingVertical: 20,
     alignItems: "center",
   },
   title: {
-    fontWeight: "bold",
+    fontWeight: "normal",
+    fontSize: 10,
     color: Colors.textDark,
-    // flexDirection: "row",
-    // justifyContent: "center",
-
     alignItems: "center",
   },
   content: {
     fontWeight: "bold",
-    fontSize: Size.medium,
+    fontSize: Size.regular,
   },
 });

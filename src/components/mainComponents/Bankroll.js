@@ -7,48 +7,61 @@ import { FontAwesome } from "@expo/vector-icons";
 import { BankrollCard } from "./BankrollCard";
 
 export const Bankroll = ({ item }) => {
-  const { positions } = item;
+  const { positions, current_balance, starter_balance } = item;
+
+  const profits = current_balance - starter_balance;
+  const progress = (profits / starter_balance) * 100;
   const success = positions.filter((bankroll) => bankroll.status === "Attente")
     .length;
-  const rate = (success / positions.length) * 100;
-  const total = positions.reduce((acc, curr) => acc + curr);
+  const success_rate = (success / positions.length) * 100;
 
-  console.log(item);
+  const average_odds = () => {
+    let total_odds = 0;
+    let count = 0;
 
-  const value = 50;
+    item.positions.forEach((position) => {
+      total_odds += position.bet.odds;
+      count += 1;
+    });
+
+    return total_odds / count;
+  };
+
   return (
     <View style={[Common.compContainer, Common.border]}>
       <View style={styles.header}>
-        <Text style={styles.title}>{item.name}</Text>
+        <Text style={styles.title}>
+          {item.name}{" "}
+          <Text style={styles.details}>| {item.positions.length} paris</Text>
+        </Text>
         <Text style={styles.title}>{item.starter}€</Text>
       </View>
       <View style={styles.infoContainer}>
-        <Text>{item.positions.length} paris</Text>
         <View style={styles.rowContainer}>
           <BankrollCard
             title="Réussite"
-            icon={<FontAwesome name="trophy" size={24} color={"black"} />}
-            value={rate}
+            icon={<FontAwesome name="trophy" size={18} color={"black"} />}
+            value={success_rate}
             unit="%"
           />
           <BankrollCard
             title="Cote moyenne"
-            icon={<FontAwesome name="line-chart" size={24} color={"black"} />}
-            value={total / positions.length}
+            icon={<FontAwesome name="line-chart" size={18} color={"black"} />}
+            value={average_odds()}
             unit=" "
           />
         </View>
         <View style={styles.rowContainer}>
           <BankrollCard
             title="Progression"
-            icon={<FontAwesome name="rocket" size={24} color={"black"} />}
-            value={value}
+            icon={<FontAwesome name="rocket" size={18} color={"black"} />}
+            value={progress}
             unit="%"
           />
           <BankrollCard
             title="Bénéfice"
-            icon={<FontAwesome name="money" size={24} color={"black"} />}
-            value={value}
+            icon={<FontAwesome name="money" size={18} color={"black"} />}
+            value={profits}
             unit="€"
           />
         </View>
@@ -68,6 +81,9 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     color: Colors.textLight,
+  },
+  details: {
+    fontWeight: "100",
   },
   infoContainer: {
     paddingVertical: Spacing.medium,

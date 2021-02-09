@@ -13,4 +13,6 @@ export const Colors = {
   boxShadow: "rgb(227, 233, 243) 0px 2px 4px 0px",
   border: "#dedede",
   headerColor: "#00034f",
+  success: "#3CD09A",
+  fail: "#F2404F",
 };
