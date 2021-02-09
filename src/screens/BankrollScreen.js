@@ -35,7 +35,7 @@ export const BankrollScreen = () => {
   return (
     <SafeAreaView style={Common.fullPage}>
       <View style={Common.container}>
-        <Text style={Common.title}>Bankrolls number: {bankrolls.length}</Text>
+        <Text style={Common.title}>Bankrolls</Text>
         <BankrollList bankrolls={bankrolls} />
         <Button title="Nouvelle Bankroll" onPress={toggleOverlay} />
       </View>
