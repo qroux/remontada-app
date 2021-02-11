@@ -1,31 +1,34 @@
-import { useNavigation } from "@react-navigation/native";
-import React, { useEffect, useState } from "react";
-import { SafeAreaView, View, Text, StyleSheet } from "react-native";
-import { Button, Overlay } from "react-native-elements";
-import { Common } from "../assets/common";
-import { Colors } from "../assets/main";
-import strapiApi from "../api/strapiApi";
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext, useEffect, useState } from 'react';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  PlatformColor,
+} from 'react-native';
+import { Button, Overlay } from 'react-native-elements';
+import { Common } from '../assets/common';
+import { Colors } from '../assets/main';
+import strapiApi from '../api/strapiApi';
+import { Context as BankrollContext } from '../context/BankrollContext';
 
-import { BankrollList } from "../components/mainComponents/BankrollList";
-import { BankrollForm } from "../components/mainComponents/BankrollForm";
+import { BankrollList } from '../components/mainComponents/BankrollList';
+import { BankrollForm } from '../components/mainComponents/BankrollForm';
 
 export const BankrollScreen = () => {
+  const {
+    state: { bankrolls },
+    getUserBankrolls,
+  } = useContext(BankrollContext);
   const navigation = useNavigation();
   const [visible, setVisible] = useState(false);
-  const [bankrolls, setBankrolls] = useState([]);
+
+  console.log('STATE =', bankrolls);
 
   useEffect(() => {
-    const fetchBankrolls = async () => {
-      const getUser = await strapiApi.get("users/me");
-      const id = getUser.data._id;
-
-      const response = await strapiApi.get(
-        `bankrolls?users_permissions_user=${id}`
-      );
-      setBankrolls(response.data);
-    };
-
-    fetchBankrolls();
+    getUserBankrolls();
   }, []);
 
   const toggleOverlay = () => {
@@ -36,8 +39,18 @@ export const BankrollScreen = () => {
     <SafeAreaView style={Common.fullPage}>
       <View style={Common.container}>
         <Text style={Common.title}>Bankrolls</Text>
-        <BankrollList bankrolls={bankrolls} />
-        <Button title="Nouvelle Bankroll" onPress={toggleOverlay} />
+        {bankrolls ? (
+          <>
+            <BankrollList bankrolls={bankrolls} />
+            <Button title='Nouvelle Bankroll' onPress={toggleOverlay} />
+          </>
+        ) : (
+          <ActivityIndicator
+            size='large'
+            color={PlatformColor('@android:color/white')}
+          />
+        )}
+        {/*  */}
       </View>
       <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
         <BankrollForm toggleOverlay={toggleOverlay} />
