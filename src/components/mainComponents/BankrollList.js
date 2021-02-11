@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
-import { Common } from "../../assets/common";
-import { Colors, Spacing, Size } from "../../assets/main";
-import { FontAwesome } from "@expo/vector-icons";
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { Common } from '../../assets/common';
+import { Colors, Spacing, Size } from '../../assets/main';
+import { FontAwesome } from '@expo/vector-icons';
 
-import { Bankroll } from "./Bankroll";
+import { Bankroll } from './Bankroll';
 
 export const BankrollList = ({ bankrolls }) => {
   return (
@@ -14,6 +14,7 @@ export const BankrollList = ({ bankrolls }) => {
       renderItem={({ item }) => {
         return <Bankroll item={item} />;
       }}
+      style={{ width: '100%' }}
     />
   );
 };

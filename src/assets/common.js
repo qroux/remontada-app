@@ -1,5 +1,5 @@
-import { StatusBar } from "react-native";
-import { Colors, Spacing, Size } from "./main";
+import { StatusBar } from 'react-native';
+import { Colors, Spacing, Size } from './main';
 
 export const Common = {
   fullPage: {
@@ -9,20 +9,20 @@ export const Common = {
     // borderWidth: 1,
   },
   container: {
-    alignItems: "center",
+    alignItems: 'center',
     flex: 1,
     padding: Spacing.medium,
   },
   compContainer: {
-    width: "100%",
+    width: '100%',
     paddingBottom: Spacing.regular,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     marginBottom: Spacing.medium,
   },
   title: {
     color: Colors.textDark,
-    fontSize: Size.medium,
-    fontWeight: "bold",
+    fontSize: Size.regular,
+    fontWeight: 'bold',
     marginBottom: Spacing.medium,
   },
   border: {

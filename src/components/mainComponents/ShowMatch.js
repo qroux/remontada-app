@@ -1,19 +1,19 @@
-import React from "react";
-import dayjs from "dayjs";
-import * as locale from "dayjs/locale/fr";
-import SvgUri from "expo-svg-uri";
-import { View, Text, StyleSheet, Image } from "react-native";
-import { Button } from "react-native-elements";
-import { Size, Spacing, Colors } from "../../assets/main";
-import { Common } from "../../assets/common";
+import React from 'react';
+import dayjs from 'dayjs';
+import * as locale from 'dayjs/locale/fr';
+import SvgUri from 'expo-svg-uri';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import { Button } from 'react-native-elements';
+import { Size, Spacing, Colors } from '../../assets/main';
+import { Common } from '../../assets/common';
 
-import { BetItem } from "./BetItem";
+import { BetItem } from './BetItem';
 
 export const ShowMatch = ({ bet, match }) => {
-  const date = dayjs(match.date).locale("fr").format("ddd DD MMM H:mm");
+  const date = dayjs(match.date).locale('fr').format('ddd DD MMM H:mm');
 
   return (
-    <View style={[Common.compContainer, Common.border, styles.container]}>
+    <View style={[Common.compContainer, styles.container]}>
       <View style={styles.headerContainer}>
         <Text style={styles.league}>{match.type}</Text>
         <Text style={styles.date}>{date}</Text>
@@ -23,16 +23,16 @@ export const ShowMatch = ({ bet, match }) => {
         <View style={styles.team}>
           <SvgUri
             source={{ uri: match.home.logo.url }}
-            width="100"
-            height="100"
+            width='70'
+            height='70'
           />
           <Text style={styles.teamName}>{match.home.name}</Text>
         </View>
         <View style={styles.team}>
           <SvgUri
             source={{ uri: match.visitor.logo.url }}
-            width="100"
-            height="100"
+            width='70'
+            height='70'
           />
           <Text style={styles.teamName}>{match.visitor.name}</Text>
         </View>
@@ -44,15 +44,15 @@ export const ShowMatch = ({ bet, match }) => {
         </View>
 
         <View style={styles.betContainer}>
-          <BetItem type="Bookmaker" value={bet.bookmaker} />
-          <BetItem type="Cote" value={bet.odds} />
-          <BetItem type="Mise" value="VOID" />
-          <BetItem type="Status" value={bet.status} />
+          <BetItem type='Bookmaker' value={bet.bookmaker} />
+          <BetItem type='Cote' value={bet.odds} />
+          <BetItem type='Mise' value='VOID' />
+          <BetItem type='Status' value={bet.status} />
         </View>
       </View>
 
       <Button
-        title="Ajouter à ma bankRoll"
+        title='Ajouter à ma bankRoll'
         buttonStyle={styles.cta}
         containerStyle={styles.ctaContainer}
       />
@@ -61,33 +61,33 @@ export const ShowMatch = ({ bet, match }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { backgroundColor: "#ffffff" },
+  container: { backgroundColor: '#ffffff' },
   headerContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     // backgroundColor: Colors.headerColor,
     padding: Spacing.regular,
     borderRadius: Size.radius,
   },
   league: {
     fontSize: Size.small,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
     color: Colors.textDark,
   },
   date: {
     color: Colors.textDark,
     fontSize: Size.small,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   teams: {
-    flexDirection: "row",
+    flexDirection: 'row',
     paddingVertical: Spacing.regular,
-    backgroundColor: "white",
+    backgroundColor: 'white',
   },
   team: {
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
     // borderColor: "black",
     // borderWidth: 1,
   },
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   betTypeContainer: {
-    alignItems: "center",
+    alignItems: 'center',
     backgroundColor: Colors.primary,
 
     // borderColor: Colors.headerColor,
@@ -112,19 +112,19 @@ const styles = StyleSheet.create({
   },
   betType: {
     color: Colors.textLight,
-    fontWeight: "bold",
-    textTransform: "capitalize",
+    fontWeight: 'bold',
+    textTransform: 'capitalize',
     paddingVertical: Spacing.regular,
   },
 
   betContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     marginBottom: Spacing.regular,
     backgroundColor: Colors.secondaryLight,
   },
   ctaContainer: {
-    alignItems: "center",
+    alignItems: 'center',
   },
   cta: {
     width: 200,

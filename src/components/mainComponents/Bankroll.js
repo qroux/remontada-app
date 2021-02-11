@@ -1,17 +1,17 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Common } from "../../assets/common";
-import { Colors, Spacing, Size } from "../../assets/main";
-import { FontAwesome } from "@expo/vector-icons";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { Common } from '../../assets/common';
+import { Colors, Spacing, Size } from '../../assets/main';
+import { FontAwesome } from '@expo/vector-icons';
 
-import { BankrollCard } from "./BankrollCard";
+import { BankrollCard } from './BankrollCard';
 
 export const Bankroll = ({ item }) => {
   const { positions, current_balance, starter_balance } = item;
 
   const profits = current_balance - starter_balance;
   const progress = (profits / starter_balance) * 100;
-  const success = positions.filter((bankroll) => bankroll.status === "Attente")
+  const success = positions.filter((bankroll) => bankroll.status === 'Attente')
     .length;
   const success_rate = (success / positions.length) * 100;
 
@@ -31,7 +31,7 @@ export const Bankroll = ({ item }) => {
     <View style={[Common.compContainer, Common.border, styles.width]}>
       <View style={styles.header}>
         <Text style={styles.title}>
-          {item.name}{" "}
+          {item.name}{' '}
           <Text style={styles.details}>| {item.positions.length} paris</Text>
         </Text>
         <Text style={styles.title}>{item.starter}€</Text>
@@ -39,30 +39,30 @@ export const Bankroll = ({ item }) => {
       <View style={styles.infoContainer}>
         <View style={styles.rowContainer}>
           <BankrollCard
-            title="Réussite"
-            icon={<FontAwesome name="trophy" size={18} color={"black"} />}
+            title='Réussite'
+            icon={<FontAwesome name='trophy' size={18} color={'black'} />}
             value={success_rate}
-            unit="%"
+            unit='%'
           />
           <BankrollCard
-            title="Cote moyenne"
-            icon={<FontAwesome name="line-chart" size={18} color={"black"} />}
+            title='Cote moyenne'
+            icon={<FontAwesome name='line-chart' size={18} color={'black'} />}
             value={average_odds()}
-            unit=" "
+            unit=' '
           />
         </View>
         <View style={styles.rowContainer}>
           <BankrollCard
-            title="Progression"
-            icon={<FontAwesome name="rocket" size={18} color={"black"} />}
+            title='Progression'
+            icon={<FontAwesome name='rocket' size={18} color={'black'} />}
             value={progress}
-            unit="%"
+            unit='%'
           />
           <BankrollCard
-            title="Bénéfice"
-            icon={<FontAwesome name="money" size={18} color={"black"} />}
+            title='Bénéfice'
+            icon={<FontAwesome name='money' size={18} color={'black'} />}
             value={profits}
-            unit="€"
+            unit='€'
           />
         </View>
       </View>
@@ -72,28 +72,28 @@ export const Bankroll = ({ item }) => {
 
 const styles = StyleSheet.create({
   width: {
-    width: "100%",
+    width: '100%',
   },
   header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     padding: Spacing.regular,
     backgroundColor: Colors.headerColor,
     borderRadius: Size.radius,
   },
   title: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     color: Colors.textLight,
   },
   details: {
-    fontWeight: "100",
+    fontWeight: '100',
   },
   infoContainer: {
     paddingVertical: Spacing.medium,
   },
   rowContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'center',
     paddingVertical: Spacing.small,
   },
 });
