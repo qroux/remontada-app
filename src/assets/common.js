@@ -30,4 +30,10 @@ export const Common = {
     borderRadius: Size.radius,
     borderWidth: 1,
   },
+  input: {
+    height: 50,
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border,
+  },
 };
