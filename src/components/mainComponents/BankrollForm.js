@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Text, View, StyleSheet, Animated, TextInput } from 'react-native';
 import { Input, Button, Slider, Icon } from 'react-native-elements';
 import { Colors } from '../../assets/main';
 import { Common } from '../../assets/common';
 import { Spacing, Size } from '../../assets/main';
+import { Context as BankrollContext } from '../../context/BankrollContext';
 
 export const BankrollForm = ({ toggleOverlay }) => {
+  const [name, setName] = useState('');
   const [starter, setStarter] = useState(0);
+  const { state, newBankroll, getUserBankrolls } = useContext(BankrollContext);
 
   return (
     <View style={[styles.container]}>
       <Text style={styles.header}>Nouvelle Bankroll</Text>
-      {/* <Text style={styles.instructions}>
-        Créer une nouvelle Bankroll pour mesurer vos performances à partir de
-        votre mise de départ
-      </Text> */}
       <TextInput
         placeholder='ma bankroll'
+        onChangeText={setName}
         style={[Common.input, { width: 300 }]}
       />
       <View style={{ width: 300, marginVertical: Spacing.medium }}>
@@ -48,7 +48,14 @@ export const BankrollForm = ({ toggleOverlay }) => {
         />
       </View>
 
-      <Button title='Créer' onPress={toggleOverlay} />
+      <Button
+        title='Créer'
+        onPress={async () => {
+          newBankroll({ name, starter });
+          toggleOverlay();
+          getUserBankrolls();
+        }}
+      />
     </View>
   );
 };

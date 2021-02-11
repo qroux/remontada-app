@@ -7,10 +7,10 @@ import { FontAwesome } from '@expo/vector-icons';
 import { BankrollCard } from './BankrollCard';
 
 export const Bankroll = ({ item }) => {
-  const { positions, current_balance, starter_balance } = item;
+  const { positions, current_balance, starter } = item;
 
-  const profits = current_balance - starter_balance;
-  const progress = (profits / starter_balance) * 100;
+  const profits = current_balance - starter;
+  const progress = (profits / starter) * 100;
   const success = positions.filter((bankroll) => bankroll.status === 'Attente')
     .length;
   const success_rate = (success / positions.length) * 100;
@@ -24,7 +24,7 @@ export const Bankroll = ({ item }) => {
       count += 1;
     });
 
-    return total_odds / count;
+    return count > 0 ? total_odds / count : '';
   };
 
   return (
@@ -41,7 +41,7 @@ export const Bankroll = ({ item }) => {
           <BankrollCard
             title='Réussite'
             icon={<FontAwesome name='trophy' size={18} color={'black'} />}
-            value={success_rate}
+            value={success_rate ? success_rate : '100'}
             unit='%'
           />
           <BankrollCard

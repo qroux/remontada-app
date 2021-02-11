@@ -9,6 +9,8 @@ const BankrollReducer = (state, action) => {
       return { ...state, bets: action.payload };
     case 'GET_USER_BANKROLLS':
       return { ...state, bankrolls: action.payload };
+    case 'NEW_BANKROLL':
+      return { ...state, bankrolls: [...state.bankrolls, action.payload] };
     case 'ADD_ERROR':
       return { ...state, errorMsg: action.payload };
     default:
@@ -38,11 +40,26 @@ const getUserBankrolls = (dispatch) => async () => {
     dispatch({ type: 'ADD_ERROR', payload: err });
   }
 };
+
+// users_permissions_user NOT REQUIRED YET (Waiting for strapi update)
+const newBankroll = (dispatch) => async ({ name, starter }) => {
+  try {
+    const user_id = await AsyncStorage.getItem('remontada_user_id');
+    const response = await strapiApi.post('bankrolls', {
+      name,
+      starter,
+      current_balance: starter,
+      users_permissions_user: user_id,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
 // UTILS
 
 // EXPORT
 export const { Context, Provider } = createDataContext(
   BankrollReducer,
-  { getBets, getUserBankrolls },
+  { getBets, getUserBankrolls, newBankroll },
   {}
 );
