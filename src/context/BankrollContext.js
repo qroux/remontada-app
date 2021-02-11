@@ -1,5 +1,6 @@
 import createDataContext from './createDataContext';
 import strapiApi from '../api/strapiApi';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // REDUCER
 const BankrollReducer = (state, action) => {
@@ -27,14 +28,10 @@ const getBets = (dispatch) => async () => {
 
 const getUserBankrolls = (dispatch) => async () => {
   try {
-    const getUser = await strapiApi.get('users/me');
-    const id = getUser.data._id;
-
+    const user_id = await AsyncStorage.getItem('remontada_user_id');
     const response = await strapiApi.get(
-      `bankrolls?users_permissions_user=${id}`
+      `bankrolls?users_permissions_user=${user_id}`
     );
-
-    console.log('Bankrolls = ', response.data);
 
     dispatch({ type: 'GET_USER_BANKROLLS', payload: response.data });
   } catch (err) {

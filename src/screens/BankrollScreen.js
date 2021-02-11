@@ -22,10 +22,9 @@ export const BankrollScreen = () => {
     state: { bankrolls },
     getUserBankrolls,
   } = useContext(BankrollContext);
+
   const navigation = useNavigation();
   const [visible, setVisible] = useState(false);
-
-  console.log('STATE =', bankrolls);
 
   useEffect(() => {
     getUserBankrolls();
@@ -50,7 +49,6 @@ export const BankrollScreen = () => {
             color={PlatformColor('@android:color/white')}
           />
         )}
-        {/*  */}
       </View>
       <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
         <BankrollForm toggleOverlay={toggleOverlay} />
