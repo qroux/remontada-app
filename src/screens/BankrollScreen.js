@@ -7,7 +7,9 @@ import {
   StyleSheet,
   ActivityIndicator,
   PlatformColor,
+  TouchableOpacity,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { Button, Overlay } from 'react-native-elements';
 import { Common } from '../assets/common';
 import { Colors } from '../assets/main';
@@ -37,12 +39,16 @@ export const BankrollScreen = () => {
   return (
     <SafeAreaView style={Common.fullPage}>
       <View style={Common.container}>
-        <Text style={Common.title}>Bankrolls</Text>
+        <View style={styles.header}>
+          <Text style={[Common.title, styles.title]}>Bankrolls</Text>
+          <TouchableOpacity style={styles.button} onPress={toggleOverlay}>
+            <Ionicons name='add-outline' size={35} color={Colors.textDark} />
+          </TouchableOpacity>
+        </View>
+        {/* <Button title='Nouvelle Bankroll' onPress={toggleOverlay} /> */}
+
         {bankrolls ? (
-          <>
-            <BankrollList bankrolls={bankrolls} />
-            <Button title='Nouvelle Bankroll' onPress={toggleOverlay} />
-          </>
+          <BankrollList bankrolls={bankrolls} />
         ) : (
           <ActivityIndicator
             size='large'
@@ -57,4 +63,18 @@ export const BankrollScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  header: {
+    width: '100%',
+    alignItems: 'center',
+    position: 'relative',
+  },
+  title: {
+    lineHeight: 35,
+  },
+  button: {
+    position: 'absolute',
+    top: 0,
+    right: 10,
+  },
+});
