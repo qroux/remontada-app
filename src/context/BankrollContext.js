@@ -9,8 +9,6 @@ const BankrollReducer = (state, action) => {
       return { ...state, bets: action.payload };
     case 'GET_USER_BANKROLLS':
       return { ...state, bankrolls: action.payload };
-    case 'NEW_BANKROLL':
-      return { ...state, bankrolls: [...state.bankrolls, action.payload] };
     case 'ADD_ERROR':
       return { ...state, errorMsg: action.payload };
     default:

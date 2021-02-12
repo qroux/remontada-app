@@ -36,7 +36,7 @@ export const BankrollScreen = () => {
     setVisible(!visible);
   };
 
-  // console.log('BANKROLLS ==', bankrolls);
+  console.log('BANKROLLS 2 ==', bankrolls);
 
   return (
     <SafeAreaView style={Common.fullPage}>
