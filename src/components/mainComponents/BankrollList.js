@@ -8,10 +8,9 @@ import { Bankroll } from './Bankroll';
 import { BankrollEmpty } from './BankrollEmpty';
 
 export const BankrollList = ({ bankrolls }) => {
-  console.log('BANKROLLS =', bankrolls);
   return (
     <>
-      {!bankrolls ? (
+      {bankrolls ? (
         <FlatList
           data={bankrolls}
           keyExtractor={(bankroll) => bankroll.name}

@@ -29,6 +29,8 @@ const getBets = (dispatch) => async () => {
 const getUserBankrolls = (dispatch) => async () => {
   try {
     const user_id = await AsyncStorage.getItem('remontada_user_id');
+    user_id ? '' : console.log('USER_ID => undefined in getUserBankrolls');
+
     const response = await strapiApi.get(
       `bankrolls?users_permissions_user=${user_id}`
     );
