@@ -1,12 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Common } from '../../assets/common';
 import { Colors, Spacing, Size } from '../../assets/main';
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { BankrollCard } from './BankrollCard';
+import { navigationRef } from '../../../RootNavigation';
+import { useNavigation } from '@react-navigation/native';
 
 export const Bankroll = ({ item }) => {
+  const navigation = useNavigation();
   const { positions, current_balance, starter } = item;
 
   const profits = current_balance - starter;
@@ -32,9 +35,18 @@ export const Bankroll = ({ item }) => {
       <View style={styles.header}>
         <Text style={styles.title}>
           {item.name}{' '}
-          <Text style={styles.details}>| {item.positions.length} paris</Text>
+          <Text style={styles.details}>| {item.current_balance}€</Text>
         </Text>
-        <Text style={styles.title}>{item.starter}€</Text>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('BankrollDetail', { bankroll_id: item._id })
+          }>
+          <MaterialCommunityIcons
+            name='playlist-edit'
+            size={24}
+            color='white'
+          />
+        </TouchableOpacity>
       </View>
       <View style={styles.infoContainer}>
         <View style={styles.rowContainer}>
@@ -77,6 +89,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     padding: Spacing.regular,
     backgroundColor: Colors.headerColor,
     borderRadius: Size.radius,

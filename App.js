@@ -1,39 +1,40 @@
-import React, { useContext } from "react";
-import { Text } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import React, { useContext } from 'react';
+import { Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import {
   createStackNavigator,
   CardStyleInterpolators,
   TransitionPresets,
-} from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Provider as AuthProvider } from "./src/context/AuthContext";
-import { Context as AuthContext } from "./src/context/AuthContext";
-import { Provider as BankrollProvider } from "./src/context/BankrollContext";
-import { Context as BankrollContext } from "./src/context/BankrollContext";
-import { navigationRef } from "./RootNavigation";
+} from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Provider as AuthProvider } from './src/context/AuthContext';
+import { Context as AuthContext } from './src/context/AuthContext';
+import { Provider as BankrollProvider } from './src/context/BankrollContext';
+import { Context as BankrollContext } from './src/context/BankrollContext';
+import { navigationRef } from './RootNavigation';
 
-import { LoginScreen } from "./src/screens/LoginScreen";
-import { RegisterScreen } from "./src/screens/RegisterScreen";
-import { ResetScreen } from "./src/screens/ResetScreen";
-import { AccountConfirmationScreen } from "./src/screens/AccountConfirmationScreen";
-import { PasswordConfirmationScreen } from "./src/screens/PasswordConfirmationScreen";
-import { PronosticScreen } from "./src/screens/PronosticScreen";
-import { BankrollScreen } from "./src/screens/BankrollScreen";
-import { AccountScreen } from "./src/screens/AccountScreen";
+import { LoginScreen } from './src/screens/LoginScreen';
+import { RegisterScreen } from './src/screens/RegisterScreen';
+import { ResetScreen } from './src/screens/ResetScreen';
+import { AccountConfirmationScreen } from './src/screens/AccountConfirmationScreen';
+import { PasswordConfirmationScreen } from './src/screens/PasswordConfirmationScreen';
+import { PronosticScreen } from './src/screens/PronosticScreen';
+import { BankrollScreen } from './src/screens/BankrollScreen';
+import { BankrollDetailScreen } from './src/screens/BankrollDetailScreen';
+import { AccountScreen } from './src/screens/AccountScreen';
 
 import {
   AccountIcon,
   BankrollIcon,
   PronoIcon,
-} from "./src/components/mainComponents/TabsComponent";
-import { Easing } from "react-native-reanimated";
+} from './src/components/mainComponents/TabsComponent';
+import { Easing } from 'react-native-reanimated';
 
 const AuthStack = createStackNavigator();
 const MainStack = createStackNavigator();
 const TabsStack = createBottomTabNavigator();
 const config = {
-  animation: "spring",
+  animation: 'spring',
   config: {
     stiffness: 1000,
     damping: 500,
@@ -45,7 +46,7 @@ const config = {
 };
 
 const closeConfig = {
-  animation: "timing",
+  animation: 'timing',
   config: {
     duration: 250,
     easing: Easing.linear,
@@ -58,23 +59,18 @@ const AuthStackScreen = () => {
       screenOptions={{
         headerShown: false,
         gestureEnabled: true,
-        gestureDirection: "horizontal",
+        gestureDirection: 'horizontal',
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-        // transitionSpec: {
-        //   open: config,
-        //   close: closeConfig,
-        // },
-      }}
-    >
-      <AuthStack.Screen name="Login" component={LoginScreen} />
-      <AuthStack.Screen name="Register" component={RegisterScreen} />
-      <AuthStack.Screen name="Reset" component={ResetScreen} />
+      }}>
+      <AuthStack.Screen name='Login' component={LoginScreen} />
+      <AuthStack.Screen name='Register' component={RegisterScreen} />
+      <AuthStack.Screen name='Reset' component={ResetScreen} />
       <AuthStack.Screen
-        name="AccountConfirmation"
+        name='AccountConfirmation'
         component={AccountConfirmationScreen}
       />
       <AuthStack.Screen
-        name="PasswordConfirmation"
+        name='PasswordConfirmation'
         component={PasswordConfirmationScreen}
       />
     </AuthStack.Navigator>
@@ -86,11 +82,10 @@ const TabsStackScreen = () => {
     <TabsStack.Navigator
       tabBarOptions={{
         showIcon: true,
-        tabStyle: { justifyContent: "center" },
-      }}
-    >
+        tabStyle: { justifyContent: 'center' },
+      }}>
       <TabsStack.Screen
-        name="Pronostic"
+        name='Pronostic'
         component={PronosticScreen}
         options={{
           tabBarIcon: ({ focused, color }) => (
@@ -100,7 +95,7 @@ const TabsStackScreen = () => {
         }}
       />
       <TabsStack.Screen
-        name="Bankroll"
+        name='Bankroll'
         component={BankrollScreen}
         options={{
           tabBarIcon: ({ focused, color }) => (
@@ -110,7 +105,7 @@ const TabsStackScreen = () => {
         }}
       />
       <TabsStack.Screen
-        name="Account"
+        name='Account'
         component={AccountScreen}
         options={{
           tabBarIcon: ({ focused, color }) => (
@@ -127,11 +122,15 @@ const MainStackScreen = () => {
   return (
     <MainStack.Navigator>
       <MainStack.Screen
-        name="Tabs"
+        name='Tabs'
         component={TabsStackScreen}
         options={{
           headerShown: false,
         }}
+      />
+      <MainStack.Screen
+        name='BankrollDetail'
+        component={BankrollDetailScreen}
       />
     </MainStack.Navigator>
   );
