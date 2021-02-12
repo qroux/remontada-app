@@ -18,20 +18,31 @@ import { Context as AuthContext } from '../context/AuthContext';
 
 export const AccountScreen = () => {
   const {
-    state: { user_id },
+    state: { user_id, user },
     signout,
+    getUser,
   } = useContext(AuthContext);
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   return (
     <SafeAreaView style={Common.fullPage}>
-      <View style={Common.container}>
+      <View style={[Common.container]}>
         <Text style={Common.title}>Compte utilisateur n° {user_id}</Text>
 
-        <Image
-          source={require('../../assets/bye.gif')}
-          style={{ height: 100, width: 100 }}
-        />
-        <Button title='Déconnexion' onPress={signout} />
+        <View style={styles.content}>
+          <Text>. {user.email}</Text>
+          <View>
+            <Image
+              source={require('../../assets/bye.gif')}
+              style={{ alignSelf: 'center', height: 200, width: 200 }}
+            />
+            <Button title='Déconnexion' onPress={signout} />
+          </View>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -41,5 +52,10 @@ const styles = StyleSheet.create({
   animationContainer: {
     // alignItems: "center",
     // justifyContent: "center",
+  },
+  content: {
+    flex: 0.9,
+    width: '100%',
+    justifyContent: 'space-between',
   },
 });

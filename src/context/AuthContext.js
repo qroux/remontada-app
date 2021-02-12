@@ -17,6 +17,8 @@ const AuthReducer = (state, action) => {
       return state;
     case 'SIGNOUT':
       return { ...state, token: null };
+    case 'GET_USER':
+      return { ...state, user: action.payload };
     case 'ADD_ERROR':
       return { ...state, errorMsg: action.payload };
     case 'CLEAR_ERROR':
@@ -131,6 +133,16 @@ const clearError = (dispatch) => async () => {
   dispatch({ type: 'CLEAR_ERROR' });
 };
 
+const getUser = (dispatch) => async () => {
+  try {
+    const response = await strapiApi.get('/users/me');
+
+    dispatch({ type: 'GET_USER', payload: response.data });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const { Context, Provider } = createDataContext(
   AuthReducer,
   {
@@ -141,6 +153,7 @@ export const { Context, Provider } = createDataContext(
     signout,
     askResetPassword,
     resetPassword,
+    getUser,
   },
   { token: null, user_id: null, errorMsg: null, isLoading: false }
 );
