@@ -6,7 +6,8 @@ import {
   CardStyleInterpolators,
   TransitionPresets,
 } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
 import { Provider as AuthProvider } from './src/context/AuthContext';
 import { Context as AuthContext } from './src/context/AuthContext';
 import { Provider as BankrollProvider } from './src/context/BankrollContext';
@@ -32,26 +33,7 @@ import { Easing } from 'react-native-reanimated';
 
 const AuthStack = createStackNavigator();
 const MainStack = createStackNavigator();
-const TabsStack = createBottomTabNavigator();
-const config = {
-  animation: 'spring',
-  config: {
-    stiffness: 1000,
-    damping: 500,
-    mass: 3,
-    overshootClamping: true,
-    restDisplacementThreshold: 0.01,
-    restSpeedThreshold: 0.01,
-  },
-};
-
-const closeConfig = {
-  animation: 'timing',
-  config: {
-    duration: 250,
-    easing: Easing.linear,
-  },
-};
+const TabsStack = createMaterialTopTabNavigator();
 
 const AuthStackScreen = () => {
   return (
@@ -80,6 +62,7 @@ const AuthStackScreen = () => {
 const TabsStackScreen = () => {
   return (
     <TabsStack.Navigator
+      tabBarPosition='bottom'
       tabBarOptions={{
         showIcon: true,
         tabStyle: { justifyContent: 'center' },
