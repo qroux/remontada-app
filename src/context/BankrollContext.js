@@ -1,6 +1,7 @@
 import createDataContext from './createDataContext';
 import strapiApi from '../api/strapiApi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as RootNavigation from '../../RootNavigation';
 
 // REDUCER
 const BankrollReducer = (state, action) => {
@@ -9,6 +10,10 @@ const BankrollReducer = (state, action) => {
       return { ...state, bets: action.payload };
     case 'GET_USER_BANKROLLS':
       return { ...state, bankrolls: action.payload };
+    case 'LOADING':
+      return { ...state, isLoading: true };
+    case 'LOADED':
+      return { ...state, isLoading: false };
     case 'ADD_ERROR':
       return { ...state, errorMsg: action.payload };
     default:
@@ -27,6 +32,7 @@ const getBets = (dispatch) => async () => {
 };
 
 const getUserBankrolls = (dispatch) => async () => {
+  dispatch({ type: 'LOADING' });
   try {
     const user_id = await AsyncStorage.getItem('remontada_user_id');
     user_id ? '' : console.log('USER_ID => undefined in getUserBankrolls');
@@ -39,10 +45,12 @@ const getUserBankrolls = (dispatch) => async () => {
   } catch (err) {
     dispatch({ type: 'ADD_ERROR', payload: err });
   }
+  dispatch({ type: 'LOADED' });
 };
 
 // users_permissions_user NOT REQUIRED YET (Waiting for strapi update)
 const newBankroll = (dispatch) => async ({ name, starter }) => {
+  dispatch({ type: 'LOADING' });
   try {
     const user_id = await AsyncStorage.getItem('remontada_user_id');
     const response = await strapiApi.post('bankrolls', {
@@ -54,12 +62,24 @@ const newBankroll = (dispatch) => async ({ name, starter }) => {
   } catch (err) {
     console.log(err);
   }
+  dispatch({ type: 'LOADED' });
+};
+
+const deleteBankroll = (dispatch) => async (id) => {
+  dispatch({ type: 'LOADING' });
+  try {
+    await strapiApi.delete(`/bankrolls/${id}`);
+    // RootNavigation.navigate('Bankroll');
+  } catch (err) {
+    console.log(err);
+  }
+  dispatch({ type: 'LOADED' });
 };
 // UTILS
 
 // EXPORT
 export const { Context, Provider } = createDataContext(
   BankrollReducer,
-  { getBets, getUserBankrolls, newBankroll },
+  { getBets, getUserBankrolls, newBankroll, deleteBankroll },
   {}
 );

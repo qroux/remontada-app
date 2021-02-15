@@ -51,10 +51,11 @@ export const BankrollForm = ({ toggleOverlay }) => {
       <Button
         title='Créer'
         onPress={async () => {
-          newBankroll({ name, starter });
+          await newBankroll({ name, starter });
           toggleOverlay();
           getUserBankrolls();
         }}
+        loading={state.isLoading}
       />
     </View>
   );
