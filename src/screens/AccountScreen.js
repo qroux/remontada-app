@@ -34,7 +34,7 @@ export const AccountScreen = () => {
         <Text style={Common.title}>Compte utilisateur n° {user_id}</Text>
 
         <View style={styles.content}>
-          <Text>. {user.email}</Text>
+          <Text>. {user ? user.email : ''}</Text>
           <View>
             <Image
               source={require('../../assets/bye.gif')}
