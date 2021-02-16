@@ -14,6 +14,7 @@ import strapiApi from '../api/strapiApi';
 import { Button } from 'react-native-elements';
 import { Common } from '../assets/common';
 import { Colors, Spacing, Size } from '../assets/main';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Context as AuthContext } from '../context/AuthContext';
 
 export const AccountScreen = () => {
@@ -31,10 +32,28 @@ export const AccountScreen = () => {
   return (
     <SafeAreaView style={Common.fullPage}>
       <View style={[Common.container]}>
-        <Text style={Common.title}>Compte utilisateur n° {user_id}</Text>
+        <Text style={Common.title}>Compte utilisateur</Text>
 
         <View style={styles.content}>
-          <Text>. {user ? user.email : ''}</Text>
+          <View style={styles.rowsContainer}>
+            <View style={styles.row}>
+              <MaterialCommunityIcons
+                name='account-circle-outline'
+                size={Size.regular}
+                color={Colors.textDark}
+              />
+              <Text style={styles.rowText}> {user ? user.email : ''}</Text>
+            </View>
+            <View style={styles.row}>
+              <MaterialCommunityIcons
+                name='identifier'
+                size={Size.regular}
+                color={Colors.textDark}
+              />
+              <Text style={styles.rowText}> {user_id ? user_id : ''}</Text>
+            </View>
+          </View>
+
           <View>
             <Image
               source={require('../../assets/bye.gif')}
@@ -49,9 +68,17 @@ export const AccountScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  animationContainer: {
-    // alignItems: "center",
-    // justifyContent: "center",
+  rowsContainer: {
+    marginTop: Spacing.regular,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: Spacing.regular,
+  },
+  rowText: {
+    lineHeight: Size.regular,
+    marginLeft: Spacing.regular,
   },
   content: {
     flex: 0.9,
