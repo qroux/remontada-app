@@ -10,12 +10,15 @@ import {
   FlatList,
 } from 'react-native';
 import LottieView from 'lottie-react-native';
+import dayjs from 'dayjs';
 import strapiApi from '../api/strapiApi';
 import { Button } from 'react-native-elements';
 import { Common } from '../assets/common';
 import { Colors, Spacing, Size } from '../assets/main';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Context as AuthContext } from '../context/AuthContext';
+
+import { AccountRow } from '../components/mainComponents/AccountRow';
 
 export const AccountScreen = () => {
   const {
@@ -24,6 +27,9 @@ export const AccountScreen = () => {
     getUser,
   } = useContext(AuthContext);
   const [email, setEmail] = useState('');
+  const date = user
+    ? dayjs(user.createdAt).locale('fr').format('ddd DD MMM YYYY')
+    : '';
 
   useEffect(() => {
     getUser();
@@ -36,22 +42,15 @@ export const AccountScreen = () => {
 
         <View style={styles.content}>
           <View style={styles.rowsContainer}>
-            <View style={styles.row}>
-              <MaterialCommunityIcons
-                name='account-circle-outline'
-                size={Size.regular}
-                color={Colors.textDark}
-              />
-              <Text style={styles.rowText}> {user ? user.email : ''}</Text>
-            </View>
-            <View style={styles.row}>
-              <MaterialCommunityIcons
-                name='identifier'
-                size={Size.regular}
-                color={Colors.textDark}
-              />
-              <Text style={styles.rowText}> {user_id ? user_id : ''}</Text>
-            </View>
+            <AccountRow
+              icon='account-circle-outline'
+              value={user ? user.email : ''}
+            />
+            <AccountRow icon='identifier' value={user_id ? user_id : ''} />
+            <AccountRow
+              icon='calendar-month-outline'
+              value={user ? date : ''}
+            />
           </View>
 
           <View>
@@ -71,15 +70,7 @@ const styles = StyleSheet.create({
   rowsContainer: {
     marginTop: Spacing.regular,
   },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: Spacing.regular,
-  },
-  rowText: {
-    lineHeight: Size.regular,
-    marginLeft: Spacing.regular,
-  },
+
   content: {
     flex: 0.9,
     width: '100%',
