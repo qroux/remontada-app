@@ -1,11 +1,12 @@
 import React from 'react';
-import { Text, View, FlatList } from 'react-native';
+import { Text, View, FlatList, StyleSheet } from 'react-native';
+import { Size } from '../../../assets/main';
 
 import { Position } from './Position';
 
 export const PositionList = ({ positions }) => (
   <View>
-    <Text>PositionList</Text>
+    <Text style={styles.header}>Derniers Paris enregistrés</Text>
     <FlatList
       data={positions}
       keyExtractor={(position) => position._id}
@@ -13,3 +14,10 @@ export const PositionList = ({ positions }) => (
     />
   </View>
 );
+
+const styles = StyleSheet.create({
+  header: {
+    fontWeight: 'bold',
+    fontSize: Size.regular,
+  },
+});
