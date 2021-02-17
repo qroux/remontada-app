@@ -8,16 +8,22 @@ import { Positionitem } from './PositionItem';
 export const Position = ({ position }) => (
   <View style={[Common.borderBottom, styles.fullRow]}>
     <View style={[styles.date]}>
-      <Text>Ven. 5 Mai</Text>
+      <Text>à remplacer</Text>
     </View>
     <View style={styles.infoContainer}>
       <View style={styles.matchInfo}>
-        <Text>OM - PSG | Gagner par 2 buts d'écart</Text>
+        <Text>
+          {position.bet.match.type ? position.bet.match.type : ' à rempalcer'}
+        </Text>
+        <Text>{position.bet.type}</Text>
       </View>
       <View style={styles.positionInfo}>
-        <Positionitem type='odds' value='1.56' />
-        <Positionitem type='Status' value='Gagné' />
-        <Positionitem type='Outcome' value='+50€' />
+        <Positionitem type='cote' value={position.bet.odds} />
+        <Positionitem type='Statut' value={position.bet.status} />
+        <Positionitem
+          type='Résultat'
+          value={position.outcome === 0 ? '-' : position.outcome}
+        />
       </View>
     </View>
   </View>

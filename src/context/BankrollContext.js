@@ -75,11 +75,30 @@ const deleteBankroll = (dispatch) => async (id) => {
   }
   dispatch({ type: 'LOADED' });
 };
+
+// POSITIONS
+// const getBankrollPositions = (dispatch) => async (id) => {
+//   dispatch({ type: 'LOADING' });
+
+//   try {
+//     const response = strapiApi.get('positions', {users_permissions_user: id})
+//   } catch (err) {
+//     console.log(err);
+//   }
+//   dispatch({ type: 'LOADED' });
+// };
+
 // UTILS
 
 // EXPORT
 export const { Context, Provider } = createDataContext(
   BankrollReducer,
-  { getBets, getUserBankrolls, newBankroll, deleteBankroll },
+  {
+    getBets,
+    getUserBankrolls,
+    newBankroll,
+    deleteBankroll,
+    // getBankrollPositions,
+  },
   {}
 );

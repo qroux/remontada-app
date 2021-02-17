@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Text, View, SafeAreaView, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
 import { Common } from '../assets/common';
@@ -13,6 +13,9 @@ export const BankrollDetailScreen = ({ route }) => {
     BankrollContext
   );
   const id = route.params.bankroll_id;
+  const positions = state.bankrolls[0] ? state.bankrolls[0].positions : '';
+
+  console.log('STATE.bankrolls[0].positions =', positions);
 
   return (
     <SafeAreaView style={Common.fullPage}>
@@ -28,9 +31,7 @@ export const BankrollDetailScreen = ({ route }) => {
             }}
             loading={state.isLoading}
           /> */}
-          <PositionList
-            positions={[{ _id: 'object 1' }, { _id: 'object 2' }]}
-          />
+          <PositionList positions={positions} />
         </View>
       </View>
     </SafeAreaView>
