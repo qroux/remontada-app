@@ -12,9 +12,7 @@ export const Position = ({ position }) => (
     </View>
     <View style={styles.infoContainer}>
       <View style={styles.matchInfo}>
-        <Text>
-          {position.bet.match.type ? position.bet.match.type : ' à rempalcer'}
-        </Text>
+        <Text>{position.bet.match.type}</Text>
         <Text>{position.bet.type}</Text>
       </View>
       <View style={styles.positionInfo}>
