@@ -45,7 +45,6 @@ export const BankrollScreen = () => {
             <Ionicons name='add-outline' size={35} color={Colors.textDark} />
           </TouchableOpacity>
         </View>
-        {/* <Button title='Nouvelle Bankroll' onPress={toggleOverlay} /> */}
 
         {bankrolls ? (
           <BankrollList bankrolls={bankrolls} />

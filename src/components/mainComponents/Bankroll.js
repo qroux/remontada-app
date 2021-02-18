@@ -39,7 +39,10 @@ export const Bankroll = ({ item }) => {
         </Text>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('BankrollDetail', { bankroll_id: item._id })
+            navigation.navigate('BankrollDetail', {
+              bankroll_id: item._id,
+              bankroll_name: item.name,
+            })
           }>
           <MaterialCommunityIcons
             name='playlist-edit'

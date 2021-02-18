@@ -114,6 +114,9 @@ const MainStackScreen = () => {
       <MainStack.Screen
         name='BankrollDetail'
         component={BankrollDetailScreen}
+        options={{
+          title: ' ',
+        }}
       />
     </MainStack.Navigator>
   );

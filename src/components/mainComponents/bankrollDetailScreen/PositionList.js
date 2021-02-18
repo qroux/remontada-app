@@ -6,7 +6,7 @@ import { Position } from './Position';
 
 export const PositionList = ({ positions }) => (
   <View>
-    <Text style={styles.header}>Derniers Paris enregistrés</Text>
+    <Text style={styles.header}>Derniers paris enregistrés</Text>
     <FlatList
       data={positions}
       keyExtractor={(position) => position._id}

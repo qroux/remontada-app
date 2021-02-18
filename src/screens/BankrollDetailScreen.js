@@ -15,13 +15,14 @@ export const BankrollDetailScreen = ({ route }) => {
   const id = route.params.bankroll_id;
   const positions = state.bankrolls[0] ? state.bankrolls[0].positions : '';
 
-  console.log('STATE.bankrolls[0].positions =', positions);
+  useEffect(() => {
+    navigation.setOptions({ title: route.params.bankroll_name });
+  }, []);
 
   return (
     <SafeAreaView style={Common.fullPage}>
       <View style={Common.container}>
         <View style={styles.content}>
-          {/* <Text>BankrollDetailScreen {id}</Text>
           <Button
             title='delete'
             onPress={async () => {
@@ -30,7 +31,7 @@ export const BankrollDetailScreen = ({ route }) => {
               navigation.navigate('Bankroll');
             }}
             loading={state.isLoading}
-          /> */}
+          />
           <PositionList positions={positions} />
         </View>
       </View>
