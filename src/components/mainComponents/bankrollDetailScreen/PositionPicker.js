@@ -4,7 +4,7 @@ import { Picker } from '@react-native-picker/picker';
 import { Common } from '../../../assets/common';
 import { Feather, Ionicons } from '@expo/vector-icons';
 
-export const PositionPicker = ({ params }) => {
+export const PositionPicker = ({ bet_status }) => {
   const [selectedValue, setSelectedValue] = useState('En Attente');
 
   const renderIcon = () => {
@@ -16,6 +16,17 @@ export const PositionPicker = ({ params }) => {
     return <Ionicons name='timer-outline' size={24} color='black' />;
   };
 
+  const renderItems = () => {
+    const values = ['En Attente', 'Gagné', 'Perdu'];
+
+    // SHOULB BE MODIFIED TO USE VARIABLE.VALUE INSTEAD OF STRING
+    bet_status === 'enCours' ? values.splice(1, 2) : values.shift();
+
+    return values.map((val) => {
+      return <Picker.Item label={val} value={val} key={val} />;
+    });
+  };
+
   return (
     <View style={[styles.pickerContainer]}>
       {renderIcon()}
@@ -23,12 +34,8 @@ export const PositionPicker = ({ params }) => {
         selectedValue={selectedValue}
         style={styles.picker}
         itemStyle={styles.item}
-        onValueChange={(value, itemIndex) => setSelectedValue(value)}
-        // mode='dropdown'
-      >
-        <Picker.Item label='En Attente' value={'En Attente'} />
-        <Picker.Item label='Gagné' value={'Gagné'} />
-        <Picker.Item label='Perdu' value={'Perdu'} />
+        onValueChange={(value, itemIndex) => setSelectedValue(value)}>
+        {renderItems()}
       </Picker>
     </View>
   );

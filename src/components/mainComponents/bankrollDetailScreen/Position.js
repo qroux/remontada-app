@@ -29,7 +29,7 @@ export const Position = ({ position }) => {
             type='Gains'
             value={position.outcome === 0 ? '-' : position.outcome}
           />
-          <PositionPicker />
+          <PositionPicker bet_status={position.bet.status} />
         </View>
       </View>
     </View>
