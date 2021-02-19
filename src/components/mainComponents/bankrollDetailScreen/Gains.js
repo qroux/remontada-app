@@ -2,13 +2,11 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { Common } from '../../../assets/common';
 
-export const Positionitem = ({ type, value }) => {
+export const Gains = ({ value }) => {
   return (
     <View style={[styles.itemContainer]}>
-      <Text style={styles.type}>{type}</Text>
-      <Text>
-        {value.length >= 4 ? value.replace(/([A-Z])/g, ' $1') : value}
-      </Text>
+      <Text style={styles.type}>Gains</Text>
+      <Text>{value} €</Text>
     </View>
   );
 };

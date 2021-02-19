@@ -5,10 +5,18 @@ import { Common } from '../../../assets/common';
 import { Size, Spacing, Colors } from '../../../assets/main';
 
 import { Positionitem } from './PositionItem';
-import { PositionPicker } from './PositionPicker';
+import { Gains } from './Gains';
+import { Status } from './Status';
 
 export const Position = ({ position }) => {
   const date = dayjs(position.bet.match.date).locale('fr').format('DD MMM');
+
+  const calculate_gains = () => {
+    if (position.bet.status === 'Succes')
+      return Math.round(position.bet.odds * position.value);
+    if (position.bet.status === 'Echec') return Math.round(position.value * -1);
+    return ' - ';
+  };
 
   return (
     <View style={[Common.borderBottom, styles.fullRow]}>
@@ -23,13 +31,10 @@ export const Position = ({ position }) => {
           <Text style={styles.type}>{position.bet.type}</Text>
         </View>
         <View style={styles.positionInfo}>
+          <Status value={position.bet.status} />
           <Positionitem type='Cote' value={position.bet.odds} />
-          <Positionitem type='Statut' value={position.bet.status} />
-          <Positionitem
-            type='Gains'
-            value={position.outcome === 0 ? '-' : position.outcome}
-          />
-          <PositionPicker bet_status={position.bet.status} />
+          <Positionitem type='Mise' value={position.value} />
+          <Gains value={calculate_gains()} />
         </View>
       </View>
     </View>
