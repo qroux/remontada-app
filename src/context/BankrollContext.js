@@ -1,3 +1,4 @@
+import qs from 'qs';
 import createDataContext from './createDataContext';
 import strapiApi from '../api/strapiApi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -10,6 +11,8 @@ const BankrollReducer = (state, action) => {
       return { ...state, bets: action.payload };
     case 'GET_USER_BANKROLLS':
       return { ...state, bankrolls: action.payload };
+    case 'GET_BANKROLL_POSITIONS':
+      return { ...state, positions: action.payload };
     case 'LOADING':
       return { ...state, isLoading: true };
     case 'LOADED':
@@ -76,17 +79,35 @@ const deleteBankroll = (dispatch) => async (id) => {
   dispatch({ type: 'LOADED' });
 };
 
-// POSITIONS
-// const getBankrollPositions = (dispatch) => async (id) => {
-//   dispatch({ type: 'LOADING' });
+const getCurrentBalance = (dispatch) => async (id) => {
+  dispatch({ type: 'LOADING' });
 
-//   try {
-//     const response = strapiApi.get('positions', {users_permissions_user: id})
-//   } catch (err) {
-//     console.log(err);
-//   }
-//   dispatch({ type: 'LOADED' });
-// };
+  try {
+    const response = await strapiApi.put(`/bankrolls/${id}`, {
+      type: 'current_balance',
+    });
+    console.log('RESPONSE =', response.data);
+
+    // dispatch({ type: 'UPDATE_BANKROLL', id, payload: response.data });
+  } catch (err) {
+    console.log(err);
+  }
+
+  dispatch({ type: 'LOADED' });
+};
+
+// POSITIONS
+const getBankrollPositions = (dispatch) => async (id) => {
+  dispatch({ type: 'LOADING' });
+
+  try {
+    const response = await strapiApi.get(`/positions?bankroll.id=${id}`);
+    dispatch({ type: 'GET_BANKROLL_POSITIONS', payload: response.data });
+  } catch (err) {
+    console.log(err.response.data);
+  }
+  dispatch({ type: 'LOADED' });
+};
 
 // UTILS
 
@@ -98,7 +119,8 @@ export const { Context, Provider } = createDataContext(
     getUserBankrolls,
     newBankroll,
     deleteBankroll,
-    // getBankrollPositions,
+    getCurrentBalance,
+    getBankrollPositions,
   },
   {}
 );

@@ -9,14 +9,18 @@ import { PositionList } from '../components/mainComponents/bankrollDetailScreen/
 
 export const BankrollDetailScreen = ({ route }) => {
   const navigation = useNavigation();
-  const { state, deleteBankroll, getUserBankrolls } = useContext(
-    BankrollContext
-  );
+  const {
+    state,
+    deleteBankroll,
+    getUserBankrolls,
+    getBankrollPositions,
+  } = useContext(BankrollContext);
   const id = route.params.bankroll_id;
-  const positions = state.bankrolls[0] ? state.bankrolls[0].positions : '';
+  // const positions = state.bankrolls[0] ? state.bankrolls[0].positions : '';
 
   useEffect(() => {
     navigation.setOptions({ title: route.params.bankroll_name });
+    getBankrollPositions(id);
   }, []);
 
   return (
@@ -32,7 +36,7 @@ export const BankrollDetailScreen = ({ route }) => {
             }}
             loading={state.isLoading}
           />
-          <PositionList positions={positions} />
+          <PositionList positions={state.positions} />
         </View>
       </View>
     </SafeAreaView>

@@ -1,7 +1,7 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import { Common } from "../../assets/common";
-import { Size, Colors } from "../../assets/main";
+import React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import { Common } from '../../assets/common';
+import { Size, Colors } from '../../assets/main';
 
 export const BankrollCard = ({ title, icon, value, unit }) => (
   <View style={[styles.container]}>
@@ -13,9 +13,9 @@ export const BankrollCard = ({ title, icon, value, unit }) => (
       style={[
         styles.content,
         { color: value >= 0 ? Colors.success : Colors.fail },
-      ]}
-    >
-      {value} {unit}
+      ]}>
+      {value}
+      {unit}
     </Text>
   </View>
 );
@@ -23,16 +23,16 @@ export const BankrollCard = ({ title, icon, value, unit }) => (
 const styles = StyleSheet.create({
   container: {
     width: 160,
-    alignItems: "center",
+    alignItems: 'center',
   },
   title: {
-    fontWeight: "normal",
+    fontWeight: 'normal',
     fontSize: 10,
     color: Colors.textDark,
-    alignItems: "center",
+    alignItems: 'center',
   },
   content: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: Size.regular,
   },
 });
