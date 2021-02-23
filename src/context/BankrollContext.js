@@ -99,7 +99,6 @@ const getCurrentBalance = (dispatch) => async (id) => {
 // POSITIONS
 const getBankrollPositions = (dispatch) => async (id) => {
   dispatch({ type: 'LOADING' });
-
   try {
     const response = await strapiApi.get(`/positions?bankroll.id=${id}`);
     dispatch({ type: 'GET_BANKROLL_POSITIONS', payload: response.data });
