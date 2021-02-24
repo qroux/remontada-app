@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { Colors, Size, Spacing } from "../../assets/main";
-import { Context as AuthContext } from "../../context/AuthContext";
+import React, { useContext } from 'react';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { Colors, Size, Spacing } from '../../assets/main';
+import { Context as AuthContext } from '../../context/AuthContext';
 
 export const Footer = ({ path, label, reset }) => {
   const navigation = useNavigation();
@@ -14,17 +14,15 @@ export const Footer = ({ path, label, reset }) => {
         onPress={() => {
           clearError();
           navigation.navigate(path);
-        }}
-      >
+        }}>
         <Text style={styles.label}>{label}</Text>
       </TouchableOpacity>
       {reset ? (
         <TouchableOpacity
           onPress={() => {
             clearError();
-            navigation.navigate("Reset");
-          }}
-        >
+            navigation.navigate('Reset');
+          }}>
           <Text style={styles.label}>Mot de passe oublié</Text>
         </TouchableOpacity>
       ) : null}
@@ -35,14 +33,14 @@ export const Footer = ({ path, label, reset }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     marginTop: Spacing.large,
   },
 
   label: {
     fontSize: Size.regular,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     color: Colors.textLight,
   },
 });
