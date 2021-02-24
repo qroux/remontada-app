@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Text } from 'react-native';
+import { Text, PlatformColor } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import {
   createStackNavigator,
   CardStyleInterpolators,
   TransitionPresets,
+  ActivityIndicator,
 } from '@react-navigation/stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 

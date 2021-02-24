@@ -30,7 +30,7 @@ export const DeleteButton = ({ id }) => {
       {state.isLoading ? (
         <ActivityIndicator
           size='small'
-          color={PlatformColor('@android:color/white')}
+          color={PlatformColor('@android:color/holo_blue_bright')}
         />
       ) : (
         <Ionicons
@@ -47,5 +47,6 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'flex-end',
+    marginHorizontal: Size.regular,
   },
 });
