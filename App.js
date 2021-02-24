@@ -30,6 +30,7 @@ import {
   PronoIcon,
 } from './src/components/mainComponents/TabsComponent';
 import { Easing } from 'react-native-reanimated';
+import { DeleteButton } from './src/components/mainComponents/bankrollDetailScreen/DeleteButton';
 
 const AuthStack = createStackNavigator();
 const MainStack = createStackNavigator();
@@ -116,6 +117,7 @@ const MainStackScreen = () => {
         component={BankrollDetailScreen}
         options={{
           title: ' ',
+          headerRight: () => <DeleteButton />,
         }}
       />
     </MainStack.Navigator>
