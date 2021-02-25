@@ -18,7 +18,7 @@ import { Colors, Spacing, Size } from '../assets/main';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Context as AuthContext } from '../context/AuthContext';
 
-import { AccountRow } from '../components/mainComponents/AccountRow';
+import { AccountRow } from '../components/mainComponents/accountScreen/AccountRow';
 
 export const AccountScreen = () => {
   const {

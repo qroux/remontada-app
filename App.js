@@ -29,7 +29,7 @@ import {
   AccountIcon,
   BankrollIcon,
   PronoIcon,
-} from './src/components/mainComponents/TabsComponent';
+} from './src/components/tabComponents/TabsComponent';
 import { Easing } from 'react-native-reanimated';
 
 const AuthStack = createStackNavigator();

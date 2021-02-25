@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Common } from '../../assets/common';
-import { Colors, Spacing, Size } from '../../assets/main';
+import { Common } from '../../../assets/common';
+import { Colors, Spacing, Size } from '../../../assets/main';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { BankrollCard } from './BankrollCard';
-import { navigationRef } from '../../../RootNavigation';
+import { navigationRef } from '../../../../RootNavigation';
 import { useNavigation } from '@react-navigation/native';
 
 export const Bankroll = ({ item }) => {

@@ -4,8 +4,8 @@ import * as locale from 'dayjs/locale/fr';
 import SvgUri from 'expo-svg-uri';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Button } from 'react-native-elements';
-import { Size, Spacing, Colors } from '../../assets/main';
-import { Common } from '../../assets/common';
+import { Size, Spacing, Colors } from '../../../assets/main';
+import { Common } from '../../../assets/common';
 
 import { BetItem } from './BetItem';
 

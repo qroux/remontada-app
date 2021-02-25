@@ -1,7 +1,7 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-import { Spacing } from "../../assets/main";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { Spacing } from '../../../assets/main';
 
 export const BetItem = ({ type, value }) => {
   return (
@@ -14,7 +14,7 @@ export const BetItem = ({ type, value }) => {
 
 const styles = StyleSheet.create({
   container: {
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -25,10 +25,10 @@ const styles = StyleSheet.create({
     elevation: 1,
 
     flexBasis: 85,
-    alignItems: "center",
+    alignItems: 'center',
     paddingVertical: Spacing.small,
   },
   type: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });

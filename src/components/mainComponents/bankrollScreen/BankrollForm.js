@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Text, View, StyleSheet, Animated, TextInput } from 'react-native';
 import { Input, Button, Slider, Icon } from 'react-native-elements';
-import { Colors } from '../../assets/main';
-import { Common } from '../../assets/common';
-import { Spacing, Size } from '../../assets/main';
-import { Context as BankrollContext } from '../../context/BankrollContext';
+import { Colors } from '../../../assets/main';
+import { Common } from '../../../assets/common';
+import { Spacing, Size } from '../../../assets/main';
+import { Context as BankrollContext } from '../../../context/BankrollContext';
 
 export const BankrollForm = ({ toggleOverlay }) => {
   const [name, setName] = useState('');

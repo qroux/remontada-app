@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect, useCallback } from "react";
-import { Platform } from "react-native";
+import React, { useState, useContext, useEffect, useCallback } from 'react';
+import { Platform } from 'react-native';
 import {
   View,
   Text,
@@ -8,11 +8,11 @@ import {
   RefreshControl,
   ActivityIndicator,
   PlatformColor,
-} from "react-native";
-import { withSafeAreaInsets } from "react-native-safe-area-context";
-import { Context as BankrollContext } from "../../context/BankrollContext";
+} from 'react-native';
+import { withSafeAreaInsets } from 'react-native-safe-area-context';
+import { Context as BankrollContext } from '../../../context/BankrollContext';
 
-import { ShowMatch } from "./ShowMatch";
+import { ShowMatch } from './ShowMatch';
 
 export const MatchList = () => {
   const [refreshing, setRefreshing] = useState(false);
@@ -36,7 +36,7 @@ export const MatchList = () => {
   }, []);
 
   return state.bets ? (
-    <View style={{ flex: 1, width: "100%" }}>
+    <View style={{ flex: 1, width: '100%' }}>
       <FlatList
         data={state.bets}
         keyExtractor={(bet) => bet.id.toString()}
@@ -51,8 +51,8 @@ export const MatchList = () => {
     </View>
   ) : (
     <ActivityIndicator
-      size="large"
-      color={PlatformColor("@android:color/white")}
+      size='large'
+      color={PlatformColor('@android:color/white')}
     />
   );
 };

@@ -1,10 +1,13 @@
 import React from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
-import { Common } from '../../assets/common';
+import { Common } from '../../../assets/common';
 
 export const BankrollEmpty = ({ params }) => (
   <View style={[Common.container, styles.container]}>
-    <Image style={styles.gif} source={require('../../../assets/empty.gif')} />
+    <Image
+      style={styles.gif}
+      source={require('../../../../assets/empty.gif')}
+    />
     <View style={styles.instructions}>
       <Text>
         Créer une nouvelle bankroll pour mesurer vos gains à partir de votre

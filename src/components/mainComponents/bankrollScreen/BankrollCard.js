@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { Common } from '../../assets/common';
-import { Size, Colors } from '../../assets/main';
+import { Common } from '../../../assets/common';
+import { Size, Colors } from '../../../assets/main';
 
 export const BankrollCard = ({ title, icon, value, unit }) => (
   <View style={[styles.container]}>

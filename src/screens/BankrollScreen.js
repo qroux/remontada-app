@@ -16,8 +16,8 @@ import { Colors } from '../assets/main';
 import strapiApi from '../api/strapiApi';
 import { Context as BankrollContext } from '../context/BankrollContext';
 
-import { BankrollList } from '../components/mainComponents/BankrollList';
-import { BankrollForm } from '../components/mainComponents/BankrollForm';
+import { BankrollList } from '../components/mainComponents/bankrollScreen/BankrollList';
+import { BankrollForm } from '../components/mainComponents/bankrollScreen/BankrollForm';
 
 export const BankrollScreen = () => {
   const {

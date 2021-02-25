@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   Text,
@@ -6,11 +6,11 @@ import {
   ImageBackground,
   Dimensions,
   SafeAreaView,
-} from "react-native";
-import { Colors, Spacing, Size } from "../assets/main";
-import { Common } from "../assets/common";
+} from 'react-native';
+import { Colors, Spacing, Size } from '../assets/main';
+import { Common } from '../assets/common';
 
-import { MatchList } from "../components/mainComponents/MatchList";
+import { MatchList } from '../components/mainComponents/pronosticScreen/MatchList';
 
 export const PronosticScreen = () => {
   return (
@@ -26,6 +26,6 @@ export const PronosticScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
   },
 });

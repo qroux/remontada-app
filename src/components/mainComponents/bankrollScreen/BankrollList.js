@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
-import { Common } from '../../assets/common';
-import { Colors, Spacing, Size } from '../../assets/main';
+import { Common } from '../../../assets/common';
+import { Colors, Spacing, Size } from '../../../assets/main';
 import { FontAwesome } from '@expo/vector-icons';
 
 import { Bankroll } from './Bankroll';

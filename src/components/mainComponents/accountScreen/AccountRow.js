@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Text, View, StyleSheet } from 'react-native';
-import { Colors, Spacing, Size } from '../../assets/main';
+import { Colors, Spacing, Size } from '../../../assets/main';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export const AccountRow = ({ icon, value }) => {
