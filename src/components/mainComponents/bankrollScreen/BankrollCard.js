@@ -3,27 +3,36 @@ import { Text, View, StyleSheet } from 'react-native';
 import { Common } from '../../../assets/common';
 import { Size, Colors } from '../../../assets/main';
 
-export const BankrollCard = ({ title, icon, value, unit }) => (
-  <View style={[styles.container]}>
-    <View style={styles.title}>
-      {icon}
-      <Text style={styles.title}>{title}</Text>
+export const BankrollCard = ({ title, icon, value, unit, evolution }) => {
+  const renderProgress = () => {
+    const sign = evolution >= 0 ? '+' : '-';
+
+    return evolution ? `(${sign}${evolution}%)` : null;
+  };
+  return (
+    <View style={[styles.container]}>
+      <View style={styles.title}>
+        {icon}
+        <Text style={styles.title}>{title}</Text>
+      </View>
+      <Text
+        style={[
+          styles.content,
+          { color: value >= 0 ? Colors.success : Colors.fail },
+        ]}>
+        {value}
+        {unit ? unit : null}
+        {renderProgress()}
+      </Text>
     </View>
-    <Text
-      style={[
-        styles.content,
-        { color: value >= 0 ? Colors.success : Colors.fail },
-      ]}>
-      {value}
-      {unit}
-    </Text>
-  </View>
-);
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
-    width: 160,
     alignItems: 'center',
+    justifyContent: 'center',
+    flex: 0.33,
   },
   title: {
     fontWeight: 'normal',
@@ -32,7 +41,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   content: {
-    fontWeight: 'bold',
-    fontSize: Size.regular,
+    fontSize: Size.small,
   },
 });
