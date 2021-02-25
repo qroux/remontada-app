@@ -10,10 +10,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { Button, Overlay } from 'react-native-elements';
+import { Overlay } from 'react-native-elements';
 import { Common } from '../assets/common';
 import { Colors } from '../assets/main';
-import strapiApi from '../api/strapiApi';
+
 import { Context as BankrollContext } from '../context/BankrollContext';
 
 import { BankrollList } from '../components/mainComponents/bankrollScreen/BankrollList';
@@ -51,7 +51,7 @@ export const BankrollScreen = () => {
         ) : (
           <ActivityIndicator
             size='large'
-            color={PlatformColor('@android:color/white')}
+            color={PlatformColor(`@android:color/${Colors.spinner}`)}
           />
         )}
       </View>

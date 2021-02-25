@@ -1,18 +1,15 @@
 import React, { useContext } from 'react';
-import { Text, PlatformColor } from 'react-native';
+import { Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import {
   createStackNavigator,
   CardStyleInterpolators,
-  TransitionPresets,
-  ActivityIndicator,
 } from '@react-navigation/stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import { Provider as AuthProvider } from './src/context/AuthContext';
 import { Context as AuthContext } from './src/context/AuthContext';
 import { Provider as BankrollProvider } from './src/context/BankrollContext';
-import { Context as BankrollContext } from './src/context/BankrollContext';
 import { navigationRef } from './RootNavigation';
 
 import { LoginScreen } from './src/screens/LoginScreen';
@@ -30,7 +27,6 @@ import {
   BankrollIcon,
   PronoIcon,
 } from './src/components/tabComponents/TabsComponent';
-import { Easing } from 'react-native-reanimated';
 
 const AuthStack = createStackNavigator();
 const MainStack = createStackNavigator();

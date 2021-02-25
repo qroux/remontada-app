@@ -1,15 +1,13 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react';
-import { Platform } from 'react-native';
 import {
   View,
-  Text,
   StyleSheet,
   FlatList,
   RefreshControl,
   ActivityIndicator,
   PlatformColor,
 } from 'react-native';
-import { withSafeAreaInsets } from 'react-native-safe-area-context';
+import { Colors } from '../../../assets/main';
 import { Context as BankrollContext } from '../../../context/BankrollContext';
 
 import { ShowMatch } from './ShowMatch';
@@ -52,7 +50,7 @@ export const MatchList = () => {
   ) : (
     <ActivityIndicator
       size='large'
-      color={PlatformColor('@android:color/white')}
+      color={PlatformColor(`@android:color/${Colors.spinner}`)}
     />
   );
 };
