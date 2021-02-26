@@ -21,8 +21,8 @@ export const BankrollDetailScreen = ({ route }) => {
     });
     getBankrollPositions(id);
 
-    return async function cleanup() {
-      await resetPositions();
+    return function cleanup() {
+      resetPositions();
     };
   }, []);
 
