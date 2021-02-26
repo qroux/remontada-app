@@ -1,8 +1,6 @@
-import qs from 'qs';
 import createDataContext from './createDataContext';
 import strapiApi from '../api/strapiApi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as RootNavigation from '../../RootNavigation';
 
 // REDUCER
 const BankrollReducer = (state, action) => {
@@ -13,6 +11,8 @@ const BankrollReducer = (state, action) => {
       return { ...state, bankrolls: action.payload };
     case 'GET_BANKROLL_POSITIONS':
       return { ...state, positions: action.payload };
+    case 'RESET_POSITIONS':
+      return { ...state, positions: {} };
     case 'LOADING':
       return { ...state, isLoading: true };
     case 'LOADED':
@@ -56,7 +56,7 @@ const newBankroll = (dispatch) => async ({ name, starter }) => {
   dispatch({ type: 'LOADING' });
   try {
     const user_id = await AsyncStorage.getItem('remontada_user_id');
-    const response = await strapiApi.post('bankrolls', {
+    await strapiApi.post('bankrolls', {
       name,
       starter,
       current_balance: starter,
@@ -72,7 +72,6 @@ const deleteBankroll = (dispatch) => async (id) => {
   dispatch({ type: 'LOADING' });
   try {
     await strapiApi.delete(`/bankrolls/${id}`);
-    // RootNavigation.navigate('Bankroll');
   } catch (err) {
     console.log(err);
   }
@@ -81,18 +80,13 @@ const deleteBankroll = (dispatch) => async (id) => {
 
 const getCurrentBalance = (dispatch) => async (id) => {
   dispatch({ type: 'LOADING' });
-
   try {
     const response = await strapiApi.put(`/bankrolls/${id}`, {
       type: 'current_balance',
     });
-    console.log('RESPONSE =', response.data);
-
-    // dispatch({ type: 'UPDATE_BANKROLL', id, payload: response.data });
   } catch (err) {
     console.log(err);
   }
-
   dispatch({ type: 'LOADED' });
 };
 
@@ -108,6 +102,10 @@ const getBankrollPositions = (dispatch) => async (id) => {
   dispatch({ type: 'LOADED' });
 };
 
+const resetPositions = (dispatch) => async () => {
+  dispatch({ type: 'RESET_POSITIONS' });
+};
+
 // UTILS
 
 // EXPORT
@@ -120,6 +118,7 @@ export const { Context, Provider } = createDataContext(
     deleteBankroll,
     getCurrentBalance,
     getBankrollPositions,
+    resetPositions,
   },
   {}
 );

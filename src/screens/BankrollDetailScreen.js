@@ -9,7 +9,9 @@ import { DeleteButton } from '../components/mainComponents/bankrollDetailScreen/
 
 export const BankrollDetailScreen = ({ route }) => {
   const navigation = useNavigation();
-  const { state, getBankrollPositions } = useContext(BankrollContext);
+  const { state, getBankrollPositions, resetPositions } = useContext(
+    BankrollContext
+  );
   const id = route.params.bankroll_id;
 
   useEffect(() => {
@@ -18,6 +20,10 @@ export const BankrollDetailScreen = ({ route }) => {
       headerRight: () => <DeleteButton id={id} />,
     });
     getBankrollPositions(id);
+
+    return async function cleanup() {
+      await resetPositions();
+    };
   }, []);
 
   return (
