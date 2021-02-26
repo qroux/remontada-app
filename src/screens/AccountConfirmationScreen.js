@@ -6,14 +6,12 @@ import {
   ImageBackground,
   Dimensions,
   SafeAreaView,
-  StatusBar,
 } from 'react-native';
 import { Colors, Spacing, Size } from '../assets/main';
+import { Common } from '../assets/common';
 import { Context as AuthContext } from '../context/AuthContext';
 
-import { AuthForm } from '../components/authComponents/AuthForm';
 import { Footer } from '../components/authComponents/Footer';
-import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 
 export const AccountConfirmationScreen = ({ route }) => {
@@ -26,10 +24,10 @@ export const AccountConfirmationScreen = ({ route }) => {
           uri:
             'https://images.unsplash.com/photo-1508100134119-f93388e60d95?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1234&q=80',
         }}
-        style={styles.background}>
-        <View style={styles.container}>
-          <Text style={styles.upTitle}>Compte crée</Text>
-          <Text style={styles.header}>Remontad' App</Text>
+        style={Common.authStack.background}>
+        <View style={Common.authStack.container}>
+          <Text style={Common.authStack.upTitle}>Compte crée</Text>
+          <Text style={Common.authStack.header}>Remontad' App</Text>
           <View style={styles.instructionsContainer}>
             <Text style={styles.instructions}>
               Votre compte a été créé. Activez le grâce au lien envoyé par mail
@@ -52,28 +50,6 @@ export const AccountConfirmationScreen = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    padding: Spacing.medium,
-    flex: 1,
-  },
-  background: {
-    height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width,
-  },
-  header: {
-    fontSize: Size.large,
-    fontWeight: 'bold',
-    color: '#F2404F',
-    marginTop: -15,
-
-    textShadowColor: 'black',
-  },
-  upTitle: {
-    color: Colors.textLight,
-    fontWeight: 'bold',
-    fontSize: Size.large,
-    marginTop: Spacing.large,
-  },
   instructions: {
     fontSize: Size.small,
     color: Colors.textDark,
@@ -94,5 +70,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: Size.radius,
   },
-  address: {},
 });

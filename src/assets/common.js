@@ -1,10 +1,9 @@
-import { StatusBar } from 'react-native';
+import { StatusBar, Dimensions } from 'react-native';
 import { Colors, Spacing, Size } from './main';
 
 export const Common = {
   fullPage: {
     flex: 1,
-    marginTop: StatusBar.currentHeight,
   },
   container: {
     alignItems: 'center',
@@ -38,5 +37,35 @@ export const Common = {
     borderBottomColor: 'black',
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
+  },
+  authStack: {
+    container: {
+      padding: Spacing.medium,
+      flex: 1,
+    },
+    background: {
+      height: Dimensions.get('window').height,
+      width: Dimensions.get('window').width,
+    },
+    header: {
+      fontSize: Size.large,
+      fontWeight: 'bold',
+      color: '#F2404F',
+      marginTop: -15,
+      textShadowColor: 'black',
+    },
+    upTitle: {
+      color: Colors.textLight,
+      fontWeight: 'bold',
+      fontSize: Size.large,
+      marginTop: Spacing.large,
+    },
+    subTitle: {
+      fontSize: Size.regular,
+      color: 'white',
+      fontWeight: 'bold',
+      marginTop: Spacing.large,
+      marginBottom: Spacing.small,
+    },
   },
 };
