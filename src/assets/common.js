@@ -5,8 +5,6 @@ export const Common = {
   fullPage: {
     flex: 1,
     marginTop: StatusBar.currentHeight,
-    // borderColor: "black",
-    // borderWidth: 1,
   },
   container: {
     alignItems: 'center',

@@ -22,7 +22,9 @@ export const LoginScreen = () => {
     getToken();
   }, []);
 
-  return (
+  const loadingScreen = <View style={styles.loadingScreen}></View>;
+
+  const screen = (
     <SafeAreaView>
       <StatusBarDark />
       <ImageBackground
@@ -46,9 +48,15 @@ export const LoginScreen = () => {
       </ImageBackground>
     </SafeAreaView>
   );
+
+  return <>{state.isLoading ? loadingScreen : screen}</>;
 };
 
 const styles = StyleSheet.create({
+  loadingScreen: {
+    flex: 1,
+    backgroundColor: Colors.textDark,
+  },
   container: {
     padding: Spacing.medium,
     flex: 1,

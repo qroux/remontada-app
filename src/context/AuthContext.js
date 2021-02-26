@@ -155,5 +155,5 @@ export const { Context, Provider } = createDataContext(
     resetPassword,
     getUser,
   },
-  { token: null, user_id: null, errorMsg: null, isLoading: false }
+  { token: null, user_id: null, errorMsg: null, isLoading: true }
 );
