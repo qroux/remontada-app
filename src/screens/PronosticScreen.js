@@ -2,13 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import { Common } from '../assets/common';
 
-import { StatusBarDark } from '../components/shared/StatusBarDark';
+import { StatusBarLight } from '../components/shared/StatusBarLight';
 import { MatchList } from '../components/mainComponents/pronosticScreen/MatchList';
 
 export const PronosticScreen = () => {
   return (
     <SafeAreaView style={Common.fullPage}>
-      <StatusBarDark />
+      <StatusBarLight />
       <View style={Common.container}>
         <Text style={Common.title}>À l'affiche</Text>
         <MatchList />

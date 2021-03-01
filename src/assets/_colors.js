@@ -18,4 +18,5 @@ export const Colors = {
   fail: '#F2404F',
   spinner: 'holo_blue_bright',
   statusBarDark: 'black',
+  statusBarLight: 'white',
 };
