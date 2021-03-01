@@ -15,31 +15,17 @@ import { Ionicons } from '@expo/vector-icons';
 
 export const DeleteButton = ({ id }) => {
   const navigation = useNavigation();
-  const { state, deleteBankroll, getUserBankrolls } = useContext(
-    BankrollContext
-  );
+  const { state } = useContext(BankrollContext);
 
   return (
-    <TouchableOpacity
-      style={styles.container}
-      onPress={async () => {
-        await deleteBankroll(id);
-        await getUserBankrolls();
-        navigation.navigate('Bankroll');
-      }}>
+    <View style={styles.container}>
       {state.isLoading ? (
         <ActivityIndicator
           size='small'
           color={PlatformColor(`@android:color/${Colors.spinner}`)}
         />
-      ) : (
-        <Ionicons
-          name='trash-outline'
-          size={Size.regular}
-          color={Colors.textDark}
-        />
-      )}
-    </TouchableOpacity>
+      ) : null}
+    </View>
   );
 };
 
