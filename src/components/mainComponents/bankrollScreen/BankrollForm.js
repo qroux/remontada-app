@@ -15,7 +15,7 @@ export const BankrollForm = ({ toggleOverlay }) => {
     <View style={[Common.overlay.container]}>
       <Text style={Common.overlay.header}>Nouvelle Bankroll</Text>
       <TextInput
-        placeholder='ma bankroll'
+        placeholder='ma bankroll (au moins 3 caractères)'
         onChangeText={setName}
         style={[Common.input, { width: 300 }]}
       />
@@ -56,6 +56,7 @@ export const BankrollForm = ({ toggleOverlay }) => {
           getUserBankrolls();
         }}
         loading={state.isLoading}
+        disabled={name.length < 3}
       />
     </View>
   );
