@@ -68,4 +68,24 @@ export const Common = {
       marginBottom: Spacing.small,
     },
   },
+  overlay: {
+    container: {
+      marginVertical: Spacing.medium,
+      paddingVertical: Spacing.regular,
+      width: '90%',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    header: {
+      fontSize: Size.regular,
+      marginBottom: Spacing.regular,
+      fontWeight: 'bold',
+    },
+    instructions: {
+      fontSize: Size.small,
+      textAlign: 'left',
+      width: '100%',
+      paddingHorizontal: Spacing.small,
+    },
+  },
 };

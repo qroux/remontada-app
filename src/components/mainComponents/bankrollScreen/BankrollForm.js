@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { Text, View, StyleSheet, Animated, TextInput } from 'react-native';
-import { Input, Button, Slider, Icon } from 'react-native-elements';
+import { Text, View, TextInput } from 'react-native';
+import { Button, Slider, Icon } from 'react-native-elements';
 import { Colors } from '../../../assets/main';
 import { Common } from '../../../assets/common';
-import { Spacing, Size } from '../../../assets/main';
+import { Spacing } from '../../../assets/main';
 import { Context as BankrollContext } from '../../../context/BankrollContext';
 
 export const BankrollForm = ({ toggleOverlay }) => {
@@ -12,8 +12,8 @@ export const BankrollForm = ({ toggleOverlay }) => {
   const { state, newBankroll, getUserBankrolls } = useContext(BankrollContext);
 
   return (
-    <View style={[styles.container]}>
-      <Text style={styles.header}>Nouvelle Bankroll</Text>
+    <View style={[Common.overlay.container]}>
+      <Text style={Common.overlay.header}>Nouvelle Bankroll</Text>
       <TextInput
         placeholder='ma bankroll'
         onChangeText={setName}
@@ -60,27 +60,3 @@ export const BankrollForm = ({ toggleOverlay }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    marginVertical: Spacing.medium,
-    paddingVertical: Spacing.regular,
-    width: '90%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  header: {
-    fontSize: Size.regular,
-    marginBottom: Spacing.regular,
-    fontWeight: 'bold',
-  },
-  instructions: {
-    fontSize: Size.small,
-    fontWeight: 'bold',
-
-    paddingHorizontal: Spacing.regular,
-  },
-  track: {
-    color: 'green',
-  },
-});
