@@ -1,20 +1,15 @@
 import React, { useContext } from 'react';
 import {
-  Text,
   View,
   StyleSheet,
-  TouchableOpacity,
   ActivityIndicator,
   PlatformColor,
 } from 'react-native';
-import { Context as BankrollContext } from '../../../context/BankrollContext';
-import { useNavigation } from '@react-navigation/native';
+import { Context as BankrollContext } from '../../context/BankrollContext';
 
-import { Colors, Size } from '../../../assets/main';
-import { Ionicons } from '@expo/vector-icons';
+import { Colors, Size } from '../../assets/main';
 
-export const DeleteButton = ({ id }) => {
-  const navigation = useNavigation();
+export const ActivityHeader = () => {
   const { state } = useContext(BankrollContext);
 
   return (

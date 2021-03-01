@@ -27,6 +27,7 @@ import {
   BankrollIcon,
   PronoIcon,
 } from './src/components/tabComponents/TabsComponent';
+import { ActivityHeader } from './src/components/shared/ActivityHeader';
 
 const AuthStack = createStackNavigator();
 const MainStack = createStackNavigator();
@@ -113,6 +114,7 @@ const MainStackScreen = () => {
         component={BankrollDetailScreen}
         options={{
           title: ' ',
+          headerRight: () => <ActivityHeader />,
         }}
       />
     </MainStack.Navigator>

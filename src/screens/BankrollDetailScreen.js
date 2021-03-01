@@ -5,7 +5,6 @@ import { Common } from '../assets/common';
 
 import { Context as BankrollContext } from '../context/BankrollContext';
 import { PositionList } from '../components/mainComponents/bankrollDetailScreen/PositionList';
-import { DeleteButton } from '../components/mainComponents/bankrollDetailScreen/DeleteButton';
 
 export const BankrollDetailScreen = ({ route }) => {
   const navigation = useNavigation();
@@ -17,7 +16,6 @@ export const BankrollDetailScreen = ({ route }) => {
   useEffect(() => {
     navigation.setOptions({
       title: route.params.bankroll_name,
-      headerRight: () => <DeleteButton id={id} />,
     });
     getBankrollPositions(id);
 
