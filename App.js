@@ -21,6 +21,7 @@ import { PronosticScreen } from './src/screens/PronosticScreen';
 import { BankrollScreen } from './src/screens/BankrollScreen';
 import { BankrollDetailScreen } from './src/screens/BankrollDetailScreen';
 import { AccountScreen } from './src/screens/AccountScreen';
+import { PositionFormScreen } from './src/screens/PositionFormScreen';
 
 import {
   AccountIcon,
@@ -114,6 +115,14 @@ const MainStackScreen = () => {
         component={BankrollDetailScreen}
         options={{
           title: ' ',
+          headerRight: () => <ActivityHeader />,
+        }}
+      />
+      <MainStack.Screen
+        name='PositionForm'
+        component={PositionFormScreen}
+        options={{
+          title: 'Enregistrement du pari',
           headerRight: () => <ActivityHeader />,
         }}
       />

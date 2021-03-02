@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, SafeAreaView } from 'react-native';
 import { Common } from '../assets/common';
 
 import { StatusBarLight } from '../components/shared/StatusBarLight';
@@ -16,10 +16,3 @@ export const PronosticScreen = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-  },
-});

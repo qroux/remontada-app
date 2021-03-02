@@ -3,11 +3,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Text, View, SafeAreaView, StyleSheet } from 'react-native';
 import { Overlay, Button } from 'react-native-elements';
 import { Common } from '../assets/common';
+import { Spacing } from '../assets/main';
 
 import { Context as BankrollContext } from '../context/BankrollContext';
 import { BankrollAdmin } from '../components/mainComponents/bankrollDetailScreen/BankrollAdmin';
 import { PositionList } from '../components/mainComponents/bankrollDetailScreen/PositionList';
-import { Spacing } from '../assets/main';
+import { PositionForm } from '../components/mainComponents/bankrollDetailScreen/PositionForm';
 
 export const BankrollDetailScreen = ({ route }) => {
   const navigation = useNavigation();
@@ -65,6 +66,7 @@ export const BankrollDetailScreen = ({ route }) => {
               />
             </View>
           </Overlay>
+          {/* <PositionForm /> */}
           <PositionList positions={state.positions} />
         </View>
       </View>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import * as locale from 'dayjs/locale/fr';
 import SvgUri from 'expo-svg-uri';
@@ -10,6 +11,7 @@ import { Common } from '../../../assets/common';
 import { BetItem } from './BetItem';
 
 export const ShowMatch = ({ bet, match }) => {
+  const navigation = useNavigation();
   const date = dayjs(match.date).locale('fr').format('ddd DD MMM H:mm');
 
   return (
@@ -47,7 +49,7 @@ export const ShowMatch = ({ bet, match }) => {
           <BetItem type='Bookmaker' value={bet.bookmaker} />
           <BetItem type='Cote' value={bet.odds} />
           <BetItem type='Mise' value='VOID' />
-          <BetItem type='Status' value={bet.status} />
+          <BetItem type='Statut' value={bet.status} />
         </View>
       </View>
 
@@ -55,6 +57,7 @@ export const ShowMatch = ({ bet, match }) => {
         title='Ajouter à ma bankRoll'
         buttonStyle={styles.cta}
         containerStyle={styles.ctaContainer}
+        onPress={() => navigation.navigate('PositionForm', { bet, match })}
       />
     </View>
   );
@@ -65,7 +68,6 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // backgroundColor: Colors.headerColor,
     padding: Spacing.regular,
     borderRadius: Size.radius,
   },
