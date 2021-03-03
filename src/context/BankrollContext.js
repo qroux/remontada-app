@@ -1,6 +1,7 @@
 import createDataContext from './createDataContext';
 import strapiApi from '../api/strapiApi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as RootNavigation from '../../RootNavigation';
 
 // REDUCER
 const BankrollReducer = (state, action) => {
@@ -111,11 +112,16 @@ const postPosition = (dispatch) => async ({
   dispatch({ type: 'LOADING' });
 
   try {
-    await strapiApi.post('/positions', {
+    const response = await strapiApi.post('/positions', {
       users_permissions_user: user_id,
       bet: bet_id,
       bankroll: bankroll_id,
       value,
+    });
+
+    await strapiApi.put(`/bankrolls/${bankroll_id}`, {
+      type: 'add_position',
+      position_id: response.data.id,
     });
   } catch (err) {
     console.log(err.response.data);

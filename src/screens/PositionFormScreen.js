@@ -12,7 +12,7 @@ import { BankrollPicker } from '../components/mainComponents/positionFormScreen/
 
 export const PositionFormScreen = ({ route }) => {
   const navigation = useNavigation();
-  const { state, postPosition } = useContext(BankrollContext);
+  const { state, postPosition, getUserBankrolls } = useContext(BankrollContext);
   const { bet, match } = route.params;
 
   const [value, setValue] = useState(0);
@@ -28,6 +28,7 @@ export const PositionFormScreen = ({ route }) => {
       value,
     });
 
+    getUserBankrolls();
     navigation.navigate('Bankroll');
   };
 
