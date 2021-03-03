@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Text, View, StyleSheet } from 'react-native';
-import { Spacing } from '../../../assets/main';
+import { Size, Spacing } from '../../../assets/main';
 import { Item } from './Item';
 import { Value } from './Value';
 
@@ -21,7 +21,12 @@ export const InputRow = ({ value, odds }) => (
 );
 
 const styles = StyleSheet.create({
-  fullContainer: { backgroundColor: 'white' },
+  fullContainer: {
+    backgroundColor: 'white',
+    borderColor: 'black',
+    borderWidth: 3,
+    borderRadius: Size.radius,
+  },
   row: { flexDirection: 'row', paddingVertical: Spacing.small },
   item: { flex: 0.3 },
 });

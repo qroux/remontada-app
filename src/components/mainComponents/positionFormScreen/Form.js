@@ -1,17 +1,16 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Slider, Icon } from 'react-native-elements';
-import { Colors, Size } from '../../../assets/main';
-import { Common } from '../../../assets/common';
+import { Colors, Spacing } from '../../../assets/main';
 
 import { InputRow } from './InputRow';
 
 export const Form = ({ value, setValue, odds }) => {
   return (
     <View style={styles.container}>
-      <Text style={Common.PositionForm.header}>Gains potentiels</Text>
       <InputRow value={value} odds={odds} />
       <Slider
+        style={{ marginVertical: Spacing.medium }}
         value={value}
         onValueChange={setValue}
         maximumValue={100}
@@ -26,9 +25,9 @@ export const Form = ({ value, setValue, odds }) => {
             <Icon
               name='euro'
               type='font-awesome'
-              size={10}
+              size={15}
               reverse
-              containerStyle={{ bottom: 10, right: 10 }}
+              containerStyle={{ bottom: 15, right: 15 }}
               color={Colors.primary}
             />
           ),
