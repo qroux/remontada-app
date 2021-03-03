@@ -102,6 +102,28 @@ const getBankrollPositions = (dispatch) => async (id) => {
   dispatch({ type: 'LOADED' });
 };
 
+const postPosition = (dispatch) => async ({
+  user_id,
+  bet_id,
+  bankroll_id,
+  value,
+}) => {
+  dispatch({ type: 'LOADING' });
+
+  try {
+    await strapiApi.post('/positions', {
+      users_permissions_user: user_id,
+      bet: bet_id,
+      bankroll: bankroll_id,
+      value,
+    });
+  } catch (err) {
+    console.log(err.response.data);
+  }
+
+  dispatch({ type: 'LOADED' });
+};
+
 const resetPositions = (dispatch) => async () => {
   dispatch({ type: 'RESET_POSITIONS' });
 };
@@ -118,6 +140,7 @@ export const { Context, Provider } = createDataContext(
     deleteBankroll,
     getCurrentBalance,
     getBankrollPositions,
+    postPosition,
     resetPositions,
   },
   {}

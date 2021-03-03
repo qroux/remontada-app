@@ -88,4 +88,12 @@ export const Common = {
       paddingHorizontal: Spacing.small,
     },
   },
+  PositionForm: {
+    header: {
+      fontWeight: 'bold',
+      fontSize: Size.regular,
+      color: 'black',
+      marginBottom: Spacing.regular,
+    },
+  },
 };

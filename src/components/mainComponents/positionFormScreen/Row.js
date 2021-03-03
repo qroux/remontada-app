@@ -18,12 +18,12 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: 'row',
     backgroundColor: 'white',
-    marginBottom: Spacing.small,
+    marginBottom: 2,
   },
   header: {
     borderRightWidth: 0.5,
     borderRightColor: Colors.border,
-    paddingVertical: Spacing.medium,
+    paddingVertical: Spacing.regular,
     width: 90,
     alignItems: 'center',
   },
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
   },
   content: {
-    padding: Spacing.medium,
+    padding: Spacing.regular,
     flex: 1,
     // alignItems: 'flex-end',
   },
