@@ -1,8 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Text, View, SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { Button } from 'react-native-elements';
-import { Picker } from '@react-native-picker/picker';
 import { Common } from '../../assets/common';
 
 import { Context as BankrollContext } from '../../context/BankrollContext';
@@ -29,7 +28,15 @@ export const PositionFormScreen = ({ route }) => {
     });
 
     getUserBankrolls();
-    navigation.navigate('Bankroll');
+
+    const bankroll_name = state.bankrolls.find(
+      (bankroll) => bankroll.id === selectedBankroll
+    ).name;
+
+    navigation.navigate('BankrollDetail', {
+      bankroll_id: selectedBankroll,
+      bankroll_name,
+    });
   };
 
   return (
@@ -53,9 +60,3 @@ export const PositionFormScreen = ({ route }) => {
     </SafeAreaView>
   );
 };
-const styles = StyleSheet.create({
-  content: {
-    backgroundColor: 'red',
-    width: '100%',
-  },
-});

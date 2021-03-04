@@ -1,21 +1,9 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  Dimensions,
-  SafeAreaView,
-  Image,
-  FlatList,
-} from 'react-native';
-import LottieView from 'lottie-react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { View, Text, StyleSheet, SafeAreaView, Image } from 'react-native';
 import dayjs from 'dayjs';
-import strapiApi from '../../api/strapiApi';
 import { Button } from 'react-native-elements';
 import { Common } from '../../assets/common';
-import { Colors, Spacing, Size } from '../../assets/main';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Spacing } from '../../assets/main';
 import { Context as AuthContext } from '../../context/AuthContext';
 
 import { AccountRow } from '../../components/mainComponents/accountScreen/AccountRow';
@@ -55,7 +43,7 @@ export const AccountScreen = () => {
 
           <View>
             <Image
-              source={require('../../assets/bye.gif')}
+              source={require('../../../assets/bye.gif')}
               style={{ alignSelf: 'center', height: 200, width: 200 }}
             />
             <Button title='Déconnexion' onPress={signout} />
