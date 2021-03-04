@@ -1,13 +1,12 @@
-import React, { useContext, useState } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
-import { Colors, Size, Spacing } from "../../assets/main";
-import { Button } from "react-native-elements";
-import { Context as AuthContext } from "../../context/AuthContext";
-import strapiApi from "../../api/strapiApi";
+import React, { useContext, useState } from 'react';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { Colors, Size, Spacing } from '../../assets/main';
+import { Button } from 'react-native-elements';
+import { Context as AuthContext } from '../../context/AuthContext';
 
 export const ResetForm = () => {
-  const [code, setCode] = useState("");
-  const [password, setPassword] = useState("");
+  const [code, setCode] = useState('');
+  const [password, setPassword] = useState('');
   const { state, resetPassword } = useContext(AuthContext);
 
   return (
@@ -17,22 +16,22 @@ export const ResetForm = () => {
       ) : null}
       <TextInput
         style={styles.input}
-        placeholder="code reçu par email"
+        placeholder='code reçu par email'
         value={code}
         onChangeText={setCode}
-        autoCapitalize="none"
+        autoCapitalize='none'
         autoCorrect={false}
       />
       <TextInput
         style={styles.input}
-        placeholder="nouveau mot de passe"
+        placeholder='nouveau mot de passe'
         value={password}
         onChangeText={setPassword}
-        autoCapitalize="none"
+        autoCapitalize='none'
         autoCorrect={false}
       />
       <Button
-        title="Renouveller mot de passe"
+        title='Renouveller mot de passe'
         buttonStyle={{ marginTop: Spacing.small, height: 50 }}
         onPress={() => resetPassword({ code, password })}
         loading={state.isLoading}
@@ -52,7 +51,7 @@ const styles = StyleSheet.create({
     borderRadius: Size.radius,
   },
   error: {
-    fontWeight: "bold",
-    color: "red",
+    fontWeight: 'bold',
+    color: 'red',
   },
 });

@@ -1,12 +1,11 @@
-import React from "react";
-import { Text, View } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import React from 'react';
+import { Feather } from '@expo/vector-icons';
 
 export const HideIcon = ({ setHide }) => (
   <Feather
-    name="eye-off"
+    name='eye-off'
     size={20}
-    color="black"
+    color='black'
     onPress={() => setHide(false)}
   />
 );

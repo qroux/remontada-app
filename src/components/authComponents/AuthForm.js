@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
-import { Colors, Size, Spacing } from "../../assets/main";
-import { Button, Input } from "react-native-elements";
-import { Context as AuthContext } from "../../context/AuthContext";
-import { ShowIcon } from "./ShowIcon";
-import { HideIcon } from "./HideIcon";
+import React, { useContext, useState } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { Colors, Size, Spacing } from '../../assets/main';
+import { Button, Input } from 'react-native-elements';
+import { Context as AuthContext } from '../../context/AuthContext';
+import { ShowIcon } from './ShowIcon';
+import { HideIcon } from './HideIcon';
 
 export const AuthForm = ({ submit, btnTitle }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [hide, setHide] = useState(true);
   const { state } = useContext(AuthContext);
 
@@ -20,19 +20,19 @@ export const AuthForm = ({ submit, btnTitle }) => {
       <Input
         containerStyle={styles.container}
         inputContainerStyle={styles.input}
-        placeholder="email"
+        placeholder='email'
         value={email}
         onChangeText={setEmail}
-        autoCapitalize="none"
+        autoCapitalize='none'
         autoCorrect={false}
       />
       <Input
         containerStyle={styles.container}
         inputContainerStyle={styles.input}
-        placeholder="mot de passe"
+        placeholder='mot de passe'
         value={password}
         onChangeText={setPassword}
-        autoCapitalize="none"
+        autoCapitalize='none'
         autoCorrect={false}
         secureTextEntry={hide}
         rightIcon={
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.regular,
   },
   error: {
-    fontWeight: "bold",
-    color: "red",
+    fontWeight: 'bold',
+    color: 'red',
   },
 });
