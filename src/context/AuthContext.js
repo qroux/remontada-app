@@ -124,6 +124,8 @@ const getToken = (dispatch) => async () => {
 
   if (token) {
     dispatch({ type: 'SIGNIN', payload: { token, user_id } });
+  } else {
+    RootNavigation.navigate('Login');
   }
 
   dispatch({ type: 'LOADED' });

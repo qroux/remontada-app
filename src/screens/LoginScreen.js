@@ -18,11 +18,11 @@ import { Common } from '../assets/common';
 export const LoginScreen = () => {
   const { state, signin, getToken } = useContext(AuthContext);
 
-  useEffect(() => {
-    getToken();
-  }, []);
+  // useEffect(() => {
+  //   getToken();
+  // }, []);
 
-  const loadingScreen = <View style={styles.loadingScreen}></View>;
+  // const loadingScreen = <View style={styles.loadingScreen}></View>;
 
   const screen = (
     <SafeAreaView>
@@ -51,7 +51,7 @@ export const LoginScreen = () => {
     </SafeAreaView>
   );
 
-  return <>{state.isLoading ? loadingScreen : screen}</>;
+  return <>{screen}</>;
 };
 
 const styles = StyleSheet.create({
