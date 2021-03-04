@@ -20,6 +20,10 @@ export const PositionFormScreen = ({ route }) => {
   );
 
   const submitPosition = async () => {
+    const bankroll_name = state.bankrolls.find(
+      (bankroll) => bankroll.id === selectedBankroll
+    ).name;
+
     await postPosition({
       user_id: '600ad9fe262321001541df1e',
       bet_id: bet.id,
@@ -28,11 +32,8 @@ export const PositionFormScreen = ({ route }) => {
     });
 
     getUserBankrolls();
-
-    const bankroll_name = state.bankrolls.find(
-      (bankroll) => bankroll.id === selectedBankroll
-    ).name;
-
+    // Remove Position creation screen from navigation.history => prevents back navigation to Position creation after redirection
+    navigation.pop();
     navigation.navigate('BankrollDetail', {
       bankroll_id: selectedBankroll,
       bankroll_name,
