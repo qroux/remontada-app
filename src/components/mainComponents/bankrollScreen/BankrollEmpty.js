@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
 import { Common } from '../../../assets/common';
 
-export const BankrollEmpty = ({ params }) => (
+export const BankrollEmpty = () => (
   <View style={[Common.container, styles.container]}>
     <Image
       style={styles.gif}

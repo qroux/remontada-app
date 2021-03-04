@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Size, Spacing } from '../../../assets/main';
 import { Item } from './Item';
 import { Value } from './Value';

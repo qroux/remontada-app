@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { StyleSheet } from 'react-native';
-import { Colors, Size, Spacing } from '../../../assets/main';
+import { Colors, Spacing } from '../../../assets/main';
 import { Common } from '../../../assets/common';
 
 export const BankrollPicker = ({

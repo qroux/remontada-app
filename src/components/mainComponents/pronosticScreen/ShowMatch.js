@@ -1,9 +1,8 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import dayjs from 'dayjs';
-import * as locale from 'dayjs/locale/fr';
 import SvgUri from 'expo-svg-uri';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
 import { Size, Spacing, Colors } from '../../../assets/main';
 import { Common } from '../../../assets/common';

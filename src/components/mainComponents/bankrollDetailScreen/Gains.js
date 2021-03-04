@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { Common } from '../../../assets/common';
 
 export const Gains = ({ value }) => {
   return (

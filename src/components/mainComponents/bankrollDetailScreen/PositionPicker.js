@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import { Common } from '../../../assets/common';
 import { Feather, Ionicons } from '@expo/vector-icons';
 
 export const PositionPicker = ({ bet_status }) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Text, View } from 'react-native';
 import { Common } from '../../../assets/common';
-import { Spacing, Size } from '../../../assets/main';
+import { Spacing } from '../../../assets/main';
 
 import { Row } from './Row';
 

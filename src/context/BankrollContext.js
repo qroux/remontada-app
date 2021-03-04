@@ -1,7 +1,6 @@
 import createDataContext from './createDataContext';
 import strapiApi from '../api/strapiApi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as RootNavigation from '../../RootNavigation';
 
 // REDUCER
 const BankrollReducer = (state, action) => {

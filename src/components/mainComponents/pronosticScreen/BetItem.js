@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Spacing } from '../../../assets/main';
 
 export const BetItem = ({ type, value }) => {
