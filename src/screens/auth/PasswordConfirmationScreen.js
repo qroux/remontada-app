@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React from 'react';
 import {
   View,
   Text,
@@ -9,14 +8,11 @@ import {
 } from 'react-native';
 import { Colors, Spacing, Size } from '../../assets/main';
 import { Common } from '../../assets/common';
-import { Context as AuthContext } from '../../context/AuthContext';
 
 import { ResetForm } from '../../components/authComponents/ResetForm';
 import { Footer } from '../../components/authComponents/Footer';
 
 export const PasswordConfirmationScreen = ({ route }) => {
-  // const navigation = useNavigation();
-  // const { state, signup } = useContext(AuthContext);
   return (
     <SafeAreaView>
       <ImageBackground

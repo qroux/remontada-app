@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -8,14 +8,10 @@ import {
 } from 'react-native';
 import { Colors, Spacing, Size } from '../../assets/main';
 import { Common } from '../../assets/common';
-import { Context as AuthContext } from '../../context/AuthContext';
 
 import { Footer } from '../../components/authComponents/Footer';
-import { useNavigation } from '@react-navigation/native';
 
 export const AccountConfirmationScreen = ({ route }) => {
-  const navigation = useNavigation();
-  const { state, signup } = useContext(AuthContext);
   return (
     <SafeAreaView>
       <ImageBackground
