@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {
   createStackNavigator,
   CardStyleInterpolators,
+  HeaderBackButton,
 } from '@react-navigation/stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
@@ -11,6 +12,7 @@ import { Provider as AuthProvider } from './src/context/AuthContext';
 import { Context as AuthContext } from './src/context/AuthContext';
 import { Provider as BankrollProvider } from './src/context/BankrollContext';
 import { navigationRef } from './RootNavigation';
+import * as RootNavigation from './RootNavigation';
 
 import { LoadingScreen } from './src/screens/auth/LoadingScreen';
 import { LoginScreen } from './src/screens/auth/LoginScreen';
@@ -117,6 +119,11 @@ const MainStackScreen = () => {
         component={BankrollDetailScreen}
         options={{
           title: ' ',
+          headerLeft: () => (
+            <HeaderBackButton
+              onPress={() => RootNavigation.navigate('Bankroll')}
+            />
+          ),
           headerRight: () => <ActivityHeader />,
         }}
       />
