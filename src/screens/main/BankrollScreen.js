@@ -24,8 +24,6 @@ export const BankrollScreen = () => {
     state: { bankrolls },
     getUserBankrolls,
   } = useContext(BankrollContext);
-
-  const navigation = useNavigation();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {

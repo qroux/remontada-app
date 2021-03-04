@@ -11,11 +11,11 @@ export const Bankroll = ({ item }) => {
   const navigation = useNavigation();
   const { positions, current_balance, starter } = item;
 
-  const profits = current_balance - starter;
-  const progress = (profits / starter) * 100;
+  const profits = Math.round(current_balance - starter);
+  const progress = Math.round((profits / starter) * 100);
   const success = positions.filter((bankroll) => bankroll.status === 'Attente')
     .length;
-  const success_rate = (success / positions.length) * 100;
+  const success_rate = Math.round((success / positions.length) * 100);
 
   return (
     <TouchableOpacity
@@ -51,7 +51,12 @@ export const Bankroll = ({ item }) => {
               icon={<MaterialIcons name='euro' size={18} color={'black'} />}
               value={profits}
               unit='€'
-              evolution={progress}
+            />
+            <BankrollCard
+              title='Progression'
+              icon={<Ionicons name='rocket-outline' size={18} color='black' />}
+              value={progress}
+              unit='%'
             />
           </View>
         </View>
