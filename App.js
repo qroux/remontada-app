@@ -13,11 +13,11 @@ import { Provider as BankrollProvider } from './src/context/BankrollContext';
 import { navigationRef } from './RootNavigation';
 
 import { LoadingScreen } from './src/screens/auth/LoadingScreen';
-import { LoginScreen } from './src/screens/LoginScreen';
-import { RegisterScreen } from './src/screens/RegisterScreen';
-import { ResetScreen } from './src/screens/ResetScreen';
-import { AccountConfirmationScreen } from './src/screens/AccountConfirmationScreen';
-import { PasswordConfirmationScreen } from './src/screens/PasswordConfirmationScreen';
+import { LoginScreen } from './src/screens/auth/LoginScreen';
+import { RegisterScreen } from './src/screens/auth/RegisterScreen';
+import { ResetScreen } from './src/screens/auth/ResetScreen';
+import { AccountConfirmationScreen } from './src/screens/auth/AccountConfirmationScreen';
+import { PasswordConfirmationScreen } from './src/screens/auth/PasswordConfirmationScreen';
 import { PronosticScreen } from './src/screens/PronosticScreen';
 import { BankrollScreen } from './src/screens/BankrollScreen';
 import { BankrollDetailScreen } from './src/screens/BankrollDetailScreen';

@@ -5,16 +5,15 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
-  Dimensions,
   SafeAreaView,
 } from 'react-native';
-import { Colors, Spacing, Size } from '../assets/main';
-import { Common } from '../assets/common';
-import { Context as AuthContext } from '../context/AuthContext';
-
-import { Footer } from '../components/authComponents/Footer';
 import { TextInput } from 'react-native-gesture-handler';
 import { Button } from 'react-native-elements';
+import { Colors, Spacing, Size } from '../../assets/main';
+import { Common } from '../../assets/common';
+import { Context as AuthContext } from '../../context/AuthContext';
+
+import { Footer } from '../../components/authComponents/Footer';
 
 export const ResetScreen = () => {
   const [email, setEmail] = useState('');

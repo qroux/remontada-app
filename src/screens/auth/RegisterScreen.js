@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { View, Text, ImageBackground, SafeAreaView } from 'react-native';
-import { Common } from '../assets/common';
-import { Context as AuthContext } from '../context/AuthContext';
+import { Common } from '../../assets/common';
+import { Context as AuthContext } from '../../context/AuthContext';
 
-import { AuthForm } from '../components/authComponents/AuthForm';
-import { Footer } from '../components/authComponents/Footer';
+import { AuthForm } from '../../components/authComponents/AuthForm';
+import { Footer } from '../../components/authComponents/Footer';
 
 export const RegisterScreen = () => {
   const { signup } = useContext(AuthContext);

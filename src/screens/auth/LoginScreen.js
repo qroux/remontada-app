@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useContext } from 'react';
 import {
   View,
@@ -7,24 +7,18 @@ import {
   ImageBackground,
   SafeAreaView,
 } from 'react-native';
-import { Colors } from '../assets/main';
-import { Context as AuthContext } from '../context/AuthContext';
+import { Colors } from '../../assets/main';
+import { Context as AuthContext } from '../../context/AuthContext';
 
-import { StatusBarDark } from '../components/shared/StatusBarDark';
-import { AuthForm } from '../components/authComponents/AuthForm';
-import { Footer } from '../components/authComponents/Footer';
-import { Common } from '../assets/common';
+import { StatusBarDark } from '../../components/shared/StatusBarDark';
+import { AuthForm } from '../../components/authComponents/AuthForm';
+import { Footer } from '../../components/authComponents/Footer';
+import { Common } from '../../assets/common';
 
 export const LoginScreen = () => {
-  const { state, signin, getToken } = useContext(AuthContext);
+  const { signin } = useContext(AuthContext);
 
-  // useEffect(() => {
-  //   getToken();
-  // }, []);
-
-  // const loadingScreen = <View style={styles.loadingScreen}></View>;
-
-  const screen = (
+  return (
     <SafeAreaView>
       <StatusBarDark />
       <ImageBackground
@@ -50,8 +44,6 @@ export const LoginScreen = () => {
       </ImageBackground>
     </SafeAreaView>
   );
-
-  return <>{screen}</>;
 };
 
 const styles = StyleSheet.create({

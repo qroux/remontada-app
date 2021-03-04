@@ -4,14 +4,13 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
-  Dimensions,
   SafeAreaView,
 } from 'react-native';
-import { Colors, Spacing, Size } from '../assets/main';
-import { Common } from '../assets/common';
-import { Context as AuthContext } from '../context/AuthContext';
+import { Colors, Spacing, Size } from '../../assets/main';
+import { Common } from '../../assets/common';
+import { Context as AuthContext } from '../../context/AuthContext';
 
-import { Footer } from '../components/authComponents/Footer';
+import { Footer } from '../../components/authComponents/Footer';
 import { useNavigation } from '@react-navigation/native';
 
 export const AccountConfirmationScreen = ({ route }) => {
