@@ -3,12 +3,12 @@ import { useNavigation } from '@react-navigation/native';
 import { Text, View, SafeAreaView, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
 import { Picker } from '@react-native-picker/picker';
-import { Common } from '../assets/common';
+import { Common } from '../../assets/common';
 
-import { Context as BankrollContext } from '../context/BankrollContext';
-import { Info } from '../components/mainComponents/positionFormScreen/Info';
-import { Form } from '../components/mainComponents/positionFormScreen/Form';
-import { BankrollPicker } from '../components/mainComponents/positionFormScreen/BankrollPicker';
+import { Context as BankrollContext } from '../../context/BankrollContext';
+import { Info } from '../../components/mainComponents/positionFormScreen/Info';
+import { Form } from '../../components/mainComponents/positionFormScreen/Form';
+import { BankrollPicker } from '../../components/mainComponents/positionFormScreen/BankrollPicker';
 
 export const PositionFormScreen = ({ route }) => {
   const navigation = useNavigation();

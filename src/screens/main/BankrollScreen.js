@@ -11,13 +11,13 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Overlay } from 'react-native-elements';
-import { Common } from '../assets/common';
-import { Colors } from '../assets/main';
+import { Common } from '../../assets/common';
+import { Colors } from '../../assets/main';
 
-import { Context as BankrollContext } from '../context/BankrollContext';
+import { Context as BankrollContext } from '../../context/BankrollContext';
 
-import { BankrollList } from '../components/mainComponents/bankrollScreen/BankrollList';
-import { BankrollForm } from '../components/mainComponents/bankrollScreen/BankrollForm';
+import { BankrollList } from '../../components/mainComponents/bankrollScreen/BankrollList';
+import { BankrollForm } from '../../components/mainComponents/bankrollScreen/BankrollForm';
 
 export const BankrollScreen = () => {
   const {

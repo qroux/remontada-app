@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
-import { Common } from '../assets/common';
+import { Common } from '../../assets/common';
 
-import { StatusBarLight } from '../components/shared/StatusBarLight';
-import { MatchList } from '../components/mainComponents/pronosticScreen/MatchList';
+import { StatusBarLight } from '../../components/shared/StatusBarLight';
+import { MatchList } from '../../components/mainComponents/pronosticScreen/MatchList';
 
 export const PronosticScreen = () => {
   return (

@@ -18,11 +18,11 @@ import { RegisterScreen } from './src/screens/auth/RegisterScreen';
 import { ResetScreen } from './src/screens/auth/ResetScreen';
 import { AccountConfirmationScreen } from './src/screens/auth/AccountConfirmationScreen';
 import { PasswordConfirmationScreen } from './src/screens/auth/PasswordConfirmationScreen';
-import { PronosticScreen } from './src/screens/PronosticScreen';
-import { BankrollScreen } from './src/screens/BankrollScreen';
-import { BankrollDetailScreen } from './src/screens/BankrollDetailScreen';
-import { AccountScreen } from './src/screens/AccountScreen';
-import { PositionFormScreen } from './src/screens/PositionFormScreen';
+import { PronosticScreen } from './src/screens/main/PronosticScreen';
+import { BankrollScreen } from './src/screens/main/BankrollScreen';
+import { BankrollDetailScreen } from './src/screens/main/BankrollDetailScreen';
+import { AccountScreen } from './src/screens/main/AccountScreen';
+import { PositionFormScreen } from './src/screens/main/PositionFormScreen';
 
 import {
   AccountIcon,

@@ -11,14 +11,14 @@ import {
 } from 'react-native';
 import LottieView from 'lottie-react-native';
 import dayjs from 'dayjs';
-import strapiApi from '../api/strapiApi';
+import strapiApi from '../../api/strapiApi';
 import { Button } from 'react-native-elements';
-import { Common } from '../assets/common';
-import { Colors, Spacing, Size } from '../assets/main';
+import { Common } from '../../assets/common';
+import { Colors, Spacing, Size } from '../../assets/main';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Context as AuthContext } from '../context/AuthContext';
+import { Context as AuthContext } from '../../context/AuthContext';
 
-import { AccountRow } from '../components/mainComponents/accountScreen/AccountRow';
+import { AccountRow } from '../../components/mainComponents/accountScreen/AccountRow';
 
 export const AccountScreen = () => {
   const {
