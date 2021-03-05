@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import dayjs from 'dayjs';
 import { Text, View, StyleSheet } from 'react-native';
 import { Common } from '../../../assets/common';
 import { Size, Spacing, Colors } from '../../../assets/main';
+import { EvilIcons } from '@expo/vector-icons';
 
+import { Context as BankrollContext } from '../../../context/BankrollContext';
 import { Positionitem } from './PositionItem';
 import { Gains } from './Gains';
 import { Status } from './Status';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export const Position = ({ position }) => {
+  const { deletePosition } = useContext(BankrollContext);
   const date = dayjs(position.bet.match.date).locale('fr').format('DD MMM');
 
   const calculate_gains = () => {
@@ -24,6 +28,17 @@ export const Position = ({ position }) => {
         <Text>{date}</Text>
       </View>
       <View style={styles.infoContainer}>
+        <View style={{ alignItems: 'flex-end', paddingRight: 5 }}>
+          <TouchableOpacity
+            onPress={() => {
+              deletePosition({
+                position_id: position.id,
+                bankroll_id: position.bankroll,
+              });
+            }}>
+            <EvilIcons name='close' size={24} color='black' />
+          </TouchableOpacity>
+        </View>
         <View style={styles.matchInfo}>
           <Text style={styles.slug}>
             {position.bet.match.type} | {position.bet.match.slug}
@@ -62,7 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   matchInfo: {
-    paddingVertical: Spacing.regular,
+    paddingBottom: Spacing.regular,
   },
   positionInfo: {
     flexDirection: 'row',

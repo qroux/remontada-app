@@ -11,6 +11,13 @@ const BankrollReducer = (state, action) => {
       return { ...state, bankrolls: action.payload };
     case 'GET_BANKROLL_POSITIONS':
       return { ...state, positions: action.payload };
+    case 'DELETE_BANKROLL_POSITION':
+      return {
+        ...state,
+        positions: state.positions.filter(
+          (position) => position.id !== action.payload
+        ),
+      };
     case 'RESET_POSITIONS':
       return { ...state, positions: {} };
     case 'LOADING':
@@ -127,6 +134,21 @@ const postPosition = (dispatch) => async ({
   dispatch({ type: 'LOADED' });
 };
 
+const deletePosition = (dispatch) => async ({ position_id, bankroll_id }) => {
+  try {
+    // console.log('position_id =', position_id, 'bankroll_id =', bankroll_id);
+    await strapiApi.delete(`/positions/${position_id}`);
+    dispatch({ type: 'DELETE_BANKROLL_POSITION', payload: position_id });
+
+    // await strapiApi.put(`bankrolls/${bankroll_id}`, {
+    //   type: 'delete_position',
+    //   position_id,
+    // });
+  } catch (err) {
+    console.log(err.data);
+  }
+};
+
 const resetPositions = (dispatch) => async () => {
   dispatch({ type: 'RESET_POSITIONS' });
 };
@@ -144,6 +166,7 @@ export const { Context, Provider } = createDataContext(
     getCurrentBalance,
     getBankrollPositions,
     postPosition,
+    deletePosition,
     resetPositions,
   },
   {}
