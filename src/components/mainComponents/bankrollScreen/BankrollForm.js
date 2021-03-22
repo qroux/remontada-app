@@ -53,7 +53,7 @@ export const BankrollForm = ({ toggleOverlay }) => {
         onPress={async () => {
           await newBankroll({ name, starter });
           toggleOverlay();
-          getUserBankrolls();
+          // getUserBankrolls();
         }}
         loading={state.isLoading}
         disabled={name.length < 3}

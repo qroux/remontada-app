@@ -11,6 +11,11 @@ const BankrollReducer = (state, action) => {
       return { ...state, bankrolls: action.payload };
     case 'GET_BANKROLL_POSITIONS':
       return { ...state, positions: action.payload };
+    case 'ADD_BANKROLL_POSITION':
+      return {
+        ...state,
+        positions: [...state.positions, action.payload],
+      };
     case 'DELETE_BANKROLL_POSITION':
       return {
         ...state,
@@ -123,10 +128,12 @@ const postPosition = (dispatch) => async ({
       value,
     });
 
-    await strapiApi.put(`/bankrolls/${bankroll_id}`, {
-      type: 'add_position',
-      position_id: response.data.id,
-    });
+    // dispatch({ type: 'ADD_BANKROLL_POSITION', payload: response.data });
+
+    // await strapiApi.put(`/bankrolls/${bankroll_id}`, {
+    //   type: 'add_position',
+    //   position_id: response.data.id,
+    // });
   } catch (err) {
     console.log(err.response.data);
   }

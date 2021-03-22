@@ -20,6 +20,7 @@ export const PositionFormScreen = ({ route }) => {
   );
 
   const submitPosition = async () => {
+    // NAVIGATION purpose
     const bankroll_name = state.bankrolls.find(
       (bankroll) => bankroll.id === selectedBankroll
     ).name;
