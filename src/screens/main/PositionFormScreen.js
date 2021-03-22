@@ -20,7 +20,7 @@ export const PositionFormScreen = ({ route }) => {
   );
 
   const submitPosition = async () => {
-    // NAVIGATION purpose
+    // NAVIGATION + REDIRECTION purpose to display bankroll_name on bankrollDetailScreen
     const bankroll_name = state.bankrolls.find(
       (bankroll) => bankroll.id === selectedBankroll
     ).name;

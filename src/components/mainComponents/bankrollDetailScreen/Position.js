@@ -28,15 +28,15 @@ export const Position = ({ position }) => {
         <Text>{date}</Text>
       </View>
       <View style={styles.infoContainer}>
-        <View style={{ alignItems: 'flex-end', paddingRight: 5 }}>
+        <View style={{ alignItems: 'flex-end', paddingBottom: 5 }}>
           <TouchableOpacity
-            onPress={() => {
-              deletePosition({
+            onPress={async () => {
+              await deletePosition({
                 position_id: position.id,
                 bankroll_id: position.bankroll,
               });
             }}>
-            <EvilIcons name='close' size={24} color='black' />
+            <EvilIcons name='close' size={20} color='black' />
           </TouchableOpacity>
         </View>
         <View style={styles.matchInfo}>
