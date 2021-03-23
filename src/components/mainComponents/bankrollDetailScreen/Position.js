@@ -68,8 +68,8 @@ export const Position = ({ position }) => {
         <Button
           buttonStyle={{ backgroundColor: Colors.primary, width: 100 }}
           title='Supprimer'
-          onPress={async () => {
-            await deletePosition({
+          onPress={() => {
+            deletePosition({
               position_id: position.id,
               bankroll_id: position.bankroll,
             });

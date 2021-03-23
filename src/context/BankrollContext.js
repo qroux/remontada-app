@@ -143,10 +143,10 @@ const postPosition = (dispatch) => async ({
 
 const deletePosition = (dispatch) => async ({ position_id, bankroll_id }) => {
   dispatch({ type: 'LOADING' });
+  dispatch({ type: 'DELETE_BANKROLL_POSITION', payload: position_id });
+
   try {
-    // console.log('position_id =', position_id, 'bankroll_id =', bankroll_id);
     await strapiApi.delete(`/positions/${position_id}`);
-    dispatch({ type: 'DELETE_BANKROLL_POSITION', payload: position_id });
   } catch (err) {
     console.log(err.data);
   }
