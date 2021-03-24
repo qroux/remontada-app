@@ -1,16 +1,26 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useContext } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Overlay, Button } from 'react-native-elements';
 import { Common } from '../../../assets/common';
 import { Colors, Spacing, Size } from '../../../assets/main';
 import { FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
 
+import { Context as BankrollContext } from '../../../context/BankrollContext';
 import { BankrollCard } from './BankrollCard';
 import { useNavigation } from '@react-navigation/native';
 
 export const Bankroll = ({ item }) => {
+  const { deleteBankroll } = useContext(BankrollContext);
   const navigation = useNavigation();
   const { positions, current_balance, starter } = item;
+  const [visible, setVisible] = useState(false);
 
+  const toggleOverlay = () => {
+    setVisible(!visible);
+  };
+
+  // Computed Values
   const profits = Math.round(current_balance - starter);
   const progress = Math.round((profits / starter) * 100);
   const success = positions.filter((bankroll) => bankroll.status === 'Attente')
@@ -24,7 +34,11 @@ export const Bankroll = ({ item }) => {
           bankroll_id: item._id,
           bankroll_name: item.name,
         })
-      }>
+      }
+      onLongPress={() => {
+        console.log('long Pressed');
+        toggleOverlay();
+      }}>
       <View style={[Common.compContainer, Common.border, styles.width]}>
         <View style={styles.header}>
           <Text style={styles.title}>{item.name}</Text>
@@ -61,6 +75,26 @@ export const Bankroll = ({ item }) => {
           </View>
         </View>
       </View>
+      <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
+        <View style={Common.overlay.container}>
+          <Text style={Common.overlay.header}>Suppression de Bankroll</Text>
+          <Text style={Common.overlay.instructions}>
+            Êtes vous sûre de vouloir supprimer "{item.name}"?
+          </Text>
+          <Text style={{ fontWeight: 'bold' }}>
+            Cette action est définitive et ne pourra être annulée.
+          </Text>
+          <Button
+            title='Supprimer'
+            buttonStyle={styles.button}
+            containerStyle={styles.buttonContainer}
+            onPress={() => {
+              toggleOverlay();
+              deleteBankroll(item.id);
+            }}
+          />
+        </View>
+      </Overlay>
     </TouchableOpacity>
   );
 };
@@ -90,5 +124,13 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+  },
+  buttonContainer: {
+    marginTop: Spacing.medium,
+  },
+  button: {
+    backgroundColor: 'red',
+    width: Size.btnWidth,
+    alignSelf: 'center',
   },
 });

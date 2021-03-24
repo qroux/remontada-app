@@ -50,7 +50,7 @@ export const BankrollForm = ({ toggleOverlay }) => {
 
       <Button
         title='Créer'
-        buttonStyle={{ width: Size.btnWidth }}
+        buttonStyle={{ width: Size.btnWidth, alignSelf: 'center' }}
         onPress={async () => {
           await newBankroll({ name, starter });
           toggleOverlay();

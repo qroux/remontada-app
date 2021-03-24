@@ -24,14 +24,3 @@ export const BankrollList = ({ bankrolls }) => {
 };
 
 const styles = StyleSheet.create({});
-
-{
-  /* <FlatList
-data={bankrolls}
-keyExtractor={(bankroll) => bankroll.name}
-renderItem={({ item }) => {
-  return <Bankroll item={item} />;
-}}
-style={{ width: '100%' }}
-/> */
-}

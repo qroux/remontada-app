@@ -99,34 +99,6 @@ export const Position = ({ position }) => {
               <Gains value={calculate_gains()} />
             </View>
           </View>
-          {/* <View style={[styles.date]}>
-            <Text>{date}</Text>
-          </View>
-          <View style={styles.infoContainer}>
-            <View style={{ alignItems: 'flex-end', paddingBottom: 5 }}>
-              <TouchableOpacity
-                onPress={async () => {
-                  await deletePosition({
-                    position_id: position.id,
-                    bankroll_id: position.bankroll,
-                  });
-                }}>
-                <EvilIcons name='close' size={20} color='black' />
-              </TouchableOpacity>
-            </View>
-            <View style={styles.matchInfo}>
-              <Text style={styles.slug}>
-                {position.bet.match.type} | {position.bet.match.slug}
-              </Text>
-              <Text style={styles.type}>{position.bet.type}</Text>
-            </View>
-            <View style={styles.positionInfo}>
-              <Status value={position.bet.status} />
-              <Positionitem type='Cote' value={position.bet.odds} />
-              <Positionitem type='Mise' value={position.value} />
-              <Gains value={calculate_gains()} />
-            </View>
-          </View> */}
         </Animated.View>
       </PanGestureHandler>
     </Animated.View>

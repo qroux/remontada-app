@@ -74,18 +74,19 @@ export const Common = {
       paddingVertical: Spacing.regular,
       width: '90%',
       justifyContent: 'center',
-      alignItems: 'center',
+      paddingHorizontal: Spacing.regular,
     },
     header: {
       fontSize: Size.regular,
       marginBottom: Spacing.regular,
       fontWeight: 'bold',
+      textAlign: 'center',
     },
     instructions: {
       fontSize: Size.small,
       textAlign: 'left',
-      width: '100%',
-      paddingHorizontal: Spacing.small,
+      flexShrink: 1,
+      marginBottom: Spacing.regular,
     },
   },
   PositionForm: {
