@@ -8,6 +8,7 @@ import { Context as BankrollContext } from '../../context/BankrollContext';
 import { Info } from '../../components/mainComponents/positionFormScreen/Info';
 import { Form } from '../../components/mainComponents/positionFormScreen/Form';
 import { BankrollPicker } from '../../components/mainComponents/positionFormScreen/BankrollPicker';
+import { Size } from '../../assets/main';
 
 export const PositionFormScreen = ({ route }) => {
   const navigation = useNavigation();
@@ -52,7 +53,7 @@ export const PositionFormScreen = ({ route }) => {
       <Form value={value} setValue={setValue} odds={bet.odds} />
 
       <Button
-        containerStyle={{ marginTop: 20 }}
+        containerStyle={{ marginTop: 20, width: Size.btnWidth }}
         title='Ajouter à ma Bankroll'
         onPress={() => {
           submitPosition();

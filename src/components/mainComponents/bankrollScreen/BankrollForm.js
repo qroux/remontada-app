@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Text, View, TextInput } from 'react-native';
 import { Button, Slider, Icon } from 'react-native-elements';
-import { Colors } from '../../../assets/main';
+import { Colors, Size } from '../../../assets/main';
 import { Common } from '../../../assets/common';
 import { Spacing } from '../../../assets/main';
 import { Context as BankrollContext } from '../../../context/BankrollContext';
@@ -50,10 +50,11 @@ export const BankrollForm = ({ toggleOverlay }) => {
 
       <Button
         title='Créer'
+        buttonStyle={{ width: Size.btnWidth }}
         onPress={async () => {
           await newBankroll({ name, starter });
           toggleOverlay();
-          // getUserBankrolls();
+          getUserBankrolls();
         }}
         loading={state.isLoading}
         disabled={name.length < 3}

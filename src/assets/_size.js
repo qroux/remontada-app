@@ -4,4 +4,5 @@ export const Size = {
   medium: 30,
   large: 45,
   radius: 3,
+  btnWidth: 250,
 };

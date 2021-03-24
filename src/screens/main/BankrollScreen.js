@@ -21,7 +21,7 @@ import { BankrollForm } from '../../components/mainComponents/bankrollScreen/Ban
 
 export const BankrollScreen = () => {
   const {
-    state: { bankrolls },
+    state: { bankrolls, isLoading },
     getUserBankrolls,
   } = useContext(BankrollContext);
   const [visible, setVisible] = useState(false);
@@ -39,9 +39,18 @@ export const BankrollScreen = () => {
       <View style={Common.container}>
         <View style={styles.header}>
           <Text style={[Common.title, styles.title]}>Bankrolls</Text>
-          <TouchableOpacity style={styles.button} onPress={toggleOverlay}>
-            <Ionicons name='add-outline' size={35} color={Colors.textDark} />
-          </TouchableOpacity>
+          {isLoading ? (
+            <View style={styles.spinner}>
+              <ActivityIndicator
+                size='small'
+                color={PlatformColor(`@android:color/${Colors.spinner}`)}
+              />
+            </View>
+          ) : (
+            <TouchableOpacity style={styles.button} onPress={toggleOverlay}>
+              <Ionicons name='add-outline' size={35} color={Colors.textDark} />
+            </TouchableOpacity>
+          )}
         </View>
 
         {bankrolls ? (
@@ -72,6 +81,11 @@ const styles = StyleSheet.create({
   button: {
     position: 'absolute',
     top: 0,
+    right: 10,
+  },
+  spinner: {
+    position: 'absolute',
+    top: 10,
     right: 10,
   },
 });

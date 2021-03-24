@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Text, View, SafeAreaView, StyleSheet } from 'react-native';
 import { Overlay, Button } from 'react-native-elements';
 import { Common } from '../../assets/common';
-import { Spacing } from '../../assets/main';
+import { Size, Spacing } from '../../assets/main';
 
 import { Context as BankrollContext } from '../../context/BankrollContext';
 import { BankrollAdmin } from '../../components/mainComponents/bankrollDetailScreen/BankrollAdmin';
@@ -59,11 +59,10 @@ export const BankrollDetailScreen = ({ route }) => {
                 title='Supprimer'
                 buttonStyle={styles.button}
                 containerStyle={styles.buttonContainer}
-                onPress={async () => {
-                  await deleteBankroll(id);
-                  await getUserBankrolls();
+                onPress={() => {
                   toggleOverlay();
                   navigation.navigate('Bankroll');
+                  deleteBankroll(id);
                 }}
                 loading={state.isLoading}
               />
@@ -86,6 +85,6 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: 'red',
-    width: 250,
+    width: Size.btnWidth,
   },
 });

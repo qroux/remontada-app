@@ -9,6 +9,13 @@ const BankrollReducer = (state, action) => {
       return { ...state, bets: action.payload };
     case 'GET_USER_BANKROLLS':
       return { ...state, bankrolls: action.payload };
+    case 'DELETE_BANKROLL':
+      return {
+        ...state,
+        bankrolls: state.bankrolls.filter(
+          (bankroll) => bankroll.id !== action.payload
+        ),
+      };
     case 'GET_BANKROLL_POSITIONS':
       return { ...state, positions: action.payload };
     case 'ADD_BANKROLL_POSITION':
@@ -80,6 +87,7 @@ const newBankroll = (dispatch) => async ({ name, starter }) => {
 
 const deleteBankroll = (dispatch) => async (id) => {
   dispatch({ type: 'LOADING' });
+  dispatch({ type: 'DELETE_BANKROLL', payload: id });
   try {
     await strapiApi.delete(`/bankrolls/${id}`);
   } catch (err) {
@@ -89,7 +97,6 @@ const deleteBankroll = (dispatch) => async (id) => {
 };
 
 const getCurrentBalance = (dispatch) => async (id) => {
-  dispatch({ type: 'LOADING' });
   try {
     const response = await strapiApi.put(`/bankrolls/${id}`, {
       type: 'current_balance',
@@ -97,7 +104,6 @@ const getCurrentBalance = (dispatch) => async (id) => {
   } catch (err) {
     console.log(err);
   }
-  dispatch({ type: 'LOADED' });
 };
 
 // POSITIONS
@@ -129,11 +135,6 @@ const postPosition = (dispatch) => async ({
     });
 
     // dispatch({ type: 'ADD_BANKROLL_POSITION', payload: response.data });
-
-    // await strapiApi.put(`/bankrolls/${bankroll_id}`, {
-    //   type: 'add_position',
-    //   position_id: response.data.id,
-    // });
   } catch (err) {
     console.log(err.response.data);
   }

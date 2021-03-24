@@ -128,6 +128,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cta: {
-    width: 200,
+    width: Size.btnWidth,
   },
 });
