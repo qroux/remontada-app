@@ -70,15 +70,22 @@ export const Common = {
   },
   overlay: {
     container: {
-      marginVertical: Spacing.medium,
-      paddingVertical: Spacing.regular,
       width: '90%',
-      justifyContent: 'center',
-      paddingHorizontal: Spacing.regular,
+      alignItems: 'center',
+      backgroundColor: 'transparent',
+      padding: 0,
+      margin: 0,
+    },
+    content: {
+      backgroundColor: 'white',
+      width: '100%',
+      paddingHorizontal: Spacing.medium,
+      paddingVertical: Spacing.medium,
+      borderRadius: Size.radius,
     },
     header: {
       fontSize: Size.regular,
-      marginBottom: Spacing.regular,
+      marginVertical: Spacing.regular,
       fontWeight: 'bold',
       textAlign: 'center',
     },

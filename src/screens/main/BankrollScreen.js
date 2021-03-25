@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native';
 import React, { useContext, useEffect, useState } from 'react';
 import {
   SafeAreaView,
@@ -62,7 +61,10 @@ export const BankrollScreen = () => {
           />
         )}
       </View>
-      <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
+      <Overlay
+        isVisible={visible}
+        onBackdropPress={toggleOverlay}
+        overlayStyle={Common.overlay.container}>
         <BankrollForm toggleOverlay={toggleOverlay} />
       </Overlay>
     </SafeAreaView>

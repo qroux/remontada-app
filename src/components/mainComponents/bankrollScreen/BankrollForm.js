@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { Text, View, TextInput } from 'react-native';
+import React, { useContext, useState, useRef, useEffect } from 'react';
+import { Animated, Text, View, TextInput } from 'react-native';
 import { Button, Slider, Icon } from 'react-native-elements';
 import { Colors, Size } from '../../../assets/main';
 import { Common } from '../../../assets/common';
@@ -11,8 +11,30 @@ export const BankrollForm = ({ toggleOverlay }) => {
   const [starter, setStarter] = useState(0);
   const { state, newBankroll, getUserBankrolls } = useContext(BankrollContext);
 
+  // ANIMATIONS
+  const animOpacity = useRef(new Animated.Value(0)).current;
+  const animY = useRef(new Animated.Value(-25)).current;
+
+  useEffect(() => {
+    Animated.parallel([
+      Animated.spring(animY, {
+        toValue: 0,
+        useNativeDriver: true,
+      }),
+      Animated.timing(animOpacity, {
+        toValue: 1,
+        duration: 400,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  });
+
   return (
-    <View style={[Common.overlay.container]}>
+    <Animated.View
+      style={[
+        Common.overlay.content,
+        { opacity: animOpacity, transform: [{ translateY: animY }] },
+      ]}>
       <Text style={Common.overlay.header}>Nouvelle Bankroll</Text>
       <TextInput
         placeholder='ma bankroll (au moins 3 caractères)'
@@ -59,6 +81,6 @@ export const BankrollForm = ({ toggleOverlay }) => {
         loading={state.isLoading}
         disabled={name.length < 3}
       />
-    </View>
+    </Animated.View>
   );
 };
