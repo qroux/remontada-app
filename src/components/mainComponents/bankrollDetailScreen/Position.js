@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
 import dayjs from 'dayjs';
-import { Text, View, StyleSheet, Dimensions } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import Animated, { cond, useCode, eq, set, add } from 'react-native-reanimated';
 import {
-  max,
   min,
   snapPoint,
   timing,
@@ -12,17 +11,12 @@ import {
 } from 'react-native-redash/lib/module/v1';
 import { Common } from '../../../assets/common';
 import { Size, Spacing, Colors } from '../../../assets/main';
-import { EvilIcons } from '@expo/vector-icons';
 
 import { Context as BankrollContext } from '../../../context/BankrollContext';
 import { Positionitem } from './PositionItem';
 import { Gains } from './Gains';
 import { Status } from './Status';
-import {
-  PanGestureHandler,
-  State,
-  TouchableOpacity,
-} from 'react-native-gesture-handler';
+import { PanGestureHandler, State } from 'react-native-gesture-handler';
 import { Button } from 'react-native-elements';
 
 export const Position = ({ position }) => {
@@ -43,7 +37,6 @@ export const Position = ({ position }) => {
     state,
   } = usePanGestureHandler();
 
-  // const { width } = Dimensions.get('window');
   const snapPoints = [-110, 0];
   const translateX = useValue(0);
   const offsetX = useValue(0);
