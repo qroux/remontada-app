@@ -72,7 +72,7 @@ export const Common = {
     container: {
       width: '90%',
       alignItems: 'center',
-      backgroundColor: 'transparent',
+      backgroundColor: 'none',
       padding: 0,
       margin: 0,
     },

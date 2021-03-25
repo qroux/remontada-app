@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState, useContext, useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, Animated } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Overlay, Button } from 'react-native-elements';
 import { Common } from '../../../assets/common';
@@ -16,16 +16,45 @@ export const Bankroll = ({ item }) => {
   const { positions, current_balance, starter } = item;
   const [visible, setVisible] = useState(false);
 
-  const toggleOverlay = () => {
-    setVisible(!visible);
-  };
-
   // Computed Values
   const profits = Math.round(current_balance - starter);
   const progress = Math.round((profits / starter) * 100);
   const success = positions.filter((bankroll) => bankroll.status === 'Attente')
     .length;
   const success_rate = Math.round((success / positions.length) * 100);
+
+  // ANIMATIONS
+  const animOpacity = useRef(new Animated.Value(0)).current;
+  const animY = useRef(new Animated.Value(-25)).current;
+
+  const toggleOverlay = () => {
+    if (visible) {
+      Animated.parallel([
+        Animated.timing(animY, {
+          toValue: -25,
+          useNativeDriver: true,
+        }),
+        Animated.timing(animOpacity, {
+          toValue: 1,
+          useNativeDriver: true,
+        }),
+      ]).start();
+    } else {
+      Animated.parallel([
+        Animated.timing(animY, {
+          toValue: 0,
+          useNativeDriver: true,
+          duration: 400,
+        }),
+        Animated.timing(animOpacity, {
+          toValue: 1,
+          useNativeDriver: true,
+          duration: 400,
+        }),
+      ]).start();
+    }
+    setVisible(!visible);
+  };
 
   return (
     <TouchableOpacity
@@ -36,7 +65,6 @@ export const Bankroll = ({ item }) => {
         })
       }
       onLongPress={() => {
-        console.log('long Pressed');
         toggleOverlay();
       }}>
       <View style={[Common.compContainer, Common.border, styles.width]}>
@@ -75,8 +103,15 @@ export const Bankroll = ({ item }) => {
           </View>
         </View>
       </View>
-      <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
-        <View style={Common.overlay.container}>
+      <Overlay
+        isVisible={visible}
+        onBackdropPress={toggleOverlay}
+        overlayStyle={Common.overlay.container}>
+        <Animated.View
+          style={[
+            Common.overlay.content,
+            { opacity: animOpacity, transform: [{ translateY: animY }] },
+          ]}>
           <Text style={Common.overlay.header}>Suppression de Bankroll</Text>
           <Text style={Common.overlay.instructions}>
             Êtes vous sûre de vouloir supprimer "{item.name}"?
@@ -93,7 +128,7 @@ export const Bankroll = ({ item }) => {
               deleteBankroll(item.id);
             }}
           />
-        </View>
+        </Animated.View>
       </Overlay>
     </TouchableOpacity>
   );
