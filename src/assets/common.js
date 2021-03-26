@@ -85,7 +85,7 @@ export const Common = {
     },
     header: {
       fontSize: Size.regular,
-      marginVertical: Spacing.regular,
+      marginVertical: Spacing.medium,
       fontWeight: 'bold',
       textAlign: 'center',
     },
