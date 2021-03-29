@@ -1,15 +1,8 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react';
-import {
-  View,
-  StyleSheet,
-  FlatList,
-  RefreshControl,
-  ActivityIndicator,
-  PlatformColor,
-} from 'react-native';
-import { Colors } from '../../../assets/main';
+import { View, StyleSheet, FlatList, RefreshControl } from 'react-native';
 import { Context as BankrollContext } from '../../../context/BankrollContext';
 
+import { PageSpinner } from '../../shared/PageSpinner';
 import { ShowMatch } from './ShowMatch';
 
 export const MatchList = () => {
@@ -48,10 +41,7 @@ export const MatchList = () => {
       />
     </View>
   ) : (
-    <ActivityIndicator
-      size='large'
-      color={PlatformColor(`@android:color/${Colors.spinner}`)}
-    />
+    <PageSpinner />
   );
 };
 
