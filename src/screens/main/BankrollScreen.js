@@ -15,6 +15,7 @@ import { Colors } from '../../assets/main';
 
 import { Context as BankrollContext } from '../../context/BankrollContext';
 
+import { PageSpinner } from '../../components/shared/PageSpinner';
 import { BankrollList } from '../../components/mainComponents/bankrollScreen/BankrollList';
 import { BankrollForm } from '../../components/mainComponents/bankrollScreen/BankrollForm';
 
@@ -52,14 +53,7 @@ export const BankrollScreen = () => {
           )}
         </View>
 
-        {bankrolls ? (
-          <BankrollList bankrolls={bankrolls} />
-        ) : (
-          <ActivityIndicator
-            size='large'
-            color={PlatformColor(`@android:color/${Colors.spinner}`)}
-          />
-        )}
+        {bankrolls ? <BankrollList bankrolls={bankrolls} /> : <PageSpinner />}
       </View>
       <Overlay
         isVisible={visible}
