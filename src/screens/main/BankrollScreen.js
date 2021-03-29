@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import {
   SafeAreaView,
   View,
@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   PlatformColor,
   TouchableOpacity,
+  Animated,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Overlay } from 'react-native-elements';
@@ -17,8 +18,8 @@ import { Context as BankrollContext } from '../../context/BankrollContext';
 
 import { PageSpinner } from '../../components/shared/PageSpinner';
 import { BankrollList } from '../../components/mainComponents/bankrollScreen/BankrollList';
-import { BankrollForm } from '../../components/mainComponents/bankrollScreen/BankrollForm';
 import { AnimatedOverlay } from '../../components/shared/AnimatedOverlay';
+import { CreateOverlay } from '../../components/mainComponents/bankrollScreen/CreateOverlay';
 
 export const BankrollScreen = () => {
   const {
@@ -31,7 +32,36 @@ export const BankrollScreen = () => {
     getUserBankrolls();
   }, []);
 
+  // ANIMATIONS
+  const animOpacity = useRef(new Animated.Value(0)).current;
+  const animY = useRef(new Animated.Value(-25)).current;
+
   const toggleOverlay = () => {
+    if (visible) {
+      Animated.parallel([
+        Animated.timing(animY, {
+          toValue: -25,
+          useNativeDriver: true,
+        }),
+        Animated.timing(animOpacity, {
+          toValue: 1,
+          useNativeDriver: true,
+        }),
+      ]).start();
+    } else {
+      Animated.parallel([
+        Animated.timing(animY, {
+          toValue: 0,
+          useNativeDriver: true,
+          duration: 400,
+        }),
+        Animated.timing(animOpacity, {
+          toValue: 1,
+          useNativeDriver: true,
+          duration: 400,
+        }),
+      ]).start();
+    }
     setVisible(!visible);
   };
 
@@ -56,8 +86,15 @@ export const BankrollScreen = () => {
 
         {bankrolls ? <BankrollList bankrolls={bankrolls} /> : <PageSpinner />}
       </View>
+      {/* CREATEOVERLAY PART */}
       <AnimatedOverlay visible={visible} toggleOverlay={toggleOverlay}>
-        <BankrollForm toggleOverlay={toggleOverlay} />
+        <Animated.View
+          style={[
+            Common.overlay.content,
+            { opacity: animOpacity, transform: [{ translateY: animY }] },
+          ]}>
+          <CreateOverlay toggleOverlay={toggleOverlay} />
+        </Animated.View>
       </AnimatedOverlay>
     </SafeAreaView>
   );

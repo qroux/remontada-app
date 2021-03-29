@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { Animated } from 'react-native';
 import { Overlay } from 'react-native-elements';
 import { Common } from '../../assets/common';
 

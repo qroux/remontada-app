@@ -9,6 +9,8 @@ import { FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { Context as BankrollContext } from '../../../context/BankrollContext';
 import { BankrollCard } from './BankrollCard';
 import { useNavigation } from '@react-navigation/native';
+import { AnimatedOverlay } from '../../shared/AnimatedOverlay';
+import { DeleteOverlay } from './DeleteOverlay';
 
 export const Bankroll = ({ item }) => {
   const { deleteBankroll } = useContext(BankrollContext);
@@ -103,33 +105,15 @@ export const Bankroll = ({ item }) => {
           </View>
         </View>
       </View>
-      <Overlay
-        isVisible={visible}
-        onBackdropPress={toggleOverlay}
-        overlayStyle={Common.overlay.container}>
+      <AnimatedOverlay visible={visible} toggleOverlay={toggleOverlay}>
         <Animated.View
           style={[
             Common.overlay.content,
             { opacity: animOpacity, transform: [{ translateY: animY }] },
           ]}>
-          <Text style={Common.overlay.header}>Suppression de Bankroll</Text>
-          <Text style={Common.overlay.instructions}>
-            Êtes vous sûre de vouloir supprimer "{item.name}"?
-          </Text>
-          <Text style={{ fontWeight: 'bold' }}>
-            Cette action est définitive et ne pourra être annulée.
-          </Text>
-          <Button
-            title='Supprimer'
-            buttonStyle={styles.button}
-            containerStyle={styles.buttonContainer}
-            onPress={() => {
-              toggleOverlay();
-              deleteBankroll(item.id);
-            }}
-          />
+          <DeleteOverlay item={item} toggleOverlay={toggleOverlay} />
         </Animated.View>
-      </Overlay>
+      </AnimatedOverlay>
     </TouchableOpacity>
   );
 };

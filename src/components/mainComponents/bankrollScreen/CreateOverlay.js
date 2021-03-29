@@ -6,35 +6,31 @@ import { Common } from '../../../assets/common';
 import { Spacing } from '../../../assets/main';
 import { Context as BankrollContext } from '../../../context/BankrollContext';
 
-export const BankrollForm = ({ toggleOverlay }) => {
+export const CreateOverlay = ({ toggleOverlay }) => {
   const [name, setName] = useState('');
   const [starter, setStarter] = useState(0);
   const { state, newBankroll, getUserBankrolls } = useContext(BankrollContext);
 
-  // ANIMATIONS
-  const animOpacity = useRef(new Animated.Value(0)).current;
-  const animY = useRef(new Animated.Value(-25)).current;
+  // // ANIMATIONS
+  // const animOpacity = useRef(new Animated.Value(0)).current;
+  // const animY = useRef(new Animated.Value(-25)).current;
 
-  useEffect(() => {
-    Animated.parallel([
-      Animated.spring(animY, {
-        toValue: 0,
-        useNativeDriver: true,
-      }),
-      Animated.timing(animOpacity, {
-        toValue: 1,
-        duration: 400,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  });
+  // useEffect(() => {
+  //   Animated.parallel([
+  //     Animated.spring(animY, {
+  //       toValue: 0,
+  //       useNativeDriver: true,
+  //     }),
+  //     Animated.timing(animOpacity, {
+  //       toValue: 1,
+  //       duration: 400,
+  //       useNativeDriver: true,
+  //     }),
+  //   ]).start();
+  // });
 
   return (
-    <Animated.View
-      style={[
-        Common.overlay.content,
-        { opacity: animOpacity, transform: [{ translateY: animY }] },
-      ]}>
+    <View>
       <Text style={Common.overlay.header}>Nouvelle Bankroll</Text>
       <TextInput
         placeholder='ma bankroll (au moins 3 caractères)'
@@ -81,6 +77,6 @@ export const BankrollForm = ({ toggleOverlay }) => {
         loading={state.isLoading}
         disabled={name.length < 3}
       />
-    </Animated.View>
+    </View>
   );
 };
