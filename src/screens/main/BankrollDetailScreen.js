@@ -12,6 +12,7 @@ export const BankrollDetailScreen = ({ route }) => {
     state,
     getBankrollPositions,
     resetPositions,
+    getUserBankrolls,
     getCurrentBalance,
   } = useContext(BankrollContext);
   const id = route.params.bankroll_id;
@@ -24,6 +25,7 @@ export const BankrollDetailScreen = ({ route }) => {
     getCurrentBalance(id);
 
     return function cleanup() {
+      getUserBankrolls();
       resetPositions();
     };
   }, []);
