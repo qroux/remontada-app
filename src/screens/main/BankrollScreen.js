@@ -18,6 +18,7 @@ import { Context as BankrollContext } from '../../context/BankrollContext';
 import { PageSpinner } from '../../components/shared/PageSpinner';
 import { BankrollList } from '../../components/mainComponents/bankrollScreen/BankrollList';
 import { BankrollForm } from '../../components/mainComponents/bankrollScreen/BankrollForm';
+import { AnimatedOverlay } from '../../components/shared/AnimatedOverlay';
 
 export const BankrollScreen = () => {
   const {
@@ -55,12 +56,9 @@ export const BankrollScreen = () => {
 
         {bankrolls ? <BankrollList bankrolls={bankrolls} /> : <PageSpinner />}
       </View>
-      <Overlay
-        isVisible={visible}
-        onBackdropPress={toggleOverlay}
-        overlayStyle={Common.overlay.container}>
+      <AnimatedOverlay visible={visible} toggleOverlay={toggleOverlay}>
         <BankrollForm toggleOverlay={toggleOverlay} />
-      </Overlay>
+      </AnimatedOverlay>
     </SafeAreaView>
   );
 };
