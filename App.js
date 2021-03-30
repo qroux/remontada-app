@@ -118,6 +118,9 @@ const MainStackScreen = () => {
         name='BankrollDetail'
         component={BankrollDetailScreen}
         options={{
+          gestureEnabled: true,
+          gestureDirection: 'horizontal',
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           title: ' ',
           headerLeft: () => (
             <HeaderBackButton
