@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import 'dayjs/locale/fr';
 import dayjs from 'dayjs';
 import SvgUri from 'expo-svg-uri';
 import { View, Text, StyleSheet } from 'react-native';
@@ -47,13 +48,12 @@ export const ShowMatch = ({ bet, match }) => {
         <View style={styles.betContainer}>
           <BetItem type='Bookmaker' value={bet.bookmaker} />
           <BetItem type='Cote' value={bet.odds} />
-          <BetItem type='Mise' value='VOID' />
           <BetItem type='Statut' value={bet.status} />
         </View>
       </View>
 
       <Button
-        title='Ajouter à ma bankRoll'
+        title='Ajouter à une bankroll'
         buttonStyle={styles.cta}
         containerStyle={styles.ctaContainer}
         onPress={() => navigation.navigate('PositionForm', { bet, match })}
@@ -102,14 +102,11 @@ const styles = StyleSheet.create({
     // fontWeight: "bold",
   },
   main: {
-    marginVertical: 20,
+    marginVertical: 0,
   },
   betTypeContainer: {
     alignItems: 'center',
     backgroundColor: Colors.primary,
-
-    // borderColor: Colors.headerColor,
-    // borderWidth: 3,
   },
   betType: {
     color: Colors.textLight,
@@ -121,11 +118,11 @@ const styles = StyleSheet.create({
   betContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginBottom: Spacing.regular,
     backgroundColor: Colors.secondaryLight,
   },
   ctaContainer: {
     alignItems: 'center',
+    marginTop: Spacing.regular,
   },
   cta: {
     width: Size.btnWidth,
