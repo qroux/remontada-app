@@ -28,8 +28,6 @@ export const Bankroll = ({ item }) => {
     .length;
   const winRate = Math.round((win / finished) * 100);
 
-  console.log('WINRATE,', profits, progress);
-
   // ANIMATIONS
   const animOpacity = useRef(new Animated.Value(0)).current;
   const animY = useRef(new Animated.Value(-25)).current;
