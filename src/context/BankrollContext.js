@@ -131,6 +131,7 @@ const postPosition = (dispatch) => async ({
       users_permissions_user: user_id,
       bet: bet_id,
       bankroll: bankroll_id,
+      status: 'pending',
       value,
     });
 

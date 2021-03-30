@@ -21,9 +21,10 @@ export const Bankroll = ({ item }) => {
   // Computed Values
   const profits = Math.round(current_balance - starter);
   const progress = Math.round((profits / starter) * 100);
-  const success = positions.filter((bankroll) => bankroll.status === 'Attente')
+  const finished = positions.filter((position) => position.status !== 'pending')
     .length;
-  const success_rate = Math.round((success / positions.length) * 100);
+  const win = positions.filter((position) => position.status === 'win').length;
+  const winRate = Math.round((win / finished) * 100);
 
   // ANIMATIONS
   const animOpacity = useRef(new Animated.Value(0)).current;
@@ -87,7 +88,7 @@ export const Bankroll = ({ item }) => {
             <BankrollCard
               title='Réussite'
               icon={<FontAwesome name='trophy' size={18} color={'black'} />}
-              value={success_rate ? success_rate : '100'}
+              value={winRate ? winRate : '100'}
               unit='%'
             />
             <BankrollCard

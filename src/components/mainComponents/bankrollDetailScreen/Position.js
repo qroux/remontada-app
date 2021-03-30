@@ -24,9 +24,9 @@ export const Position = ({ position }) => {
   const date = dayjs(position.bet.match.date).locale('fr').format('DD MMM');
 
   const calculate_gains = () => {
-    if (position.bet.status === 'Succes')
+    if (position.bet.status === 'win')
       return Math.round(position.bet.odds * position.value);
-    if (position.bet.status === 'Echec') return Math.round(position.value * -1);
+    if (position.bet.status === 'lose') return Math.round(position.value * -1);
     return ' - ';
   };
 

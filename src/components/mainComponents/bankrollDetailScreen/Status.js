@@ -4,9 +4,9 @@ import { Feather, Ionicons } from '@expo/vector-icons';
 
 export const Status = ({ value }) => {
   const renderIcon = () => {
-    if (value === 'Succes')
+    if (value === 'win')
       return <Feather name='check-circle' size={24} color='green' />;
-    if (value === 'Echec')
+    if (value === 'lose')
       return <Feather name='x-circle' size={24} color='red' />;
 
     return <Ionicons name='timer-outline' size={24} color='black' />;
