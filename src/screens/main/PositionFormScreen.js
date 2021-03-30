@@ -54,7 +54,10 @@ export const PositionFormScreen = ({ route }) => {
 
       <Button
         containerStyle={{ marginTop: 20, width: Size.btnWidth }}
-        title='Ajouter à ma Bankroll'
+        title={`Ajouter à "${
+          state.bankrolls.find((bankroll) => bankroll.id === selectedBankroll)
+            .name
+        }"`}
         onPress={() => {
           submitPosition();
         }}
