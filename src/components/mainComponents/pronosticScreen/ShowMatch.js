@@ -13,6 +13,12 @@ import { BetItem } from './BetItem';
 export const ShowMatch = ({ bet, match }) => {
   const navigation = useNavigation();
   const date = dayjs(match.date).locale('fr').format('ddd DD MMM H:mm');
+  const translate = {
+    pending: 'en attente',
+    win: 'validé',
+    lose: 'perdu',
+    reported: 'reporté',
+  };
 
   return (
     <View style={[Common.compContainer, styles.container]}>
@@ -48,7 +54,7 @@ export const ShowMatch = ({ bet, match }) => {
         <View style={styles.betContainer}>
           <BetItem type='Bookmaker' value={bet.bookmaker} />
           <BetItem type='Cote' value={bet.odds} />
-          <BetItem type='Statut' value={bet.status} />
+          <BetItem type='Statut' value={translate[bet.status]} />
         </View>
       </View>
 
