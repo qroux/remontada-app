@@ -69,23 +69,30 @@ export const ShowMatch = ({ bet, match }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { backgroundColor: '#ffffff' },
+  container: {
+    borderWidth: 1,
+    borderColor: Colors.borderLight,
+    backgroundColor: 'white',
+  },
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: Spacing.regular,
     borderRadius: Size.radius,
+    backgroundColor: 'white',
   },
   league: {
     fontSize: Size.small,
     fontWeight: 'bold',
     textAlign: 'center',
     color: Colors.textDark,
+    backgroundColor: 'white',
   },
   date: {
     color: Colors.textDark,
     fontSize: Size.small,
     fontWeight: 'bold',
+    backgroundColor: 'white',
   },
   teams: {
     flexDirection: 'row',
@@ -95,8 +102,7 @@ const styles = StyleSheet.create({
   team: {
     flex: 1,
     alignItems: 'center',
-    // borderColor: "black",
-    // borderWidth: 1,
+    backgroundColor: 'white',
   },
   teamLogo: {
     width: 50,
@@ -105,7 +111,6 @@ const styles = StyleSheet.create({
   teamName: {
     marginTop: Spacing.small,
     fontSize: 13,
-    // fontWeight: "bold",
   },
   main: {
     marginVertical: 0,
