@@ -8,13 +8,9 @@ import { PositionList } from '../../components/mainComponents/bankrollDetailScre
 
 export const BankrollDetailScreen = ({ route }) => {
   const navigation = useNavigation();
-  const {
-    state,
-    getBankrollPositions,
-    resetPositions,
-    getUserBankrolls,
-    getCurrentBalance,
-  } = useContext(BankrollContext);
+  const { state, getBankrollPositions, resetPositions } = useContext(
+    BankrollContext
+  );
   const id = route.params.bankroll_id;
 
   useEffect(() => {
@@ -22,10 +18,8 @@ export const BankrollDetailScreen = ({ route }) => {
       title: route.params.bankroll_name,
     });
     getBankrollPositions(id);
-    getCurrentBalance(id);
 
     return function cleanup() {
-      getUserBankrolls();
       resetPositions();
     };
   }, []);

@@ -134,7 +134,7 @@ const MainStackScreen = () => {
         name='PositionForm'
         component={PositionFormScreen}
         options={{
-          gestureEnabled: true,
+          gestureEnabled: false,
           gestureDirection: 'horizontal',
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           title: 'Enregistrement du pari',

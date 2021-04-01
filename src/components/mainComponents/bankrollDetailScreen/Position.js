@@ -16,11 +16,14 @@ import { Context as BankrollContext } from '../../../context/BankrollContext';
 import { Positionitem } from './PositionItem';
 import { Gains } from './Gains';
 import { Status } from './Status';
-import { PanGestureHandler, State } from 'react-native-gesture-handler';
-import { Button } from 'react-native-elements';
+import {
+  PanGestureHandler,
+  State,
+  TouchableOpacity,
+} from 'react-native-gesture-handler';
 
 export const Position = ({ position }) => {
-  const { state: appState, deletePosition } = useContext(BankrollContext);
+  const { deletePosition } = useContext(BankrollContext);
   const date = dayjs(position.bet.match.date).locale('fr').format('DD MMM');
 
   const calculate_gains = () => {
@@ -58,17 +61,18 @@ export const Position = ({ position }) => {
   return (
     <Animated.View style={Common.borderBottom}>
       <View style={styles.backgroundRow}>
-        <Button
-          buttonStyle={{ backgroundColor: Colors.primary, width: 100 }}
+        <TouchableOpacity
           title='Supprimer'
           onPress={() => {
             deletePosition({
               position_id: position.id,
               bankroll_id: position.bankroll,
             });
-          }}
-          loading={appState.isLoading}
-        />
+          }}>
+          <View style={styles.buttonCOntainer}>
+            <Text style={styles.buttonTitle}>Supprimer</Text>
+          </View>
+        </TouchableOpacity>
       </View>
       <PanGestureHandler
         failOffsetY={[-5, 5]}
@@ -148,5 +152,14 @@ const styles = StyleSheet.create({
   },
   slug: {
     fontWeight: 'bold',
+  },
+  buttonCOntainer: {
+    backgroundColor: Colors.primary,
+    width: 100,
+  },
+  buttonTitle: {
+    color: Colors.textLight,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
