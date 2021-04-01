@@ -11,12 +11,13 @@ import { BankrollCard } from './BankrollCard';
 import { useNavigation } from '@react-navigation/native';
 import { AnimatedOverlay } from '../../shared/AnimatedOverlay';
 import { DeleteOverlay } from './DeleteOverlay';
+import { currentBalance } from '../../helpers/currentBalance';
 
 export const Bankroll = ({ item }) => {
-  const { deleteBankroll } = useContext(BankrollContext);
   const navigation = useNavigation();
   const { positions, current_balance, starter } = item;
   const [visible, setVisible] = useState(false);
+  const balance = currentBalance(item.starter, item.positions);
 
   // Computed Values
   const profits = Math.round(current_balance - starter);
@@ -75,7 +76,7 @@ export const Bankroll = ({ item }) => {
       <View style={[Common.compContainer, Common.border, styles.width]}>
         <View style={styles.header}>
           <Text style={styles.title}>{item.name}</Text>
-          <Text style={styles.title}>{item.current_balance}€</Text>
+          <Text style={styles.title}>{balance}€</Text>
         </View>
         <View style={styles.infoContainer}>
           <View style={styles.rowContainer}>
