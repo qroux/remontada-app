@@ -97,7 +97,7 @@ export const Bankroll = ({ item }) => {
             <BankrollCard
               title='Bénéfice'
               icon={<MaterialIcons name='euro' size={18} color={'black'} />}
-              value={profits}
+              value={balance - item.starter}
               unit='€'
             />
             <BankrollCard
