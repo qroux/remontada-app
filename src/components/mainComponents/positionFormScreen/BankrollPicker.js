@@ -14,6 +14,7 @@ export const BankrollPicker = ({
     return bankrolls.map((bankroll) => {
       return (
         <Picker.Item
+          style={styles.item}
           label={bankroll.name}
           value={bankroll.id}
           key={bankroll.name}
@@ -32,11 +33,8 @@ export const BankrollPicker = ({
         </View>
         <View style={styles.content}>
           <Picker
-            itemStyle={styles.item}
             selectedValue={selectedBankroll}
-            onValueChange={(selection, selectionIndex) =>
-              setSelectedBankroll(selection)
-            }>
+            onValueChange={(selection) => setSelectedBankroll(selection)}>
             {renderItems()}
           </Picker>
         </View>
@@ -50,9 +48,9 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   item: {
-    // color: 'black',
-    // fontWeight: 'bold',
-    // fontSize: Size.medium,
+    backgroundColor: 'red',
+    color: 'red',
+    fontWeight: 'bold',
   },
   rowContainer: {
     flexDirection: 'row',

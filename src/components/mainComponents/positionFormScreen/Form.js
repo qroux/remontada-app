@@ -16,8 +16,8 @@ export const Form = ({ value, setValue, odds }) => {
         maximumValue={100}
         step={1}
         thumbStyle={{
-          height: 20,
-          width: 20,
+          height: 30,
+          width: 30,
           backgroundColor: Colors.primary,
         }}
         thumbProps={{
@@ -27,8 +27,8 @@ export const Form = ({ value, setValue, odds }) => {
               type='font-awesome'
               size={15}
               reverse
-              containerStyle={{ bottom: 15, right: 15 }}
-              color={Colors.primary}
+              containerStyle={{ bottom: 8, right: 10 }}
+              color={'transparent'}
             />
           ),
         }}
