@@ -1,16 +1,19 @@
 import React from 'react';
-import { StyleSheet, FlatList } from 'react-native';
+import { StyleSheet, FlatList, RefreshControl } from 'react-native';
 
 import { Bankroll } from './Bankroll';
 import { BankrollEmpty } from './BankrollEmpty';
 
-export const BankrollList = ({ bankrolls }) => {
+export const BankrollList = ({ bankrolls, refreshing, onRefresh }) => {
   return (
     <>
       {bankrolls.length > 0 ? (
         <FlatList
           data={bankrolls}
           keyExtractor={(bankroll) => bankroll.name}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
           renderItem={({ item }) => {
             return <Bankroll item={item} />;
           }}

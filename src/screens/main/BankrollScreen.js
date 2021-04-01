@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+} from 'react';
 import {
   SafeAreaView,
   View,
@@ -26,6 +32,22 @@ export const BankrollScreen = () => {
     state: { bankrolls, isLoading },
     getUserBankrolls,
   } = useContext(BankrollContext);
+  const [refreshing, setRefreshing] = useState(false);
+
+  // REFRESH LOGIC
+  const wait = (timeout) => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, timeout);
+    });
+  };
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    getUserBankrolls();
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
+
+  //OVERLAY
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -84,7 +106,15 @@ export const BankrollScreen = () => {
           )}
         </View>
 
-        {bankrolls ? <BankrollList bankrolls={bankrolls} /> : <PageSpinner />}
+        {bankrolls ? (
+          <BankrollList
+            bankrolls={bankrolls}
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
+        ) : (
+          <PageSpinner />
+        )}
       </View>
       {/* CREATEOVERLAY PART */}
       <AnimatedOverlay visible={visible} toggleOverlay={toggleOverlay}>
