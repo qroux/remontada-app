@@ -35,7 +35,13 @@ export const MatchList = () => {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
         renderItem={({ item }) => {
-          return <ShowMatch bet={item} match={item.match} />;
+          return (
+            <ShowMatch
+              bet={item}
+              match={item.match}
+              hasBankrolls={state.bankrolls}
+            />
+          );
         }}
         showsVerticalScrollIndicator={false}
       />

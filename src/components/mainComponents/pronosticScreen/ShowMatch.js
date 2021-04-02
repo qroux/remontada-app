@@ -10,7 +10,7 @@ import { Common } from '../../../assets/common';
 
 import { BetItem } from './BetItem';
 
-export const ShowMatch = ({ bet, match }) => {
+export const ShowMatch = ({ bet, match, hasBankrolls }) => {
   const navigation = useNavigation();
   const date = dayjs(match.date).locale('fr').format('ddd DD MMM H:mm');
   const translate = {
@@ -62,7 +62,13 @@ export const ShowMatch = ({ bet, match }) => {
         title='Ajouter à une bankroll'
         buttonStyle={styles.cta}
         containerStyle={styles.ctaContainer}
-        onPress={() => navigation.navigate('PositionForm', { bet, match })}
+        onPress={() => {
+          if (hasBankrolls.length > 0) {
+            navigation.navigate('PositionForm', { bet, match });
+          } else {
+            navigation.navigate('Bankroll');
+          }
+        }}
       />
     </View>
   );

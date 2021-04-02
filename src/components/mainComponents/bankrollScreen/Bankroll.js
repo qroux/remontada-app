@@ -1,12 +1,11 @@
-import React, { useState, useContext, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Overlay, Button } from 'react-native-elements';
+
 import { Common } from '../../../assets/common';
 import { Colors, Spacing, Size } from '../../../assets/main';
 import { FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
 
-import { Context as BankrollContext } from '../../../context/BankrollContext';
 import { BankrollCard } from './BankrollCard';
 import { useNavigation } from '@react-navigation/native';
 import { AnimatedOverlay } from '../../shared/AnimatedOverlay';
@@ -97,7 +96,7 @@ export const Bankroll = ({ item }) => {
             <BankrollCard
               title='Bénéfice'
               icon={<MaterialIcons name='euro' size={18} color={'black'} />}
-              value={balance - item.starter}
+              value={Math.round(balance - item.starter)}
               unit='€'
             />
             <BankrollCard
