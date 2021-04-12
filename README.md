@@ -6,7 +6,7 @@
 
 | | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
-|<img align="left" src="assets/auth-1.jpg" width="220" height="400">|<img align="left" src="assets/4.jpg" width="220" height="400"> | <img align="left" src="assets/3.jpg" width="220" height="400">| <img align="left" src="assets/5.jpg" width="220" height="400">|
+|<img align="left" src="assets/auth-1.jpg" width="220" height="360">|<img align="left" src="assets/4.jpg" width="220" height="360"> | <img align="left" src="assets/3.jpg" width="220" height="360">| <img align="left" src="assets/5.jpg" width="220" height="360">|
 
 
 
