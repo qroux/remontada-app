@@ -6,7 +6,7 @@
 
 | | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
-|<img align="left" src="assets/auth-1.jpg" width="220" height="400">|<img align="left" src="assets/4.jpg" width="220" height="400"> | <img align="left" src="assets/3.jpg" width="220" height="400">| <img align="left" src="assets/5.jpg" width="220" height="400">|
+|<img align="left" src="assets/auth-1.jpg" width="220" height="360">|<img align="left" src="assets/4.jpg" width="220" height="360"> | <img align="left" src="assets/3.jpg" width="220" height="360">| <img align="left" src="assets/5.jpg" width="220" height="360">|
 
 
 
@@ -33,6 +33,6 @@
 
 | | | | | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
-|<img align="left" src="assets/auth-1.jpg" width="110" height="200">|<img align="left" src="assets/auth-2.jpg" width="110" height="200"> | <img align="left" src="assets/auth-3.jpg" width="110" height="200">|<img align="left" src="assets/1.jpg" width="110" height="200">|<img align="left" src="assets/2.jpg" width="110" height="200">|<img align="left" src="assets/3.jpg" width="110" height="200"> | <img align="left" src="assets/4.jpg" width="110" height="200"> |
-|<img align="left" src="assets/5.jpg" width="110" height="200"> | <img align="left" src="assets/6.jpg" width="110" height="200">|<img align="left" src="assets/7.jpg" width="110" height="200">| <img align="left" src="assets/8.jpg" width="110" height="200"> | <img align="left" src="assets/9.jpg" width="110" height="200">| <img align="left" src="assets/10.jpg" width="110" height="200">|
+|<img align="left" src="assets/auth-1.jpg" width="110" height="180">|<img align="left" src="assets/auth-2.jpg" width="110" height="180"> | <img align="left" src="assets/auth-3.jpg" width="110" height="180">|<img align="left" src="assets/1.jpg" width="110" height="180">|<img align="left" src="assets/2.jpg" width="110" height="180">|<img align="left" src="assets/3.jpg" width="110" height="180"> | <img align="left" src="assets/4.jpg" width="110" height="180"> |
+|<img align="left" src="assets/5.jpg" width="110" height="180"> | <img align="left" src="assets/6.jpg" width="110" height="180">|<img align="left" src="assets/7.jpg" width="110" height="180">| <img align="left" src="assets/8.jpg" width="110" height="180"> | <img align="left" src="assets/9.jpg" width="110" height="180">| <img align="left" src="assets/10.jpg" width="110" height="180">|
 
