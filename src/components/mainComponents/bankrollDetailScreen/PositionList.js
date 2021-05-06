@@ -20,7 +20,7 @@ export const PositionList = ({ positions }) => {
 
 const styles = StyleSheet.create({
   listContainer: {
-    height: 500,
+    height: '100%',
   },
   header: {
     fontWeight: 'bold',
