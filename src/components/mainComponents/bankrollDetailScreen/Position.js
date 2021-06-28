@@ -82,7 +82,7 @@ export const Position = ({ position }) => {
           <View style={[styles.date]}>
             <Text>{date}</Text>
           </View>
-          <View>
+          <View style={{ flex: 0.98 }}>
             <View style={styles.matchInfo}>
               <Text style={styles.slug}>
                 {position.bet.match.type} | {position.bet.match.slug}
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: Size.radius,
     justifyContent: 'space-between',
-    minWidth: 200,
+    width: '100%',
   },
   slug: {
     fontWeight: 'bold',

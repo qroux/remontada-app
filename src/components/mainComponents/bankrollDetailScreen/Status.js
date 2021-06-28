@@ -5,11 +5,11 @@ import { Feather, Ionicons } from '@expo/vector-icons';
 export const Status = ({ value }) => {
   const renderIcon = () => {
     if (value === 'win')
-      return <Feather name='check-circle' size={24} color='green' />;
+      return <Feather name='check-circle' size={18} color='green' />;
     if (value === 'lose')
-      return <Feather name='x-circle' size={24} color='red' />;
+      return <Feather name='x-circle' size={18} color='red' />;
 
-    return <Ionicons name='timer-outline' size={24} color='black' />;
+    return <Ionicons name='timer-outline' size={18} color='black' />;
   };
 
   return (
