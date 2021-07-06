@@ -46,9 +46,8 @@ const BankrollReducer = (state, action) => {
 // ACTIONS
 const getBets = (dispatch) => async () => {
   try {
-    const response = await strapiApi.get('/bets');
-    // reverse() since api response sorting doesn't work properly;
-    dispatch({ type: 'GET_BETS', payload: response.data.reverse() });
+    const response = await strapiApi.get('/bets?_sort=createdAt:DESC');
+    dispatch({ type: 'GET_BETS', payload: response.data });
   } catch (err) {
     dispatch({ type: 'ADD_ERROR', payload: err });
   }
@@ -111,7 +110,9 @@ const getCurrentBalance = (dispatch) => async (id) => {
 const getBankrollPositions = (dispatch) => async (id) => {
   dispatch({ type: 'LOADING' });
   try {
-    const response = await strapiApi.get(`/positions?bankroll=${id}`);
+    const response = await strapiApi.get(
+      `/positions?bankroll=${id}&_sort=createdAt:DESC`
+    );
     dispatch({ type: 'GET_BANKROLL_POSITIONS', payload: response.data });
   } catch (err) {
     console.log(err.response.data);
