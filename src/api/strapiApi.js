@@ -1,13 +1,13 @@
-import axios from "axios";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const instance = axios.create({
-  baseURL: "https://remontada-api.herokuapp.com",
+  baseURL: 'https://remontada-api.herokuapp.com',
 });
 
 instance.interceptors.request.use(
   async (config) => {
-    const token = await AsyncStorage.getItem("remontada_token");
+    const token = await AsyncStorage.getItem('remontada_token');
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;

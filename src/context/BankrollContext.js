@@ -47,7 +47,8 @@ const BankrollReducer = (state, action) => {
 const getBets = (dispatch) => async () => {
   try {
     const response = await strapiApi.get('/bets');
-    dispatch({ type: 'GET_BETS', payload: response.data });
+    // reverse() since api response sorting doesn't work properly;
+    dispatch({ type: 'GET_BETS', payload: response.data.reverse() });
   } catch (err) {
     dispatch({ type: 'ADD_ERROR', payload: err });
   }
