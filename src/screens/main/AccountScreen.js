@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, Image } from 'react-native';
 import dayjs from 'dayjs';
 import { Button } from 'react-native-elements';
+import LottieView from 'lottie-react-native';
 import { Common } from '../../assets/common';
 import { Spacing } from '../../assets/main';
 import { Context as AuthContext } from '../../context/AuthContext';
@@ -42,10 +43,17 @@ export const AccountScreen = () => {
           </View>
 
           <View>
-            <Image
+            <LottieView
+              source={require('../../../assets/bye.json')}
+              autoPlay
+              loop
+              speed={0.3}
+              style={{ alignSelf: 'center', height: 150 }}
+            />
+            {/* <Image
               source={require('../../../assets/bye.gif')}
               style={{ alignSelf: 'center', height: 200, width: 200 }}
-            />
+            /> */}
             <Button title='Déconnexion' onPress={signout} />
           </View>
         </View>
