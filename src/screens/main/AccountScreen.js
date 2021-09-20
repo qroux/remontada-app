@@ -48,7 +48,7 @@ export const AccountScreen = () => {
               autoPlay
               loop
               speed={0.3}
-              style={{ alignSelf: 'center', height: 150 }}
+              style={{ alignSelf: 'center', height: 200 }}
             />
             {/* <Image
               source={require('../../../assets/bye.gif')}
