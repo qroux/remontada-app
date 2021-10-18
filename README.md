@@ -4,10 +4,9 @@
 
 <h3>MVC d'application mobile de gestion de Bankroll et d'amélioration des gains à long terme.</h3>
 
-|                                                                      |                                                                 |
-| :------------------------------------------------------------------: | :-------------------------------------------------------------: |
-| <img align="left" src="assets/auth-1.jpg" width="auto" height="360"> | <img align="left" src="assets/4.jpg" width="auto" height="360"> |
-|   <img align="left" src="assets/3.jpg" width="auto" height="360">    | <img align="left" src="assets/5.jpg" width="auto" height="360"> |
+
+
+<img align="right" src="assets/demo.gif" width="auto" height="450">
 
 <h2>Stack</h2>
 
